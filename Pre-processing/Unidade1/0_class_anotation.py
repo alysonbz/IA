@@ -9,3 +9,18 @@ df2 = load_df2_unidade1()
 
 
 print(volunteer['hits'].dtype)
+
+#print(hiking.head())
+#print(hiking.info()) mostra as caracteristicas do banco de dados
+#print(wine.describe())
+#print(df1)
+#print(df1.dropna()) deleta linhas que não tem numeros
+#print(df1.drop([1,2,3])) seleciona linhas para serem deletadas
+#print(df1.drop("A", axis=1)) selecionar a coluna que deseja deletar
+#print(df1.isna().sum()) mostra quantas colunas não tem numeros
+#print(df1.dropna(thresh=2)) mostra apenas atributos com menos um numero invalido
+#print(volunteer.info())
+#print(df2)
+#print(df2.info())
+#df2["C"]=df2["C"].astype("int64")
+#print(df2.dtypes)
