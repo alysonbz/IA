@@ -25,31 +25,37 @@ Nesta questão você vai realizar uma classificação com KNN sem executar norma
 
 ### Questão 2
 
-```2_data_types.py```
+```2_log_normalization.py```
+#### Normalização Logarítimica
+
+Nesta questão você deve observar os efeitos da normalização logarítimica
 
 #### Instruções 
 
-1) Print os 5 primeiros elementos da coluna ``hits`` do dataset ``volunteer``.
-2) Print as caracteristicas da coluna``hits``.
-3) Converta a coluna ``hits`` de ``volunteer`` para o tipo ``int32``.
-4) Print as caracteristicas da coluna``hits`` novamente.
+1) Utilizando a função ``describe()`` verifique as características estatística do dataset ``wine``.
+2) Na coluna``Proline``, aplique a normalizaçao logarítmica e atribua o resultado para uma nova coluna, ``Proline_log``.
+3) Exiba a variância da coluna ``Proline``.
+4) Print a variância da coluna ``Proline_log``.
 
 
 ### Questão 3
 
-```3_training_and_test_sets.py```
+```3_scaling_data.py```
 
-#### Treinando um dataset
+#### Dateaset com média zero e variância unitária
 
-Neste exercicio você irá aprender a separar o dataset em um conjunto para treino e teste.
+Nesta questão você poder normalizar o dataset para uma média zero e variância unitária.
 
 #### Instruções
 
-1) importe a função ``train_test_split``
-2) Exclua as colunas ``Latitude`` e ``Longitude`` de volunteer com a função ``drop``.
-3) Exclua as linhas com valores ``null`` da coluna ``category_desc`` de ``volunteer_new``
-4) Mostre o balanceamento das classes em ``category_desc`` utilizando a função ``value_counts``
-5) Crie um DataFrame com todas as colunas, com exceção de ``category_desc``
-6) Crie um dataframe de labels com a coluna ``category_desc``
-7) Utiliza a a amostragem stratificada para separar o dataset em treino e teste
-8) Mostre o balanceamento das classes em ``category_desc`` novamente
+1) Importe ``StandardScaler`` da scikit-learn
+2) Inicialize o normalizador ``scaler``.
+3) Como vamos classificar a qualidade do vinho, remova do dataset a coluna exclua do dataset a coluna ``Quality`` e armazene o resultado em ``X``.
+4) Aplique a função ``fit_transform`` de ``scaler`` para obter o dataset normalizado e armazene o resultado em ``X_norm``.
+5) Em ``y`` aramazene somente os valores da coluna ``Quality`` que serão nossas labels.
+6) Print a variância de ``X``
+7) Prnt a variância de ``X_norm``
+8) Divida o dataset em treino e teste com amostragem estratificada usando ``train_test_split`` novamente. Lembre de usar ``X_norm`` como primeiro argumento.
+9) Inicialize o classificador KNN
+10) Aplique a função ``fit`` do knn com ``X_train`` e ``y_train``.
+11) Mostre o acerto do algorito com a função ``score``.
