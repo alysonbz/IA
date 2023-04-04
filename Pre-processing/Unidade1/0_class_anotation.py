@@ -84,7 +84,7 @@ volunteer = load_volunteer_dataset()
 volunteer_new = __
 
 # Exclua as linhas com valores null da coluna category_desc de volunteer_new
-volunteer = ___
+volunteer = volunteer
 
 # mostre o balanceamento das classes em 'category_desc'
 print(___['category_desc'].__,'\n','\n')
