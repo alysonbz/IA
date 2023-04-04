@@ -3,29 +3,25 @@
 
 Esse documento exibe as descrições das questões a serem resolvidas em sala
 
-##  Unidade 1
+##  Unidade 2
 
 ### Questão 1
 
-```1_pre_processing.py```
+```1_standardization.py```
 
-#### Pré-processamento
+#### Classificar sem normalizar
 
-Neste primeiro exercício você deve realizar manipulação em um dataset com a biblioteca pandas.
+Nesta questão você vai realizar uma classificação com KNN sem executar normalizaçao dos atributos.
 
 #### Instruções:
 
-1)  Utilizando a função `` shape `` do objeto `` volunteer `` print o tamanho do dataset.
+1)  Utilizando a função `` train_test_split `` Divida o dataset em dados para teste e dados para treino. Faça uma amostragem estratificada com base na proporção de label de ``y``.
    
-2)  Utilizando a função `` info`` do objeto `` volunteer `` print as caracteristicas do dataset
+2)  Execute o treinamento do classifcador knn. Este já foi iniccalizado para você com a linha  `` knn = KNeighborsClassifier() ``. Agora você deve chamar a função ``fit`` e colocar como argumentos ``X_train`` e ``y_train``. 
 
 3)  Print a quantidade de elementos que estão faltando na coluna `` locality``.
     
-4)  Exclua as colunas ``Latitude`` e ``Longitude`` de volunteer e coloque em um dataframe ``volunteer_cols``
-
-5)  Exclua as linhas com valores null da coluna ``category_desc`` de ``volunteer_cols`` e coloque em um dataframe ``volunteer_subset``
-
-6) print a dimensão de Print o shape de ``volunteer_subset``
+4)  Execute a função ``score`` de ``knn`` para medir a acurácia do classidicador. 
 
 ### Questão 2
 
