@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 def load_volunteer_dataset():
     return pd.read_csv('../dataset/opportunities.csv')
 
@@ -17,3 +16,9 @@ def load_df1_unidade1():
 
 def load_df2_unidade1():
     return pd.read_csv('../dataset/df2_unidade1.csv')
+
+def load_df1_unidade2():
+    return pd.read_csv('../dataset/df1_unidade2.csv')
+
+def load_df2_unidade2():
+    return pd.read_csv('../dataset/df2_unidade2.csv')
