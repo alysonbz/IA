@@ -2,9 +2,12 @@ from src.utils import load_wine_dataset
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 
+import numpy as np
+
 wine = load_wine_dataset()
 
 X = wine.drop(['Quality'], axis=1)
+X = np.log(X)
 
 y = wine['Quality'].values
 
@@ -17,4 +20,7 @@ knn = KNeighborsClassifier()
 knn.fit(X_train, y_train)
 
 # mostre o acerto do algoritmo
-print(knn.score(X_test, y_test))
+print(knn.score(X_test, ))
+
+import numpy as np
+
