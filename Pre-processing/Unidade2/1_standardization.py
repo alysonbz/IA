@@ -1,10 +1,12 @@
 from src.utils import load_wine_dataset
+import numpy as np
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 
 wine = load_wine_dataset()
 
 X = wine.drop(['Quality'],axis=1)
+X = np.log(X)
 
 y = wine['Quality'].values
 
