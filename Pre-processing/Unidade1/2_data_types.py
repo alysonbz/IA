@@ -15,4 +15,4 @@ volunteer['hits'] = volunteer['hits'].astype(int)
 
 
 # Print as caracteristicas da coluna hits novamente
-print(volunteer['hits'].info())\
+print(volunteer['hits'].info())
