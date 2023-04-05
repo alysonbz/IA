@@ -9,7 +9,7 @@ volunteer_new = volunteer.drop(["Latitude", "Longitude"], axis=1)
 volunteer = volunteer_new.dropna(subset=["category_desc"])
 
 # mostre o balanceamento das classes em 'category_desc'
-print(volunteer['category_desc'].value_counts(),'\n','\n')
+print(volunteer['category_desc'].value_counts(),'\n')
 
 # Crie um DataFrame com todas as colunas, com exceção de ``category_desc``
 X = volunteer.drop("category_desc", axis=1)
@@ -21,4 +21,4 @@ y = volunteer[['category_desc']]
 X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, random_state=42)
 
 # mostre o balanceamento das classes em 'category_desc' novamente
-print(y_train['category_desc'].value_counts(),'\n','\n')
+print(y_train['category_desc'].value_counts(),'\n')
