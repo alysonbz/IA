@@ -3,8 +3,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from src.utils import load_wine_dataset
 from sklearn.neighbors import KNeighborsClassifier
-import pandas as pd
-import numpy as np
+#import pandas as pd
+#import numpy as np
 
 
 wine = load_wine_dataset()
@@ -23,7 +23,7 @@ y = wine['Quality'].values
 
 #print a valriância de X
 #print('variancia',np.var(X))
-print('variancia',X.var())
+print('variancia', X.var())
 #print a variânca do dataset X_norm
 print('variancia do dataset normalizado', X_norm.var)
 
@@ -34,7 +34,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, random_sta
 knn = KNeighborsClassifier()
 
 # Aplique a função fit do KNN
-knn.fit(X_train,y_train)
+knn.fit(X_train, y_train)
 
 # Verifique o acerto do classificador
 print('score', knn.score(X_test, y_test))
