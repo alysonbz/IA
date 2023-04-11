@@ -7,7 +7,6 @@ import pandas as pd
 import numpy as np
 
 print('Dataset wine')
-print(wine)
 wine = load_wine_dataset()
 
 # Inicialize o scale
@@ -20,17 +19,17 @@ X = wine.drop(['Quality'],axis=1)
 
 #normalize o dataset com scaler
 print('\nNormalizando o dataset com scaler')
-X_norm = np.scaler.fit_transform(X)
+X_norm = scaler.fit_transform(X)
 
 #obtenha as labels da coluna Quality
 print('\nObter as labels da coluna Quality')
 y = wine['Quality'].values
 
 #print a variância de X
-print('\nVariância: ', np.var(X))
+print('\nVariância: ', X.var())
 
 #print a variânca do dataset X_norm
-print('\nVariância do dataset normalizado', np.var(X_norm))
+print('\nVariância do dataset normalizado', X_norm.var())
 
 # Divida o dataset em treino e teste com amostragem estratificada
 print('\nDividindo o Dataset em treino e teste com amostragem estratificada')
