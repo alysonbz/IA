@@ -1,7 +1,6 @@
+from src.utils import load_volunteer_dataset
 
-import pandas as pd
-
-volunteer = pd.DataFrame('dataset/archive/opportunities.csv')
+volunteer = load_volunteer_dataset()
 
 # Mostre a dimensão do dataset volunteer
 print(___)
