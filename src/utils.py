@@ -1,5 +1,4 @@
 import pandas as pd
-from sklearn.preprocessing import LabelEncoder
 
 
 def load_volunteer_dataset():
@@ -25,9 +24,3 @@ def load_df1_unidade2():
 def load_df2_unidade2():
     return pd.read_csv('../dataset/df2_unidade2.csv')
 
-def load_churn_dataset():
-    df = pd.read_csv('../dataset/churn_train.csv')
-    le = LabelEncoder()
-    df['churn'] = le.fit_transform(df['churn'])
-    df['churn'] = le.fit_transform(df['churn'])
-    return df
