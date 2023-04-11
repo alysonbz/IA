@@ -1,4 +1,7 @@
+<<<<<<<<< Temporary merge branch 1
 import pandas as pd
+=========
+>>>>>>>>> Temporary merge branch 2
 from src.utils import load_volunteer_dataset
 
 volunteer = load_volunteer_dataset()

@@ -1,7 +1,6 @@
 from src.utils import load_hiking_dataset , load_df2_unidade1,load_wine_dataset, load_df1_unidade1, load_volunteer_dataset
 import pandas as pd
 
-
 volunteer = load_volunteer_dataset()
 hiking = load_hiking_dataset()
 wine  = load_wine_dataset()
@@ -9,6 +8,7 @@ df1 = load_df1_unidade1()
 df2 = load_df2_unidade1()
 
 
+<<<<<<<<< Temporary merge branch 1
 print(volunteer['hits'].dtype)
 
 ###print(hiking.head())
@@ -40,3 +40,5 @@ print(volunteer['hits'].dtype)
 ###df2["C"] = df2["C"].astype("int64") #transformando os atributos da coluna C em inteiros
 
 ###print(df2.dtypes) #usa-se dtypes para visualizar tipos de dados contidos no dataset
+=========
+>>>>>>>>> Temporary merge branch 2
