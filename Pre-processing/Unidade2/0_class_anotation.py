@@ -24,3 +24,5 @@ print(df2_scaled)
 print(df2_scaled.var())
 print(df2_scaled)
 print(df2_scaled.var())
+
+
