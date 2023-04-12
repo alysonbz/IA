@@ -8,8 +8,8 @@ from sklearn.neighbors import KNeighborsClassifier
 churn_df = load_churn_dataset()
 
 # Create arrays for the features and the target variable
-y = ____["____"].values
-X = ____[["____", "____"]].values
+y = churn_df["churn"].values
+X = churn_df[["account_length", "number_customer_service_calls"]].values
 
 # Create a KNN classifier with 6 neighbors
 knn = KNeighborsClassifier(6)
@@ -22,7 +22,7 @@ X_test = np.array([[30.0, 17.5],
                   [213.0, 10.9]])
 
 # Predict the labels for the X_teste
-y_pred = __.__(__)
+y_pred = knn.predict(X_test)
 
 # Print the predictions for X_test
-print("Predictions: {}".format(X_test))
+print("Predictions: {}".format(y_pred))
