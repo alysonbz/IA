@@ -22,5 +22,4 @@ knn.fit(X_train, y_train)
 # mostre o acerto do algoritmo
 print(knn.score(X_test, ))
 
-import numpy as np
 
