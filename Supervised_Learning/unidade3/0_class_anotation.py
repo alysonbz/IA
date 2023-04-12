@@ -4,4 +4,4 @@ import numpy as np
 
 churn_df = load_churn_dataset()
 
-
+print(churn_df.value_counts())

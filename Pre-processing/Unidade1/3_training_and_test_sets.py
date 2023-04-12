@@ -1,13 +1,12 @@
 from src.utils import load_volunteer_dataset
-_____
 
 volunteer = load_volunteer_dataset()
 
 # Exclua as colunas Latitude e Longitude de volunteer
-volunteer_new =
+volunteer_new = volunteer.drop(['latitude', 'longitude'], axis=1)
 
 # Exclua as linhas com valores null da coluna category_desc de volunteer_new
-volunteer =
+volunteer = volunteer_new.dropna()
 
 # mostre o balanceamento das classes em 'category_desc'
 #print(['category_desc'].__,'\n','\n')
