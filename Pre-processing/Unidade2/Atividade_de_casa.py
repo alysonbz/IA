@@ -1,7 +1,7 @@
 #leitura do arquivo
 #o comando with open abre o arquivo iris_data em modo leitura por conta do 'r'
 lista=[]
-with open('iris_data.csv', 'r') as f:
+with open('iris.data', 'r') as f:
     for linha in f.readlines(): # o loop for lê cada linha usando o método readlines()
         a=linha.replace('\n','').split(',')
         lista.append(a) #adicionando cada sub lista em uma lista
