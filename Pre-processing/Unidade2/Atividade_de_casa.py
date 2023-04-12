@@ -2,7 +2,7 @@ import pandas as pd
 import csv
 
 lista=[]
-with open('iris.data', 'r') as f:
+with open('iris_data.data', 'r') as f:
     for linha in f.readlines():
         a=linha.replace('\n','').split(',')
         lista.append(a)

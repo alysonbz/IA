@@ -23,3 +23,4 @@ def load_df1_unidade2():
 
 def load_df2_unidade2():
     return pd.read_csv('../dataset/df2_unidade2.csv')
+
