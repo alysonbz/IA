@@ -6,3 +6,4 @@ churn_df = load_churn_dataset()
 
 print(churn_df['churn'].value_counts())
 
+print(churn_df.info())
