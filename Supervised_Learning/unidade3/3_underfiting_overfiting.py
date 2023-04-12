@@ -15,7 +15,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 neighbors = np.arange(1, 12)
 train_accuracies = {}
 test_accuracies = {}
-
+teste = True
 for neighbor in neighbors:
     # Set up a KNN Classifier
     knn = KNeighborsClassifier(n_neighbors=neighbor)
