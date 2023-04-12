@@ -1,17 +1,17 @@
 from src.utils import load_churn_dataset
 import numpy as np
 
-# Import KNeighborsClassifier
-from ____.____ import ____
+# Importando KNeighborsClassifier
+from sklearn.neighbors import KNeighborsClassifier
 
 churn_df = load_churn_dataset()
 
-# Create arrays for the features and the target variable
+# Cria matrizes para os recursos e a variável de destino
 y = ____["____"].values
 X = ____[["____", "____"]].values
 
 # Create a KNN classifier with 6 neighbors
-knn = ____
+knn =
 
 # Fit the classifier to the data
 knn.____(____, ____)

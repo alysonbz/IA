@@ -1,67 +1,139 @@
-# implementação KNN
+# Implementação KNN
 
-# importei o método utilizado: KNeighborsClassifier
+# Importando o dataset e os módulos: pandas e numpy
+from sklearn.datasets import load_iris
+import pandas as pd
+import numpy as np
+
+# Retornando os dados
+iris = load_iris()
+iris
+
+# Transformando em um DataFrame
+iris_df = pd.DataFrame(iris.data, columns = iris.feature_names)
+iris_df['target'] = iris.target
+
+# Visualizando a base de dados iris
+iris_df
+
+# Selecionando apenas as colunas de pétala
+iris1 = iris_df.loc[iris_df.target.isin([1,2]),['petal length (cm)','petal width (cm)','target']]
+iris1
+
+# Separando em X e y
+X = iris1[['petal length (cm)','petal width (cm)']]
+y = iris1.target
+
+# Importando a função que separa os dados em treino e teste
+from sklearn.model_selection import train_test_split
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.33,random_state=42)
+
+# Importando o módulo que visualiza os gráficos
+import matplotlib.pyplot as plt
+
+# Visualizando os dados de treino
+fig, ax = plt.subplots()
+ax.scatter(x=X_train['petal width (cm)'],
+           y=X_train['petal length (cm)'],
+           c=y_train,
+           cmap='viridis')
+ax.set(xlim=(0.9, 2.6), xticks=[1,1.5,2,2.5],
+       ylim=(3, 7), yticks=[3,4,5,6,7])
+plt.show()
+
+# Importando o método utilizado: KNeighborsClassifier
 from sklearn.neighbors import KNeighborsClassifier
 
-# importei o módulo pickle para guardar as variáveis de treino e teste
-import pickle
+# Estabelecendo quantos vizinhos mais próximos serão utilizados
+clf = KNeighborsClassifier(n_neighbors=3)
 
-# abri a base de dados "credit"
-with open('credit.pkl', 'rb') as f:
-    # Dividi em treino e teste
-    X_credit_treinamento, y_credit_treinamento, X_credit_teste, y_credit_teste = pickle.load(f)
+# Fazendo o fit com os dados de treino
+clf = clf.fit(X_train,y_train)
 
-# Usarei 1500 para treinar o algoritmo
-X_credit_treinamento.shape, y_credit_treinamento.shape
+# Fazendo a previsão para os dados de teste
+y_pred = clf.predict(X_test)
 
-# Usarei 500 para teste
-X_credit_teste.shape, y_credit_teste.shape
+# Importando o módulo que verifica a matriz de confusão
+from sklearn.metrics import confusion_matrix
 
-# Criei uma variável que recebe o número de vizinhos (o padrão é: 5), 'minkowski' é como o cálculo da distância será feito
-# p = 2 é a medida euclidiana
-knn_credit = KNeighborsClassifier(n_neighbors=5, metric='minkowski', p = 2)
-knn_credit.fit(X_credit_treinamento, y_credit_treinamento)
+# Verificando a matriz de confusão
+confusion_matrix(y_test,y_pred)
 
-# Realizando a previsão, e assim podemos ver as respostas do algoritmo
-previsoes = knn_credit.predict(X_credit_teste)
-previsoes
+# Podemos agora visualizar os dados de treino e teste
+fig, ax = plt.subplots()
+ax.scatter(x=X_train['petal width (cm)'],
+           y=X_train['petal length (cm)'],
+           c=y_train, alpha=0.7,
+           cmap='viridis')
+ax.scatter(x=X_test['petal width (cm)'],
+           y=X_test['petal length (cm)'],
+           c=y_pred,alpha=0.2,
+           cmap='RdYlGn')
+ax.scatter(x=X_test['petal width (cm)'],
+           y=X_test['petal length (cm)'],
+           c=y_test,alpha=0.2,
+           cmap='RdYlGn')
+ax.set(xlim=(0.9, 2.6), xticks=[1,1.5,2,2.5],
+       ylim=(3, 7), yticks=[3,4,5,6,7])
+plt.show()
 
-# Comparando com os dados reais (ex.: os últimos 3 valores estão ok)
-y_credit_teste
+X_test[y_test != y_pred]
 
-# Calcular a acurária
-from sklearn.metrics import accuracy_score, classification_report
 
-# Utilizando a padronização (cálculo que deixa os valores no mesmo padrão de escala)
-accuracy_score(y_credit_teste, previsoes)
-# temos o valor de 98%
+print("\nCALCULANDO AS DISTÂNCIAS")
 
-print(classification_report(y_credit_teste, previsoes))
-# Analisando o 'classification_report' podemos observar os resultados por cada uma das classes
-# Esse algoritmo detecta 99% dos clientes que pagam (zero), e quando ele identifica está certo em 99% das vezes
-# No caso dos clientes que não pagam, o algoritmo detecta 95% desses clientes, e quando ele identifica está certo em 94% das vezes
-
+# Distância Euclidiana
+a = np.array(iris1['petal length (cm)'])
+b = np.array(iris1['petal width (cm)'])
+print("\nDistância Euclidiana: ")
+dist_eu = np.sqrt(np.sum(np.square(a-b)))
+print(dist_eu)
 
 # Distância Manhattan
-from scipy.spatial.distance import cityblock
-
+# Criando uma função para calcular
+def manhattan_distance(point1, point2):
+    return sum(abs(value1 - value2) for value1, value2 in zip(point1, point2))
+# Definindo dois pontos
+a = np.array(iris1['petal length (cm)'])
+b = np.array(iris1['petal width (cm)'])
+# Mostrando o resultado
+print("\nDistância Manhattan: ")
+print(manhattan_distance(a, b))
 
 # Distância de Minkowski
-from math import *
-from decimal import Decimal
-
-def p_root(value, root):
-    root_value = 1 / float(root)
-    return round(Decimal(value) **
-                 Decimal(root_value), 3)
-
-def minkowski_distance(x, y, p_value):
-    return (p_root(sum(pow(abs(a - b), p_value)
-                       for a, b in zip(x, y)), p_value))
-
-vector1 = [0, 2, 3, 4]
-vector2 = [2, 4, 3, 7]
+# Definindo dois pontos
+a = np.array(iris1['petal length (cm)'])
+b = np.array(iris1['petal width (cm)'])
+# Calculando a distância Minkowski com ordem p=3
 p = 3
-print('\nDistância de Minkowski:')
-print(minkowski_distance(vector1, vector2, p))
+dist_minkowski = np.linalg.norm(a - b, ord=p)
+# Mostrando o resultado
+print("\nDistância de Minkowski: ")
+print(dist_minkowski)
+
+# Distância de Chebyshev
+# Definindo dois pontos
+a = np.array(iris1['petal length (cm)'])
+b = np.array(iris1['petal width (cm)'])
+# Mostrando na tela a frase p/ melhor entendimento e organização
+print("\nDistância de Chebyshev: ")
+# Calculando a distância Chebyshev entre os dois pontos
+dist_chebyshev = np.amax(np.abs(a - b))
+print(dist_chebyshev)
+
+'''
+Ao comparar os resultados das quatro distâncias calculadas para o conjunto de dados iris1, é possível observar 
+que as distâncias variam entre si, pois cada uma delas utiliza uma fórmula diferente para calcular a distância 
+entre dois pontos 'a' e 'b'.
+
+A distância Euclidiana é a mais comum e simples, calculando a distância "em linha reta" entre dois pontos. 
+
+A distância Manhattan, também conhecida como distância da cidade, considera apenas as distâncias horizontais 
+e verticais, ignorando a distância diagonal. 
+
+A distância de Minkowski é uma generalização da distância Euclidiana e da distância Manhattan, pois permite usar 
+diferentes ordens p (como p = 3 no meu exemplo) para ajustar a fórmula à situação. 
+
+A distância de Chebyshev, calcula a maior diferença entre as coordenadas dos dois pontos, sendo mais útil quando 
+se quer avaliar a discrepância máxima entre dois conjuntos de dados.
 '''
