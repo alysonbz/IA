@@ -1,8 +1,9 @@
 from src.utils import load_churn_dataset
 import numpy as np
 
+from sklearn.model_selection import train_test_split
 # Import KNeighborsClassifier
-from ____.____ import ____
+from sklearn.neighbors import KNeighborsClassifier
 
 churn_df = load_churn_dataset()
 
@@ -11,10 +12,10 @@ y = ____["____"].values
 X = ____[["____", "____"]].values
 
 # Create a KNN classifier with 6 neighbors
-knn = ____
+knn = KNeighborsClassifier(6)
 
 # Fit the classifier to the data
-knn.____(____, ____)
+knn.fit(X, y)
 
 X_test = np.array([[30.0, 17.5],
                   [107.0, 24.1],
@@ -24,4 +25,4 @@ X_test = np.array([[30.0, 17.5],
 y_pred = __.__(__)
 
 # Print the predictions for X_test
-print("Predictions: {}".format(__))
+print("Predictions: {}".format(X_test))
