@@ -2,9 +2,8 @@ import pandas as pd
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 
-
-# df = pd.read_csv('iris_data.csv')
-# print(df)
+#df = pd.read_csv('iris_data.csv')
+#print(df)
 
 lista = []
 with open('iris_data.csv', 'r') as f:
@@ -12,23 +11,24 @@ with open('iris_data.csv', 'r') as f:
         a = linha.replace('\n', '').split(',')
         lista.append(a)
 print(lista)
+
 def countclasses(lista):
-    va = 0
+
     setosa = 0
     versicolor = 0
     virginica = 0
-    for i in range(len(lista)):
-        if lista[i][va] == 1.0:
+    for i in range(len(lista)-1):
+        if lista[i][4] == 'Iris-setosa':
             setosa += 1
-        if lista[i][va] == 2.0:
+        if lista[i][4] == 'Iris-versicolor':
             versicolor += 1
-        if lista[i][va] == 3.0:
+        if lista[i][4] == 'Iris-virginica':
             virginica += 1
 
     return [setosa, versicolor, virginica]
 
 #countclasses(lista)
-#print(lista)
+print(countclasses(lista))
 
 p=0.6
 setosa,versicolor, virginica = countclasses(lista)
