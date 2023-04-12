@@ -31,7 +31,7 @@ print('variancia do dataset normalizado', X_norm.var())
 X_train, X_test, y_train, y_test = train_test_split(X_norm, y, stratify=y, random_state=42)
 
 #inicialize o algoritmo KNN
-knn = KNeighborsClassifier()
+knn = KNeighborsClassifier(n_neighbors=6)
 
 # Aplique a função fit do KNN
 knn.fit(X_train,y_train)
