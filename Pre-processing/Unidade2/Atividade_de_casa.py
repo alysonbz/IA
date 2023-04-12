@@ -80,14 +80,21 @@ plt.show()
 X_test[y_test != y_pred]
 
 
+"""acertos, K = 0, 1
+for amostra in teste:
+    classe = knn(treinamento, amostra, K)
+    if amostra[-1]==classe:
+        acertos +=1
+print("Porcentagem de acertos:",100*acertos/len(teste))"""
+
 print("\nCALCULANDO AS DISTÂNCIAS")
 
 # Distância Euclidiana
 a = np.array(iris1['petal length (cm)'])
 b = np.array(iris1['petal width (cm)'])
 print("\nDistância Euclidiana: ")
-dist_eu = np.sqrt(np.sum(np.square(a-b)))
-print(dist_eu)
+dist_euc = np.sqrt(np.sum(np.square(a-b)))
+print(dist_euc)
 
 # Distância Manhattan
 # Criando uma função para calcular

@@ -7,21 +7,21 @@ from sklearn.neighbors import KNeighborsClassifier
 churn_df = load_churn_dataset()
 
 # Cria matrizes para os recursos e a variável de destino
-y = ____["____"].values
-X = ____[["____", "____"]].values
+y = churn_df["churn"].values
+X = churn_df[["account_length", "number_customer_service_calls"]].values
 
 # Create a KNN classifier with 6 neighbors
-knn =
+knn = KNeighborsClassifier(n_neighbors=6)
 
 # Fit the classifier to the data
-knn.____(____, ____)
+knn.fit(X, y)
 
 X_test = np.array([[30.0, 17.5],
                   [107.0, 24.1],
                   [213.0, 10.9]])
 
 # Predict the labels for the X_teste
-y_pred = __.__(__)
+y_pred = knn.predict(X_test)
 
 # Print the predictions for X_test
-print("Predictions: {}".format(__))
+print("Predictions: {}".format(y_pred))
