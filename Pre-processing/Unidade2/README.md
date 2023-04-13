@@ -52,7 +52,7 @@ Nesta questão você poder normalizar o dataset para uma média zero e variânci
 2) Inicialize o normalizador ``scaler``.
 3) Como vamos classificar a qualidade do vinho, remova do dataset a coluna exclua do dataset a coluna ``Quality`` e armazene o resultado em ``X``.
 4) Aplique a função ``fit_transform`` de ``scaler`` para obter o dataset normalizado e armazene o resultado em ``X_norm``.
-5) Em ``y`` aramazene somente os valores da coluna ``Quality`` que serão nossas labels.
+5) Em ``y`` armazene somente os valores da coluna ``Quality`` que serão nossas labels.
 6) Print a variância de ``X``
 7) Prnt a variância de ``X_norm``
 8) Divida o dataset em treino e teste com amostragem estratificada usando ``train_test_split`` novamente. Lembre de usar ``X_norm`` como primeiro argumento.
