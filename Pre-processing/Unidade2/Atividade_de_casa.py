@@ -1,35 +1,52 @@
 # Implementação KNN
 
-# Importando o dataset e os módulos: pandas e numpy
-from sklearn.datasets import load_iris
+# Importando as bibliotecas que serão usadas
+from sklearn.datasets import load_iris # dataset utilizado
 import pandas as pd
 import numpy as np
+from sklearn.model_selection import train_test_split # Importando a função que separa os dados em treino e teste
+import matplotlib.pyplot as plt # Importando o módulo que visualiza os gráficos
+from sklearn.neighbors import KNeighborsClassifier # Importando o método utilizado: KNeighborsClassifier
 
 # Retornando os dados
 iris = load_iris()
 iris
 
 # Transformando em um DataFrame
-iris_df = pd.DataFrame(iris.data, columns = iris.feature_names)
-iris_df['target'] = iris.target
+dados_iris = pd.DataFrame(iris.data, columns = iris.feature_names)
+dados_iris['target'] = iris.target
 
 # Visualizando a base de dados iris
-iris_df
+dados_iris
 
 # Selecionando apenas as colunas de pétala
-iris1 = iris_df.loc[iris_df.target.isin([1,2]),['petal length (cm)','petal width (cm)','target']]
-iris1
+petala = dados_iris.loc[dados_iris.target.isin([1,2]),['petal length (cm)','petal width (cm)','target']]
+petala
 
 # Separando em X e y
-X = iris1[['petal length (cm)','petal width (cm)']]
-y = iris1.target
+X = petala[['petal length (cm)','petal width (cm)']]
+y = petala.target
 
-# Importando a função que separa os dados em treino e teste
-from sklearn.model_selection import train_test_split
-X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.33,random_state=42)
+# Separando os dados em treino e teste
+X_train,X_test,y_train,y_test = train_test_split(X, y, test_size=0.2,random_state=42, stratify=y)
 
-# Importando o módulo que visualiza os gráficos
-import matplotlib.pyplot as plt
+# Criando vizinhos
+neighbors = np.arange(1, 12)
+train_accuracies = {}
+test_accuracies = {}
+
+for neighbor in neighbors:
+    # Configurando um classificador KNN
+    knn = KNeighborsClassifier(n_neighbors=neighbor)
+
+    # Ajuste do modelo
+    knn.fit(X_train, y_train)
+
+    # Precisão de cálculo
+    train_accuracies[neighbor] = knn.score(X_train, y_train)
+    test_accuracies[neighbor] = knn.score(X_test, y_test)
+
+print("\nAcurácia (precisão) do treino: ",train_accuracies,"\nAcurácia (precisão) do teste: ", test_accuracies)
 
 # Visualizando os dados de treino
 fig, ax = plt.subplots()
@@ -39,10 +56,8 @@ ax.scatter(x=X_train['petal width (cm)'],
            cmap='viridis')
 ax.set(xlim=(0.9, 2.6), xticks=[1,1.5,2,2.5],
        ylim=(3, 7), yticks=[3,4,5,6,7])
+plt.title('Dados de treino')
 plt.show()
-
-# Importando o método utilizado: KNeighborsClassifier
-from sklearn.neighbors import KNeighborsClassifier
 
 # Estabelecendo quantos vizinhos mais próximos serão utilizados
 clf = KNeighborsClassifier(n_neighbors=3)
@@ -52,12 +67,6 @@ clf = clf.fit(X_train,y_train)
 
 # Fazendo a previsão para os dados de teste
 y_pred = clf.predict(X_test)
-
-# Importando o módulo que verifica a matriz de confusão
-from sklearn.metrics import confusion_matrix
-
-# Verificando a matriz de confusão
-confusion_matrix(y_test,y_pred)
 
 # Podemos agora visualizar os dados de treino e teste
 fig, ax = plt.subplots()
@@ -75,23 +84,16 @@ ax.scatter(x=X_test['petal width (cm)'],
            cmap='RdYlGn')
 ax.set(xlim=(0.9, 2.6), xticks=[1,1.5,2,2.5],
        ylim=(3, 7), yticks=[3,4,5,6,7])
+plt.title('Dados de treino e teste')
 plt.show()
 
 X_test[y_test != y_pred]
 
-
-"""acertos, K = 0, 1
-for amostra in teste:
-    classe = knn(treinamento, amostra, K)
-    if amostra[-1]==classe:
-        acertos +=1
-print("Porcentagem de acertos:",100*acertos/len(teste))"""
-
 print("\nCALCULANDO AS DISTÂNCIAS")
 
 # Distância Euclidiana
-a = np.array(iris1['petal length (cm)'])
-b = np.array(iris1['petal width (cm)'])
+a = np.array(petala['petal length (cm)'])
+b = np.array(petala['petal width (cm)'])
 print("\nDistância Euclidiana: ")
 dist_euc = np.sqrt(np.sum(np.square(a-b)))
 print(dist_euc)
@@ -101,16 +103,16 @@ print(dist_euc)
 def manhattan_distance(point1, point2):
     return sum(abs(value1 - value2) for value1, value2 in zip(point1, point2))
 # Definindo dois pontos
-a = np.array(iris1['petal length (cm)'])
-b = np.array(iris1['petal width (cm)'])
+a = np.array(petala['petal length (cm)'])
+b = np.array(petala['petal width (cm)'])
 # Mostrando o resultado
 print("\nDistância Manhattan: ")
 print(manhattan_distance(a, b))
 
 # Distância de Minkowski
 # Definindo dois pontos
-a = np.array(iris1['petal length (cm)'])
-b = np.array(iris1['petal width (cm)'])
+a = np.array(petala['petal length (cm)'])
+b = np.array(petala['petal width (cm)'])
 # Calculando a distância Minkowski com ordem p=3
 p = 3
 dist_minkowski = np.linalg.norm(a - b, ord=p)
@@ -120,9 +122,9 @@ print(dist_minkowski)
 
 # Distância de Chebyshev
 # Definindo dois pontos
-a = np.array(iris1['petal length (cm)'])
-b = np.array(iris1['petal width (cm)'])
-# Mostrando na tela a frase p/ melhor entendimento e organização
+a = np.array(petala['petal length (cm)'])
+b = np.array(petala['petal width (cm)'])
+# Mostrando na tela
 print("\nDistância de Chebyshev: ")
 # Calculando a distância Chebyshev entre os dois pontos
 dist_chebyshev = np.amax(np.abs(a - b))
