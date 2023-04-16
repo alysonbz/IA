@@ -2,8 +2,8 @@
 
 # Importando as bibliotecas que serão usadas
 from sklearn.datasets import load_iris # dataset utilizado
-import pandas as pd
-import numpy as np
+import pandas as pd # para ler base de dados
+import numpy as np # para lidar com números
 from sklearn.model_selection import train_test_split # Importando a função que separa os dados em treino e teste
 import matplotlib.pyplot as plt # Importando o módulo que visualiza os gráficos
 from sklearn.neighbors import KNeighborsClassifier # Importando o método utilizado: KNeighborsClassifier
@@ -131,7 +131,7 @@ dist_chebyshev = np.amax(np.abs(a - b))
 print(dist_chebyshev)
 
 '''
-Ao comparar os resultados das quatro distâncias calculadas para o conjunto de dados iris1, é possível observar 
+Ao comparar os resultados das quatro distâncias calculadas para o conjunto de dados petala, é possível observar 
 que as distâncias variam entre si, pois cada uma delas utiliza uma fórmula diferente para calcular a distância 
 entre dois pontos 'a' e 'b'.
 
