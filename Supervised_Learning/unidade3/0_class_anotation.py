@@ -3,5 +3,8 @@ from sklearn.neighbors import KNeighborsClassifier
 import numpy as np
 
 churn_df = load_churn_dataset()
+print(churn_df)
+print(load_churn_dataset())
+
 
 
