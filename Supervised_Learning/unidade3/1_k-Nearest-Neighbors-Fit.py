@@ -15,7 +15,6 @@ X = churn_df[["account_length", "number_customer_service_calls"]].values
 knn = KNeighborsClassifier(6)
 
 # Fit the classifier to the data
-knn.fit(X, y)
 
 X_test = np.array([[30.0, 17.5],
                   [107.0, 24.1],
