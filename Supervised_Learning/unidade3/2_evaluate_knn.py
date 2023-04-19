@@ -5,7 +5,7 @@ from src.utils import load_churn_dataset
 from sklearn.model_selection import train_test_split
 
 churn_df = load_churn_dataset()
-X = churn_df[["account_length",  "total_day_charge" , "total_eve_charge",  "total_night_charge","total_intl_charge","number_customer_service_calls"]].values
+X = churn_df[["account_length",  "total_day_charge", "total_eve_charge",  "total_night_charge","total_intl_charge","number_customer_service_calls"]].values
 y = churn_df["churn"].values
 
 # Split into training and test sets
