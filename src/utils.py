@@ -29,5 +29,8 @@ def load_churn_dataset():
     df = pd.read_csv('../dataset/churn_train.csv')
     le = LabelEncoder()
     df['churn'] = le.fit_transform(df['churn'])
-    df['churn'] = le.fit_transform(df['churn'])
+    return df
+
+def load_iris_dataset():
+    df = pd.read_csv('../dataset/iris.csv')
     return df
