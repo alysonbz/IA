@@ -20,3 +20,4 @@ volunteer_subset = volunteer_cols.dropna(subset=['category_desc'])
 # Print o shape do subset
 print(volunteer_subset.shape)
 
+
