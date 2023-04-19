@@ -3,8 +3,6 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from src.utils import load_wine_dataset
 from sklearn.neighbors import KNeighborsClassifier
-import pandas as pd
-import numpy as np
 
 print('Dataset wine')
 wine = load_wine_dataset()
