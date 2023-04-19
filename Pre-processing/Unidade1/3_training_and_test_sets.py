@@ -1,6 +1,7 @@
 from src.utils import load_volunteer_dataset
 from sklearn.model_selection import train_test_split
 
+
 volunteer = load_volunteer_dataset()
 
 # Exclua as colunas Latitude e Longitude de volunteer
@@ -10,7 +11,7 @@ volunteer_new = volunteer.drop(["Latitude","Longitude"], axis=1)
 volunteer = volunteer_new.dropna(subset=["category_desc"])
 
 # mostre o balanceamento das classes em 'category_desc'
-#print(volunteer['category_desc'].value_counts(),'\n','\n') #contando por categoria
+print(volunteer['category_desc'].value_counts(),'\n','\n') #contando por categoria
 
 # Crie um DataFrame com todas as colunas, com exceção de ``category_desc``
 X = volunteer.drop("category_desc", axis=1)
