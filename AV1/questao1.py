@@ -29,7 +29,7 @@ print(cancer['fractal_dimension_worst'].value_counts(),'\n','\n')
 cancer['diagnosis'].replace(['B', 'M'],
                         [0, 1], inplace=True)
 
-#print('Salve o dataset atualizado se houver modificações.')
+print('Salve o dataset atualizado se houver modificações.')
 print(cancer)
 
 
