@@ -37,11 +37,24 @@ de sépalas, o comprimento e largura de pétalas, e a classe das flores.
 
 "Etapa 2 | Pré-Processamento"
 
-lista = []
+lista=[]
 with open('iris_data.csv', 'r') as f:
-    for linha in f.readlines():
-        a = linha.replace('\n', '').split(',')
-        lista.append(a)
+    for linha in f.readlines(): # o loop for lê cada linha usando o método readlines()
+        a=linha.replace('\n','').split(',')
+
+        if a[-1] == "Iris-setosa":
+            a[-1] = 1
+
+        if a[-1] == "Iris-versicolor":
+            a[-1] = 2
+
+        if a[-1] == "Iris-virginica":
+            a[-1] = 3
+        try:
+           a = [float(i) for i in a]
+        except:
+          continue
+        lista.append(a) #adicionando cada sub lista em uma lista
 
 # Lendo um arquivo e verifique a distribuição dos dados que estão dentro dele.
 # Transformando cada conjunto de dados em uma pequena lista.
@@ -52,14 +65,13 @@ def countclasses(lista):
     setosa = 0
     versicolor = 0
     virginica = 0
-    for i in range(len(lista)):
-        if lista[i][-1] == 0:
-            setosa += 1
+    for i in range(len(lista)): #percorrendo cada elemento da lista
         if lista[i][-1] == 1:
-            versicolor += 1
+            setosa += 1
         if lista[i][-1] == 2:
+            versicolor += 1
+        if lista[i][-1] == 3:
             virginica += 1
-
     return [setosa, versicolor, virginica]
 
 # Esta seção de código cria uma função chamada "countclasses", que recebe uma lista como entrada.
@@ -77,13 +89,13 @@ total1 = 0
 total2 = 0
 total3 = 0
 for lis in lista:
-    if lis[-1] == 1.0 and total1 < max_setosa:
+    if lis[-1] == 1 and total1 < max_setosa:
         treinamento.append(lis)
         total1 += 1
-    elif lis[-1] == 2.0 and total2 < max_versicolor:
+    elif lis[-1] == 2 and total2 < max_versicolor:
         treinamento.append(lis)
         total2 += 1
-    elif lis[-1] == 3.0 and total3 < max_virginica:
+    elif lis[-1] == 3 and total3 < max_virginica:
         treinamento.append(lis)
         total3 += 1
     else:
@@ -136,9 +148,9 @@ def knn(treinamento, nova_amostra, K):
 
     qtd_setosa, qtd_versicolor, qtd_virginica = 0, 0, 0
     for indice in k_vizinhos:
-        if treinamento[indice][-1] == 1.0:
+        if treinamento[indice][-1] == 1:
             qtd_setosa += 1
-        elif treinamento[indice][-1] == 2.0:
+        elif treinamento[indice][-1] == 2:
             qtd_versicolor += 1
         else:
             qtd_virginica += 1

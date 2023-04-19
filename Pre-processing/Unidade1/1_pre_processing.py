@@ -1,7 +1,6 @@
-<<<<<<<<< Temporary merge branch 1
+
 import pandas as pd
-=========
->>>>>>>>> Temporary merge branch 2
+
 from src.utils import load_volunteer_dataset
 
 volunteer = load_volunteer_dataset()
@@ -12,7 +11,7 @@ print(volunteer.shape,'\n')
 #mostre os tipos de dados existentes no dataset
 print(volunteer.info(),'\n')
 
-#mostre quantos elementos do dataset estão faltando na coluna
+#mostre quantos elementos do dataset faltam na coluna
 print(volunteer['locality'].isnull().sum(),'\n')
 
 # Exclua as colunas Latitude e Longitude de volunteer
