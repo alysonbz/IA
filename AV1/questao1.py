@@ -15,7 +15,7 @@ print("Não há NAN nem celulas vazias neste dataset")
 
 # Verifique quais colunas são as mais relevantes e crie um novo dataframe.
 print("\n Restrição de colunas mais relevante no dataset")
-gender_relevantes = gender[["long_hair", "forehead_height_cm", "nose_wide", "nose_long", "gender"]]
+gender_relevantes = gender[["long_hair", "forehead_width_cm", "forehead_height_cm", "nose_wide", "nose_long", "lips_thin", "gender"]]
 
 
 #Print o dataframe final e mostre a distribuição de classes que você deve classificar
@@ -34,6 +34,8 @@ gender_atualizado = gender_atualizando.rename(columns={"Female": "gender"})
 print("Dataset atualizado:")
 print(gender_atualizado)
 
+#Voltando a Distribuição após renomear os atributos
+print("Distribuição:\n", gender_atualizado['gender'].value_counts())
 
 #Salve o dataset atualizado se houver modificações.
 gender_atualizado.to_csv("gender_final.csv")
