@@ -7,10 +7,10 @@ df2 = load_df2_unidade2()
 
 import numpy as np
 
-#df1['Log_2'] = np.log(df1['col2']) # normalização logarítmica
-#print(df1)
+df1['Log_2'] = np.log(df1['col2']) # normalização logarítmica
+print(df1)
 
-#print(df1[['col1', 'Log_2']].var())
+print(df1[['col1', 'Log_2']].var())
 
 print(df2.var())
 
