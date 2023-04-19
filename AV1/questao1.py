@@ -14,7 +14,7 @@ print(df.head())
 print(df[["var_1", "var_2"]].value_counts())
 
 #Print o dataframe final e mostre a distribuição de classes que você deve classificar
-
+.value.counts()
 
 
 #observe se a coluna de classes precisa ser renomeada para atributos numéricos, realize a conversão, se necessário
