@@ -17,7 +17,6 @@ numeric_cols = cancer.select_dtypes(include="number").columns.drop("diagnosis")
 
 cancer[numeric_cols] = cancer[numeric_cols].applymap(lambda x: np.log(x) if x > 0 else x)
 
-df = cancer.replace([np.nan, np.inf, -np.inf], np.nan).dropna()
 X = cancer.drop('diagnosis', axis=1)
 y = cancer['diagnosis']
 
@@ -32,8 +31,8 @@ acuracia = knn.score(X_test, y_test)
 
 scaler = StandardScaler()
 X_norm = scaler.fit_transform(X)
-print(X_norm.var())
-print('variancia', X.var())
+print(X_norm.var())   #variancia de X_normalizado
+print('variancia', X.var())  #variancia de X
 
 X_train, X_test, y_train, y_test = train_test_split(X_norm, y, test_size=0.3, random_state=42)
 
@@ -44,9 +43,9 @@ knn = KNeighborsClassifier()
 knn.fit(X_train, y_train)
 
 # Verificando a acurácia nos dados de teste
-accuracy = knn.score(X_test, y_test)
+accuracy_norm = knn.score(X_test, y_test)
 
 #Print as duas acuracias lado a lado para comparar.
 print(acuracia)
 
-print(accuracy)
+print(accuracy_norm)
