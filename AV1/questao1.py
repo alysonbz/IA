@@ -1,8 +1,6 @@
 #importe as bibliotecas necessárias
 import pandas as pd
-import numpy as np
-from sklearn.model_selection import train_test_split
-from sklearn import preprocessing
+
 
 
 #Carregue o dataset definido para você
@@ -22,19 +20,21 @@ print(df1.isnull().sum())
 
 
 # Verifique quais colunas são as mais relevantes e crie um novo dataframe.
-relevantes=['MinTemp',
+print("\n colunas relevantes")
+df1_relevantes=df1[['MinTemp',
             'MaxTemp',
             'RainTomorrow',
-            'RainToday',
-            'WindGustDir',]
-df2 =pd.DataFrame(relevantes,columns=['relevantes'])
+            'RainToday',]]
 
 
 #Print o dataframe final e mostre a distribuição de classes que você deve classificar
-print(df2)
-
+print(df1_relevantes)
 #observe se a coluna de classes precisa ser renomeada para atributos numéricos, realize a conversão, se necessário
-print(df1.info())
-
-
+df1_relevantes['RainTomorrow'].replace(['Yes', 'No'],
+                        [0, 1], inplace=True)
+df1_relevantes['RainToday'].replace(['Yes', 'No'],
+                        [0, 1], inplace=True)
+print("dataser modificado")
+print(df1_relevantes)
 #Salve o dataset atualizado se houver modificações.
+df1_relevantes.to_csv("df1_final.csv")
