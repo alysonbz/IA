@@ -2,9 +2,8 @@
 import pandas as pd
 
 ## Carregue o dataset definido para você
-def load_binary_dataset():
-    return pd.read_csv(r'C:\Users\LAB1_00\Documents\GD\IA\AV1\dataset\dataset__binary.csv')
-df = load_binary_dataset()
+
+df = pd.read_csv(r'C:\Users\Guilherme\Documents\G\IA\AV1\dataset\dataset__binary.csv')
 
 # Verifique se existem celulas vazias ou Nan. Se existir, excluir e criar um novo dataframe.
 print("na: \n", df.isna().sum())
@@ -19,8 +18,8 @@ print("dataframe:\n", df)
 
 
 #observe se a coluna de classes precisa ser renomeada para atributos numéricos, realize a conversão, se necessário
-# não necessario
+# não necessário
 
 
-#Salve o dataset atualizado se houver modifcações.i
-# não necessario
+#Salve o dataset atualizado se houver modifcações.
+# não necessário
