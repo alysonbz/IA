@@ -9,7 +9,7 @@ if df.isna().any().any():
     df = df.dropna()
 
 # Verifique quais colunas são as mais relevantes e crie um novo dataframe.
-
+#Não necessário
 
 #Print o dataframe final e mostre a distribuição de classes que você deve classificar
 counts = df['label'].value_counts()
