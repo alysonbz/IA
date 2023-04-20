@@ -48,4 +48,5 @@ accuracy_norm = knn.score(X_test, y_test)
 #Print as duas acuracias lado a lado para comparar.
 print(acuracia)
 
+
 print(accuracy_norm)
