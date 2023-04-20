@@ -1,6 +1,3 @@
-import pandas as pd
-import numpy as np
-
 
 #Visualização de o que estar sendo processado
 with open('iris.data', 'r') as f:
@@ -19,17 +16,26 @@ print(lista)
 
 # Esse algoritmo vai contar o número de ocorrencias das 3 classes. Ele vai ultilizar o for para percorrer
 #a lista e verificar se o ultimo o quarto indice corresponde a 1, 2 ou 3. E contabilizar nas variáveis locais.
+
+classes_dict = {
+    "Iris-setosa": 1.0,
+    "Iris-versicolor": 2.0,
+    "Iris-virginica": 3.0
+}
+
 def countclasses(lista):
     setosa = 0
     versicolor = 0
     virginica = 0
     for i in range(len(lista)-1):
-        if lista[i][4] == "Iris-setosa":
+        classe = classes_dict[lista[i][4]]
+        if classe == 1.0:
             setosa += 1
-        if lista[i][4] == "Iris-versicolor":
+        if classe == 2.0:
             versicolor += 1
-        if lista[i][4] == "iris-virginica":
+        if classe == 3.0:
             virginica += 1
+
 
     return [setosa, versicolor, virginica]
 
@@ -85,9 +91,42 @@ def knn(treinamento, nova_amostra, K):
     return a.index(max(a)) + 1.0
 
 
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+import matplotlib.pyplot as plt
+iris = load_iris()
+
+# Divide o conjunto de dados em conjuntos de treinamento e teste
+X_train, X_test, y_train, y_test = train_test_split(iris.data, iris.target, test_size=0.3, random_state=42)
+
+# Cria uma lista de valores de K para avaliar
+k_values = list(range(1, 50))
+
+# Armazena as precisões em uma lista
+accuracies = []
+
+for k in k_values:
+    # Treina o modelo com o valor de K atual
+    knn = KNeighborsClassifier(n_neighbors=k)
+    knn.fit(X_train, y_train)
+
+    # Faz as previsões no conjunto de teste
+    y_pred = knn.predict(X_test)
+
+    # Calcula a precisão do modelo e armazena na lista
+    accuracy = accuracy_score(y_test, y_pred)
+    accuracies.append(accuracy)
+
+# Plota a curva de validação
+plt.plot(k_values, accuracies)
+plt.xlabel('Valor de K')
+plt.ylabel('Precisão')
+plt.show()
 
 
-ace rtos, K = 0, 1
+acertos, K = 0, 1
 for amostra in teste:
     classe = knn(treinamento, amostra, K)
     if amostra[-1]==classe:

@@ -1,6 +1,6 @@
 # Import StandardScaler
 import pandas as pd
-import numpy as np
+
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from src.utils import load_wine_dataset
@@ -33,9 +33,13 @@ X_train, X_test, y_train, y_test = train_test_split(X_norm, y, stratify = y, ran
 
 #inicialize o algoritmo KNN
 knn = KNeighborsClassifier()
+if len(X_train) == len(y_train):
+    knn.fit(X_train, y_train)
+else:
+    print("Erro: o número de amostras em X_train é diferente do número de amostras em y_train")
 
 # Aplique a função fit do KNN
-knn.fit(X_train,y)
+#knn.fit(X_train,y)
 
 # Verifique o acerto do classificador
 print('score', knn.score(X_train, y_train))
