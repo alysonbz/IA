@@ -24,4 +24,4 @@ plt.scatter(X_bmi, y) # mostrar os pontinhos no gráfico
 plt.plot(X_bmi, predição)# mostra a linha, no caso a linha de predição
 plt.ylabel(" glicose ")# só mostra o nome na vertical que equivale ao "y"
 plt.xlabel(" bmi ")#só mostra o nome na vertical que equivale ao "X"
-plt.show() #mostra o grafico
+plt.show() #mostra o grafico.
