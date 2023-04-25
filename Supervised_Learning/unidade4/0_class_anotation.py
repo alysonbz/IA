@@ -13,7 +13,6 @@ X_bmi = X[:, 3]
 print(y.shape, X_bmi.shape)
 X_bmi = X_bmi.reshape(-1, 1)
 print(X_bmi.shape)
-
 plt.scatter(X_bmi, y)
 plt.ylabel('Blood Glucose (mg/dl)')
 plt.xlabel('Body Mass Index')

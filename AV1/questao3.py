@@ -17,7 +17,13 @@ y = pd.read_csv('dados_preprocessados3.csv')
 X_norm = np.log(X)
 print(X_norm)
 
-knn = KNeighborsClassifier(6)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+print(X_train, X_test, y_train, y_test)
+
+
+knn = KNeighborsClassifier(n_neighbors=5)
+
+knn.fit(X_test, y_test)
 
 print('score', knn.score(X_test, y_test))
 #Normalize o conjunto de dados com normalização de media zero e variância unitária e e verifique a acurácia do knn.
