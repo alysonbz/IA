@@ -1,4 +1,3 @@
-
 # Importando as bibliotecas que serão usadas
 from sklearn.datasets import load_iris # dataset utilizado
 import pandas as pd # para ler base de dados
@@ -14,16 +13,25 @@ lista=[]
 with open('iris.data', 'r') as f:
     for linha in f.readlines(): # o loop for lê cada linha usando o método readlines()
         a=linha.replace('\n','').split(',')
+
+        if a[-1] == "Iris-setosa":
+            a[-1] = 1
+
+        if a[-1] == "Iris-versicolor":
+            a[-1] = 2
+
+        if a[-1] == "Iris-virginica":
+            a[-1] = 3
+        try:
+           a = [float(i) for i in a]
+        except:
+          continue
         lista.append(a) #adicionando cada sub lista em uma lista
 data = pd.read_csv("iris_data.csv",
-                   sep = ",",
-                   names = ["sepal.length", "sepal.width","petal.length", "petal.width", "species"]
-                   )
-X = data.iloc[:, : -1].values
-y = data.iloc[:, -1].values
-#Transformando as strings
-l_encode = LabelEncoder()
-y = l_encode.fit_transform(y)
+                  sep = ",",
+                  names = ["sepal.length", "sepal.width","petal.length", "petal.width", "species"]
+                  )
+print(data)
 
 #função countclasses para contar o número de sublistas
 
@@ -32,18 +40,18 @@ def countclasses(lista):
     versicolor = 0
     virginica = 0
     for i in range(len(lista)): #percorrendo cada elemento da lista
-        if lista[i][-1] == 0:
-            setosa += 1
         if lista[i][-1] == 1:
-            versicolor += 1
+            setosa += 1
         if lista[i][-1] == 2:
+            versicolor += 1
+        if lista[i][-1] == 3:
             virginica += 1
     return [setosa, versicolor, virginica] #retorna uma lista contendo a contagem de cada classe
 
 # Divisão do conjunto em teste e treino
 p=0.6 #60% separado para o conjunto de treinamento e 40% para teste
 setosa,versicolor, virginica = countclasses(lista) #contagem do número de ocorrências em cada classe
-treinamento, teste= [], []
+treinamento, teste = [], []
 
 # cálculo do número máximo de instâncias de cada classe que devem ser usadas para treinamento.
 max_setosa, max_versicolor, max_virginica = int(p*setosa), int(p*versicolor), int(p*virginica)
@@ -54,17 +62,19 @@ total1 =0
 total2 =0
 total3 =0
 for lis in lista:
-    if lis[-1]== 0 and total1< max_setosa:
+    if lis[-1]== 1 and total1< max_setosa:
         treinamento.append(lis)
         total1 +=1
-    elif lis[-1]== 1 and total2<max_versicolor:
+    elif lis[-1]== 2 and total2<max_versicolor:
         treinamento.append(lis)
         total2 +=1
-    elif lis[-1]== 2 and total3<max_virginica:
+    elif lis[-1]== 3 and total3<max_virginica:
         treinamento.append(lis)
         total3 +=1
     else:
-        teste.append(lis) #Se a linha não for adicionada ao conjunto de treinamento, ela será adicionada à lista "teste".
+        teste.append(lis)
+
+
 
 # Função que calcula distância entre vetores
 import math
@@ -98,14 +108,14 @@ def knn(treinamento, nova_amostra, K): #aqui são passados os parâmetros
 
     qtd_setosa, qtd_versicolor, qtd_virginica = 0, 0, 0
     for indice in k_vizinhos:
-        if treinamento[indice][-1] == 0:
+        if treinamento[indice][-1] == 1:
             qtd_setosa += 1
-        elif treinamento[indice][-1] == 1:
+        elif treinamento[indice][-1] == 2:
             qtd_versicolor += 1
         else:
             qtd_virginica += 1
     a = [qtd_setosa, qtd_versicolor, qtd_virginica]
-    return a.index(max(a)) + 0
+    return a.index(max(a)) + 1.0
 
 #Quantidade de acertos na predição
 # Aqui o código está verificando se a classe atribuída pelo algoritmo K-NN para cada amostra de teste
@@ -120,6 +130,46 @@ for amostra in teste:
     if amostra[-1]==classe:
         acertos +=1
 print("Porcentagem de acertos:",100*acertos/len(teste))
+
+print("VERIFICANDO QUAL O MELHOR K")
+X = data[["sepal.length",  "sepal.width" , "petal.length", "petal.width"]].values
+y = data["species"].values
+
+#separando em treino e teste
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+
+#criando neighbors
+neighbors = np.arange(1, 12)
+train_accuracies = {}
+test_accuracies = {}
+for neighbor in neighbors:
+    # Set up a KNN Classifier
+    knn = KNeighborsClassifier(n_neighbors=neighbor)
+
+    # Fit the model
+    knn.fit(X_train, y_train)
+
+    # Compute accuracy
+    train_accuracies[neighbor] = knn.score(X_train, y_train)
+    test_accuracies[neighbor] = knn.score(X_test, y_test)
+
+print("acuracy on train: ",train_accuracies, '\n',"acuracy on test: ", test_accuracies)
+
+# Add a title
+plt.title("KNN: Varying Number of Neighbors")
+
+# Plot training accuracies
+plt.plot(neighbors, train_accuracies.values(), label="Training Accuracy")
+
+# Plot test accuracies
+plt.plot(neighbors, test_accuracies.values(), label="Test Accuracy")
+
+plt.legend()
+plt.xlabel("Number of Neighbors")
+plt.ylabel("Accuracy")
+
+# Display the plot
+plt.show()
 
 # Implementação KNN
 
@@ -161,7 +211,7 @@ for neighbor in neighbors:
     train_accuracies[neighbor] = knn.score(X_train, y_train)
     test_accuracies[neighbor] = knn.score(X_test, y_test)
 
-# Plot training accuracies
+# Plot training accuracies
 plt.plot(neighbors, train_accuracies.values(), label="Training Accuracy")
 
 # Plot test accuracies
