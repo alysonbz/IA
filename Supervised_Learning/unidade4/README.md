@@ -58,7 +58,7 @@ Nesta questão você vai poder visualizar as predições em forma de gráfico.
 
 ### Questão 4
 
-[4_fit_prediction.py](4_fit_prediction.py)[3_visualize_predictions_resp.py](3_visualize_predictions_resp.py)
+[4_fit_prediction.py](4_fit_prediction.py)
 
 #### Avaliação das predições de uma regressão linear
 
