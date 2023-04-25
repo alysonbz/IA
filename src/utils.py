@@ -1,5 +1,6 @@
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
+from sklearn.linear_model import LinearRegression
 
 
 def load_volunteer_dataset():
@@ -35,4 +36,19 @@ def load_iris_dataset():
     df = pd.read_csv('../dataset/iris.csv')
     return df
 
+def load_sales_clean_dataset():
+    df = pd.read_csv('../dataset/sales_clean.csv')
+    return df
 
+def load_diabetes_clean_dataset():
+    df = pd.read_csv('../dataset/diabetes_clean.csv')
+    return df
+
+def processing_sales_clean():
+    sales_df = load_sales_clean_dataset()
+    y = sales_df["sales"].values
+    X = sales_df["radio"].values.reshape(-1, 1)
+    reg = LinearRegression()
+    reg.fit(X, y)
+    predictions = reg.predict(X)
+    return X,y,predictions
