@@ -5,12 +5,18 @@ from sklearn.model_selection import train_test_split
 #df = pd.read_csv('iris_data.csv')
 #print(df)
 
-lista = []
+
 with open('iris_data.csv', 'r') as f:
     for linha in f.readlines():
-        a = linha.replace('\n', '').split(',')
-        lista.append(a)
-print(lista)
+        a=linha.replace('\n','').split(',')
+        a.append()
+        for i in range(len(a)):
+          if  a[-1] == 'Iris-setosa':
+            a[-1] = 1.0
+          if a[-1] == 'Iris-versicolor':
+            a[-1] =  2.0
+          if a[-1] == 'Iris-virginica':
+            a[-1] = 3.0
 
 def countclasses(lista):
 
