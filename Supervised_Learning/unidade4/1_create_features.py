@@ -4,7 +4,7 @@ from src.utils import load_sales_clean_dataset
 sales_df = load_sales_clean_dataset()
 
 # Create X from the radio column's values
-X = ____
+X =
 
 # Create y from the sales column's values
 y = ____
