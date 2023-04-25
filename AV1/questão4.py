@@ -12,13 +12,19 @@ print("\n Dataset: Gender Atualizado")
 print(gender_one)
 
 #Normalize com a melhor normalização o conjunto de dados se houver melhoria.
-X = gender_one[['long_hair','forehead_width_cm','forehead_height_cm','nose_wide', 'nose_long', 'lips_thin']].values
-y = gender_one['gender'].values
-X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, random_state=42)
-print("Não houve melhoria com a normalização")
+X = gender_one
+scaler = StandardScaler()
+scaler.fit(X)
+X_normalizado = scaler.fit_transform(X)
+y = gender_one["gender"].values
+X_train, X_test, y_train, y_test = train_test_split(X_normalizado, y, test_size=0.2, random_state=16)
+knn = KNeighborsClassifier()
+knn.fit(X_train, y_train)
+print('Acurácia Normalizada:')
+print(knn.score(X_test, y_test))
 
 #Plote o gráfico com o a indicação do melhor k.
-neighbors = np.arange(1, 12)
+neighbors = np.arange(1, 26)
 train_accuracies = {}
 test_accuracies = {}
 
@@ -32,7 +38,7 @@ for neighbor in neighbors:
 
 print("acuracia no treino: ",train_accuracies, '\n',"Acuracia no teste: ", test_accuracies)
 plt.title("Testando o melhor K")
-plt.plot(neighbors, train_accuracies.values(), label="Treino acuracia")
+plt.plot(neighbors, train_accuracies.values(), label="Traino acuracia")
 plt.plot(neighbors, test_accuracies.values(), label="Teste acuracia")
 
 plt.legend()
@@ -40,5 +46,4 @@ plt.xlabel("Numero de vizinhos")
 plt.ylabel("Acuracia")
 
 plt.show()
-print('Resulta-se que 6 é o melhor K')
 
