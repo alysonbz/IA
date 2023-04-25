@@ -9,7 +9,7 @@ Esse documento exibe as descrições das questões a serem resolvidas em sala
 
 [1_create_features.py](1_create_features.py)
 
-#### Classificação por KNN
+#### Introdução a regressão Linear
 
 Nesta questão você vai gerar os atributos para treinar um modelo de regressão.
 
