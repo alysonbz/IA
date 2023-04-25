@@ -5,6 +5,7 @@ from sklearn.preprocessing import StandardScaler
 import pandas as pd
 import numpy as np
 
+
 #Carregue o dataset. Se houver o dataset atualizado, carregue o atualizado.
 df = pd.read_csv(r'C:\Users\Guilherme\Documents\G\IA\AV1\dataset\dataset__binary.csv')
 
