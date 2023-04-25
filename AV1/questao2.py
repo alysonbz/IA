@@ -10,7 +10,7 @@ print("\n Dataset: Gender Atualizado")
 print(gender_one)
 
 # Sem normalizar o conjunto de dados divida o dataset em treino e teste.
-X = gender_one[['long_hair','forehead_height_cm','nose_wide', 'nose_long']].values
+X = gender_one[['long_hair','forehead_width_cm','forehead_height_cm','nose_wide', 'nose_long', 'lips_thin']].values
 y = gender_one['gender'].values
 X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, random_state=42)
 

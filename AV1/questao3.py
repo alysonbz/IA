@@ -20,9 +20,9 @@ colunasnumericas= gender_one.select_dtypes(include='number').columns.drop('gende
 gender_one[colunasnumericas]= gender_one[colunasnumericas].applymap(lambda x: np.log(x) if x > 0 else x)
 
 #Indentificando e Tratando valores nulos ou infinitos
-print= (gender_one.isin([np.nan, np.inf, -np.inf]).sum())
+print(gender_one.isin([np.nan, np.inf, -np.inf]).sum())
 gender_one= gender_one.replace([np.inf, -np.inf], np.nan).dropna()
-print = (gender_one, "\n")
+print (gender_one, "\n")
 X=gender_one[colunasnumericas].values
 y=gender_one['gender'].values
 knn= KNeighborsClassifier()
@@ -31,7 +31,7 @@ knn.fit(X_train, y_train)
 acuracia_log = knn.score(X_test, y_test)
 
 #Normalize o conjunto de dados com normalização de media zero e variância unitária e e verifique a acurácia do knn.
-X = gender_one[['long_hair','forehead_height_cm','nose_wide', 'nose_long']].values
+X = gender_one[['long_hair','forehead_width_cm','forehead_height_cm','nose_wide', 'nose_long', 'lips_thin']].values
 scaler = StandardScaler()
 X_normalizado = scaler.fit_transform(X)
 y = gender_one['gender'].values
