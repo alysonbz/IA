@@ -3,17 +3,17 @@ from src.utils import load_sales_clean_dataset
 sales_df = load_sales_clean_dataset()
 
 # Import LinearRegression
-from ____.____ import ____
+from Sklearn.linear_model import LineaRegression
 
 
 y = sales_df["sales"].values
 X = sales_df["radio"].values.reshape(-1, 1)
 
 # Create the model
-reg = ____()
+reg = LineaRegression()
 
 # Fit the model to the data
-____
+reg=LineaRegression()
 
 # Make predictions
 predictions = ____
