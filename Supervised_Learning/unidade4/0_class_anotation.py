@@ -26,3 +26,6 @@ plt.ylabel("Blood Glucose (mg/dl)")
 plt.xlabel("Body Mass Index")
 plt.show()
 
+
+# A e B pesos do modelo
+
