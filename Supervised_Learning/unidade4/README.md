@@ -62,7 +62,7 @@ Nesta questão você vai poder visualizar as predições em forma de gráfico.
 
 #### Avaliação das predições de uma regressão linear
 
-Nesta questão você vai poder visualizar as predições em forma de gráfico.
+Nesta questão você vai calcular os erros da regressão
 
 #### Instruções
 
@@ -73,3 +73,17 @@ Nesta questão você vai poder visualizar as predições em forma de gráfico.
 5) Calcule o coeficiente de determinação.
 6) Calcule o valor da raís do erro quadrático médio.
 
+### Questão 5
+
+[5_compute_manual_score.py](5_compute_manual_score.py)[4_fit_prediction.py](4_fit_prediction.py)
+
+#### Avaliação das predições de uma regressão linear
+
+Nesta questão você vai poder visualizar as predições em forma de gráfico.
+
+#### Instruções
+
+1) Com auxílio somente da lib ``numpy`` calcule dentro da função ``compute_RSS`` a soma dos quadrados dos resíduos
+2) Com auxílio somente da lib ``numpy`` calcule dentro da função ``compute_MSE`` erro quadrático médio
+3) Com auxílio somente da lib ``numpy`` calcule dentro da função ``compute_RMSE`` a raíz do erro quadrático médio
+4) Com auxílio somente da lib ``numpy`` calcule dentro da função ``compute_R_squared``  o coeficiente de determinação.
