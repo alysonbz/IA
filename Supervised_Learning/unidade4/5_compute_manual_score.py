@@ -2,10 +2,11 @@ import numpy as np
 from src.utils import processing_all_features_sales_clean
 
 def compute_RSS(predictions,y):
-    RSS = None
+    RSS = np.sum(np.square(y - predictions))
     return RSS
+
 def compute_MSE(predictions,y):
-    MSE= None
+    MSE= np.sum(np.square(y-predictions))/len(predictions)
     return MSE
 def compute_RMSE(predictions,y):
     RMSE = None
