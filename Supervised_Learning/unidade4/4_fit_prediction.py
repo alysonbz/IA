@@ -17,7 +17,8 @@ reg = LinearRegression()
 
 # Fit the model to the data
 reg.fit(X_train,y_train)
-####
+
+
 # Make predictions
 y_pred = reg.predict(X_test)
 print("Predictions: {}, Actual Values: {}".format(y_pred[:2], y_test[:2]))

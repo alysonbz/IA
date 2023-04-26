@@ -1,5 +1,5 @@
 from src.utils import processing_sales_clean
-# Import matplotlib.pyplot
+#Import matplotlib.pyplot
 import matplotlib.pyplot as plt
 
 X,y,predictions = processing_sales_clean()

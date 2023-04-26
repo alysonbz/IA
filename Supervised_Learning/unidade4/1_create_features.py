@@ -1,4 +1,4 @@
-import numpy as np
+#import numpy as np
 from src.utils import load_sales_clean_dataset
 sales_df = load_sales_clean_dataset()
 
