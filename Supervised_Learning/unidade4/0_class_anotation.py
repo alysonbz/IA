@@ -5,7 +5,8 @@ from sklearn.linear_model import LinearRegression
 diabetes_df = load_diabetes_clean_dataset()
 
 # Tratando valores nulos
-#diabetes_df = diabetes_df.loc[diabetes_df['bmi'] != 0]
+# diabetes_df = diabetes_df.loc[diabetes_df['bmi'] != 0]
+# diabetes_df.drop(["bmi"] == 0, inplace=True)
 
 print(diabetes_df.head(5))
 

@@ -2,14 +2,19 @@ import numpy as np
 from src.utils import processing_all_features_sales_clean
 
 def compute_RSS(predictions,y):
-    RSS = None
+    RSS = np.sum(np.square(y - predictions))
     return RSS
+compute_RSS()
+
 def compute_MSE(predictions,y):
-    MSE= None
+    MSE = np.sum(np.square(y - predictions))/(len(y) + len(predictions))
     return MSE
+compute_MSE()
+
 def compute_RMSE(predictions,y):
     RMSE = None
     return RMSE
+
 def compute_R_squared(predictions,y):
     r_squared = None
     return r_squared
@@ -22,3 +27,5 @@ print("RSS: {}".format(compute_RSS(predictions,y)))
 print("MSE: {}".format(compute_MSE(predictions,y)))
 print("RMSE: {}".format(compute_RMSE(predictions,y)))
 print("R^2: {}".format(compute_R_squared(predictions,y)))
+
+{:.2f}%'.format(acuracia_log * 100))
