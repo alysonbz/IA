@@ -75,7 +75,7 @@ Nesta questão você vai calcular os erros da regressão
 
 ### Questão 5
 
-[5_compute_manual_score.py](5_compute_manual_score.py)[4_fit_prediction.py](4_fit_prediction.py)
+[5_compute_manual_score.py](5_compute_manual_score.py)
 
 #### Avaliação das predições de uma regressão linear
 
