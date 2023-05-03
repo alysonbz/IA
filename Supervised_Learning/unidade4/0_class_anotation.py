@@ -29,3 +29,4 @@ plt.show()
 
 # A e B pesos do modelo
 
+
