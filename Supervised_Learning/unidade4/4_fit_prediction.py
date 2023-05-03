@@ -26,7 +26,7 @@ print("Predictions: {}, Actual Values: {}".format(y_pred[:2], y_test[:2]))
 r_squared = reg.score(X_test, y_test)
 
 # Compute RMSE
-rmse = mean_squared_error(y_test, y_pred, squared=False)
+rmse = mean_squared_error(y_test, y_pred, squared=False) #quanto menor o valor, melhor vai ser o modelo
 
 # Print the metrics
 print("R^2: {}".format(r_squared))
