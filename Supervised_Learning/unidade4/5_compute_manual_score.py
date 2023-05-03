@@ -11,7 +11,7 @@ def compute_RMSE(predictions,y):
     MSE = np.mean(np.square(y - predictions))
     RMSE = np.sqrt(MSE)
     return RMSE
-def compute_R_squared(predictions,y):
+def compute_R_squared (predictions,y):
     r_squared = None
     return r_squared
 
