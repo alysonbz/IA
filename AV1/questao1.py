@@ -1,7 +1,7 @@
 #importe as bibliotecas necessárias
 import pandas as pd
 
-## Carregue o dataset definido para você
+# Carregue o dataset definido para você
 read_cancer = pd.read_csv("Cancer_Data.csv")
 
 
@@ -25,11 +25,12 @@ print(cancer['radius_mean'].value_counts(),'\n','\n')
 print(cancer['area_mean'].value_counts(),'\n','\n')
 print(cancer['fractal_dimension_worst'].value_counts(),'\n','\n')
 
+
 #observe se a coluna de classes precisa ser renomeada para atributos numéricos, realize a conversão, se necessário
 cancer['diagnosis'].replace(['B', 'M'],
                         [0, 1], inplace=True)
 
-#print('Salve o dataset atualizado se houver modificações.')
+#Salve o dataset atualizado se houver modificações.')
 print(cancer)
 
 

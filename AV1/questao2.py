@@ -9,7 +9,7 @@ cancer = pd.read_csv('dados_preprocessados.csv')
 print(cancer)
 
 #Sem normalizar o conjunto de dados divida o dataset em treino e teste.
-# Separando os dados em features e target
+
 X = cancer.drop('diagnosis', axis=1)
 y = cancer['diagnosis']
 
