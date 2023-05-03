@@ -1,16 +1,10 @@
 import numpy as np
 from src.utils import load_sales_clean_dataset
-
 sales_df = load_sales_clean_dataset()
-
 # Create X from the radio column's values
-X = ____
-
-# Create y from the sales column's values
-y = ____
-
+X = sales_df['radio'].values
+# Create y from the sales column's valuesy = sales_df['sales'].values
 # Reshape X
-X = ____
-
-# Check the shape of the features and targets
-print(____)
+X = X.reshape(-1, 1)
+# Check the shape of the features and targetsprint(X.shape, y.shape)
+print(X )
