@@ -17,11 +17,11 @@ reg = LinearRegression()
 # Compute 6-fold cross-validation scores
 cv_scores = cross_val_score(reg, X, y, cv=kf)
 
-"""# Print cv_scores
+# Print cv_scores
 print(cv_scores)
 
 # Print the mean
 print(np.mean(cv_scores))
 
 # Print the standard deviation
-print(np.std(cv_scores))"""
+print(np.std(cv_scores))
