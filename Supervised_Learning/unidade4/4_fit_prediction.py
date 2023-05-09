@@ -13,10 +13,10 @@ y = sales_df["sales"].values
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
 # Instantiate the model
-reg = LinearRegression
+reg = LinearRegression()
 
 # Fit the model to the data
-reg.fit(X_train,y_train)
+reg.fit(X_train, y_train)
 
 # Make predictions
 y_pred = reg.predict(X_test)
@@ -26,8 +26,8 @@ print("Predictions: {}, Actual Values: {}".format(y_pred[:2], y_test[:2]))
 r_squared = reg.score(X_test, y_test)
 
 # Compute RMSE
-rmse = ____(____, ____, squared=____)
+rmse = mean_squared_error(y_pred, y_test, squared=False)
 
 # Print the metrics
-print("R^2: {}".format(____))
-print("RMSE: {}".format(____))
+print("R^2: {}".format(r_squared))
+print("RMSE: {}".format(r_squared))
