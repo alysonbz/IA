@@ -9,81 +9,36 @@ Esse documento exibe as descrições das questões a serem resolvidas em sala
 
 [1_confusion_matrix.py](1_confusion_matrix.py)
 
-#### Matrix confusão 
+#### Matrix de confusão 
 
-Nesta questão você vai gerar os atributos para treinar um modelo de regressão.
+Nesta questão você vai calcular a matriz de confusão e um relatório de métricas.
 
 #### Instruções:
 
-1)  Armazene na variável ``X`` os dados da coluna ``radio`` do dataframe ``sales_df`` .
+1)  Importe o módulo para calcular a matriz de confusão e o classification report.
    
-2)  Obtenha as labels ``y`` com os valores da coluna ``sales``  do dataframe ``sales_df``. 
+2)  Execute a função fit do knn da forma apropriada. 
 
-3)  Redimensione ``X`` para estrutura apropriada de regressão utilizando 1 atributo somente.
+3)  Realize uma predição com a função predict usando o conjunto de teste.
 
-4)  Observe as dimensões de X e de y.
+4)  Print a matriz de confusão e o classification report.
+
 
 ### Questão 2
 
-[2_logistic_regression.py](2_logistic_regression.py)
+[2_compute_metric_manual.py](2_compute_metric_manual.py)
 
-#### Criando um regressor
+#### Clacular manualmente as métricas
 
-Nesta questão você deve usar o modelo de regressão para realizar predição.
+Nesta questão você vai calcular a matriz de confusão e um relatório de métricas manual.
 
-#### Instruções 
+#### Instruções:
 
-1) Importe o modelo ``LinearRegression`` da scikit learn.
-2) Inicialize o modelo.
-3) Execute o método ``fit`` de ``reg``, usando ``X`` e ``y``.
-4) Execute o método ``predict`` de ``reg``, usando ``X``.
-5) Print as 5 primeias predições contidas em ``predictions``
+1)  Calcule a acurácia geral
+   
+2)  Informe o recall de cada classe. 
 
+3)  Informe precision para cada classe.
 
-### Questão 3
+4)  Exiba a matriz de confusão
 
-[3_visualize_predictions_resp.py](3_visualize_predictions_resp.py)
-
-#### Visualizando as predições via regressão linear
-
-Nesta questão você vai poder visualizar as predições em forma de gráfico.
-
-#### Instruções
-
-1) Importe a ``pyplot``da ``matplotlib`` como ``plt``
-2) Crie um gráfico do tipo scatter utilizando ``X`` e ``y``. Utilize a cor azul.
-3) Crie um gráfico do tipo linha utilizando ``X`` e predictions.Utilize a cor vermelha.
-4) Utilize o método ``show`` de plt para mostrar o gráfico. 
-
-
-### Questão 4
-
-[4_fit_prediction.py](4_fit_prediction.py)
-
-#### Avaliação das predições de uma regressão linear
-
-Nesta questão você vai calcular os erros da regressão
-
-#### Instruções
-
-1) Importe a raiz do erro quadrático médio  ``mean_squared_error``
-2) Exclua as colunas  ``sales`` e ``influencer`` e armazene o resultado em X.
-3) Armazene os valores da coluna ``sales`` em y.
-4) Iniciaize o modelo de regressão.
-5) Calcule o coeficiente de determinação.
-6) Calcule o valor da raís do erro quadrático médio.
-
-### Questão 5
-
-[5_compute_manual_score.py](5_compute_manual_score.py)
-
-#### Avaliação das predições de uma regressão linear
-
-Nesta questão você vai poder visualizar as predições em forma de gráfico.
-
-#### Instruções
-
-1) Com auxílio somente da lib ``numpy`` calcule dentro da função ``compute_RSS`` a soma dos quadrados dos resíduos
-2) Com auxílio somente da lib ``numpy`` calcule dentro da função ``compute_MSE`` erro quadrático médio
-3) Com auxílio somente da lib ``numpy`` calcule dentro da função ``compute_RMSE`` a raíz do erro quadrático médio
-4) Com auxílio somente da lib ``numpy`` calcule dentro da função ``compute_R_squared``  o coeficiente de determinação.
