@@ -20,7 +20,7 @@ reg = LinearRegression()
 cv_scores = cross_val_score(reg, X, y, cv=kf)
 
 # Print cv_scores
-print("\nScore:", cv_scores)
+print("\nScore: ", cv_scores)
 
 # Print the mean
 print("\nMédia: ", np.mean(cv_scores))
