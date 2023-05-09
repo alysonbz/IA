@@ -23,3 +23,22 @@ Nesta questão você vai calcular a matriz de confusão e um relatório de métr
 
 4)  Print a matriz de confusão e o classification report.
 
+
+### Questão 2
+
+[2_compute_metric_manual.py](2_compute_metric_manual.py)
+
+#### Clacular manualmente as métricas
+
+Nesta questão você vai calcular a matriz de confusão e um relatório de métricas manual.
+
+#### Instruções:
+
+1)  Calcule a acurácia geral
+   
+2)  Informe o recall de cada classe. 
+
+3)  Informe precision para cada classe.
+
+4)  Exiba a matriz de confusão
+

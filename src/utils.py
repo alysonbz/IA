@@ -4,6 +4,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
 
+
 def load_volunteer_dataset():
     return pd.read_csv('../dataset/opportunities.csv')
 
@@ -63,3 +64,24 @@ def processing_all_features_sales_clean():
     reg.fit(X_test, y_test)
     predictions = reg.predict(X)
     return X, y, predictions
+
+def process_diabetes():
+    from src.utils import load_diabetes_clean_dataset
+    from sklearn.neighbors import KNeighborsClassifier
+    from sklearn.model_selection import train_test_split
+
+    diabetes_df = load_diabetes_clean_dataset()
+    X = diabetes_df.drop(['diabetes'], axis=1)
+    y = diabetes_df['diabetes'].values
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
+
+    knn = KNeighborsClassifier(n_neighbors=6)
+
+    # Fit the model to the training data
+    knn.fit(X_train, y_train)
+
+    # Predict the labels of the test data: y_pred
+    y_pred = knn.predict(X_test)
+
+    return y_pred , y_test
+
