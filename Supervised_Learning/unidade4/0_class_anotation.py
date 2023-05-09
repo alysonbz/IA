@@ -2,6 +2,7 @@ from src.utils import load_diabetes_clean_dataset
 
 diabetes_df = load_diabetes_clean_dataset()
 
+<<<<<<< HEAD
 print(diabetes_df)
 
 X = diabetes_df.drop("glucose", axis=1).values
@@ -29,3 +30,6 @@ plt.plot(X_bmi, predictions, color = 'black')
 plt.ylabel("Blood Glucose (mg/dl")
 plt.xlabel("Body Mass  Index")
 plt.show()
+=======
+
+>>>>>>> 6fdc350b3be6e817de0e0d96807559f8582aadf1
