@@ -95,3 +95,6 @@ Nesta questão você vai calcular o AUC
 
 4)  print ``classifiction_report``.
 
+6) Faça um relatório comparando o desempenho da classificação do KNN e Regressão logistica para este dataset.
+modelo de relatório:
+https://docs.google.com/document/d/1hIwPx9W-k3LnXRJrkWYTsbrtx4NfP88_/edit?usp=sharing&ouid=112368782396865447257&rtpof=true&sd=true
