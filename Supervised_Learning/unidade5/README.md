@@ -42,3 +42,56 @@ Nesta questão você vai calcular a matriz de confusão e um relatório de métr
 
 4)  Exiba a matriz de confusão
 
+### Questão 3
+
+[3_logistic_regression.py](3_logistic_regression.py)
+
+#### Classificação via regressão logística
+
+Nesta questão você vai classificar dados via regressão logística.
+
+#### Instruções:
+
+1)  importe o moudulo de regressão logística
+   
+2)  Instancie o modelo de regressão logística. 
+
+3)  treine o modelo de regressão logistica.
+
+4)  calcule as probabilidades com a função ``predict_proba``, armazenando somente a probabilidade de haver diabetes.
+
+### Questão 4
+
+[4_roc_curve.py](4_roc_curve.py)
+
+#### Plotando a curva ROC
+
+Nesta questão você vai plotar a curva ROC.
+
+#### Instruções:
+
+1)  importe o moudulo ``roc_curve``
+   
+2)  gere a curva roc com a função ``roc_curve``. 
+
+3)  plote a curva roc.
+
+
+### Questão 5
+
+[5_auc.py](5_auc.py)
+
+#### Calculando AUC
+
+Nesta questão você vai calcular o AUC
+
+#### Instruções:
+
+1)  importe o moudulo para calcula AUC
+   
+2)  print o valor do AUC
+
+3)  print a matriz de confusão.
+
+4)  print ``classifiction_report``.
+
