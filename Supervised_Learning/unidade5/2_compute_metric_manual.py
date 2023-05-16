@@ -1,4 +1,4 @@
-from src.utils import process_diabetes
+ from src.utils import process_diabetes
 
 
 class Metrics:
