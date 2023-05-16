@@ -4,10 +4,10 @@ from src.utils import process_diabetes
 class Metrics:
 
     def __init__(self, y_pred, y_test):
-        self.vp_c1 = 0
-        self.vn_c1 = 0
-        self.fp_c1 = 0
-        self.fn_c1 = 0
+        self.vp_c1 = 0  #verdadeiro positivo
+        self.vn_c1 = 0  #verdadeiro negativo
+        self.fp_c1 = 0  #falso positivo
+        self.fn_c1 = 0  #falso negativo
         self.vp_c0 = 0
         self.vn_c0 = 0
         self.fp_c0 = 0
