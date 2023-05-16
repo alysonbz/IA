@@ -18,19 +18,25 @@ y = df['booking_status'].values
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, random_state=42)
 
-# verificar se algum valor na matriz X_log é infinito
-
 knn = KNeighborsClassifier()
 knn.fit(X_train, y_train)
 
-print(knn.score(X_test, y_test))
+score_log = knn.score(X_test, y_test)
+print(score_log)
 
 # Normalize o conjunto de dados com normalização de media zero e variância unitária e e verifique a acurácia do knn.
 scaler = StandardScaler()
 
-X_norm= pd.DataFrame(scaler.fit_transform(X), columns=numeric_cols)
+X_norm = pd.DataFrame(scaler.fit_transform(X), columns=numeric_cols)
 print(X.var())
 print(X_norm.var())
-
+X_train, X_test, y_train, y_test = train_test_split(X_norm, y, test_size=0.3, random_state=42)
+knn = KNeighborsClassifier()
+knn.fit(X_train, y_train)
+accuracy = knn.score(X_test, y_test)
+print("Acurácia do modelo KNN:", accuracy)
 
 # Print as duas acuracias lado a lado para comparar.
+
+print("Acuracia da normalização logaritmica:", score_log)
+print("Acurácia da normalização de media zero:", accuracy)

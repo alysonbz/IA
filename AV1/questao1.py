@@ -2,7 +2,7 @@
 import pandas as pd
 
 ## Carregue o dataset definido para você
-df = pd.read_csv(r'C:\Users\LAB1_00\Documents\Eduardo\IA\AV1\dataset\Hotel_Reservations.csv')
+df = pd.read_csv(r'C:\Users\Eduardo\Documents\IA\AV1\dataset\Hotel_Reservations.csv')
 
 
 # Verifique se existem celulas vazias ou Nan. Se existir, excluir e criar um novo dataframe.
@@ -19,7 +19,6 @@ print(novo_df['booking_status'].value_counts())
 #observe se a coluna de classes precisa ser renomeada para atributos numéricos, realize a conversão, se necessário
 mapa = {'Not_Canceled': 1, 'Canceled': 0}
 novo_df['booking_status'] = novo_df['booking_status'].map(mapa)
-#novo_df['booking_status'] = novo_df['booking_status'].astype(bool)
 print(novo_df['booking_status'].value_counts())
 
 #Salve o dataset atualizado se houver modificações.
