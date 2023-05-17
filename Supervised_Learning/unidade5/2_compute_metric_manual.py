@@ -1,3 +1,4 @@
+
 from src.utils import process_diabetes
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
@@ -98,13 +99,13 @@ class Metrics:
     def set_param_classe2(self):
 
         for yp, yt in zip(y_pred, y_test):
-            if yp == 1 and yt == 1:
-                self.vp_c0 = self.vp_c0 + 1
-            if yp == 1 and yt == 0:
-                self.fp_c0 = self.fp_c0 + 1
-            if yp == 0 and yt == 1:
-                self.fn_c0 = self.fn_c0 + 1
             if yp == 0 and yt == 0:
+                self.vp_c0 = self.vp_c0 + 1
+            if yp == 0 and yt == 1:
+                self.fp_c0 = self.fp_c0 + 1
+            if yp == 1 and yt == 0:
+                self.fn_c0 = self.fn_c0 + 1
+            if yp == 1 and yt == 1:
                 self.vn_c0 = self.vn_c0 + 1
 
 
