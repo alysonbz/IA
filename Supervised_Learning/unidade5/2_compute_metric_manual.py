@@ -27,6 +27,15 @@ class Metrics:
 
     def set_param_classe2(self):
         pass
+        for yp, yt in zip(y_pred, y_test):
+        if yp == 0 and yt == 0:
+            self.vp_c0 = self.vp_c0 + 1
+        if yp == 0 and yt == 1:
+            self.fp_c0 = self.fp_c0 + 1
+        if yp == 1 and yt == 0:
+            self.fn_c0 = self.fn_c0 + 1
+        if yp == 1 and yt == 1:
+            self.vn_c0 = self.vn_c0 + 1
 
     def compute_acuraccy(self):
         return None
@@ -60,7 +69,7 @@ mt.set_param_classe2()
 
 print("acurácia geral:", mt.compute_acuraccy())
 #
-print("recall classe 0: ")
+print("recall classe 0: ", )
 #
 print("recall classe 1: ")
 #
