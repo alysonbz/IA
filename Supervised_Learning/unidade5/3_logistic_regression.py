@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 
 
+
 diabetes_df = load_diabetes_clean_dataset()
 X = diabetes_df.drop(['diabetes'],axis=1)
 y = diabetes_df['diabetes'].values

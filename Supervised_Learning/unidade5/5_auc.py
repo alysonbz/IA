@@ -1,5 +1,6 @@
 from src.utils import log_reg_diabetes
 from sklearn.metrics import classification_report, confusion_matrix
+
 # Import roc_auc_score
 from sklearn.metrics import  roc_auc_score
 
