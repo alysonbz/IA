@@ -56,6 +56,7 @@ class Metrics:
 y_pred, y_test = process_diabetes()
 mt = Metrics(y_pred, y_test)
 mt.set_param_classe1()
+mt.set_param_classe2()
 
 print("acurácia geral:", mt.compute_acuraccy())
 #
