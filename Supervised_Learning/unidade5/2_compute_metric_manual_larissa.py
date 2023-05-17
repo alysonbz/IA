@@ -135,4 +135,3 @@ print("precision classe 0: {}".format(compute_precision(y_pred,y_test == 0)*100)
 print("precision classe 1: {}".format(compute_precision(y_pred,y_test == 1)*100))
 print("F1-score classe 0: {}".format(compute_f1_score(y_pred,y_test == 0)*100))
 print("F1-score classe 1: {}".format(compute_f1_score(y_pred,y_test == 1)*100))
-
