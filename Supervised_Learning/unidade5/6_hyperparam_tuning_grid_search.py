@@ -24,8 +24,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_
 lasso  = Lasso()
 
 #inicialize kfold
-kf = KFold(  b
-             00)
+kf = KFold()
 
 #Set up the parameter grid
 param_grid = {"alpha": np.linspace( 0.00001, 1, 20)}
