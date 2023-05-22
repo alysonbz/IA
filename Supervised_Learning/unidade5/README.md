@@ -98,3 +98,64 @@ Nesta questão você vai calcular o AUC
 6) Faça um relatório comparando o desempenho da classificação do KNN e Regressão logistica para este dataset.
 modelo de relatório:
 https://docs.google.com/document/d/1hIwPx9W-k3LnXRJrkWYTsbrtx4NfP88_/edit?usp=sharing&ouid=112368782396865447257&rtpof=true&sd=true
+
+### Questão 6
+
+[6_hyperparam_tuning_grid_search.py](6_hyperparam_tuning_grid_search.py)
+
+#### Análise de hiperparamentros com grid search
+
+Nesta questão você vai buscar a melhor paramentrização para um modelo de regressão.
+
+#### Instruções:
+
+1)  importe o moudulo de regressão ``Lasso``
+   
+2)  importe o modulo ``kfold``. 
+
+3)  importe o modulo gridsearch.
+
+4) Inicialize o regressor Lasso
+
+5) Inicialize o kfold consideranto 5 pastas, embaralhamento e ``random_state = 42``.
+
+5) Crie a variável ``param_grid`` , considerando conjunto de 20 variáveis ``"alpha"`` variando de 0.00001 até 1.
+
+6) Inicialize o gridsearch considerando os argumentos:  lasso, param_grid e cv=kf.
+
+7) Treine o regressor com o conjunto de treino.
+
+
+
+
+### Questão 7
+
+[7_hyperparam_tunig_random_search.py](7_hyperparam_tunig_random_search.py)
+
+#### Análise de hiperparamentros com randomized search
+
+Nesta questão você vai buscar a melhor parametrização para um modelo de classificação.
+
+#### Instruções:
+
+1)  importe o moudulo ``LogisticRegression``
+   
+2)  importe o modulo ``kfold``. 
+
+3)  importe o modulo RadomizedSearch.
+
+4) Inicialize LogistcRegression
+
+5) Inicialize o kfold consideranto 5 pastas, embaralhamento e ``random_state = 42``.
+
+5) Crie a variável ``param`` , considerando: "penalty": ["l1", "l2"], "tol": np.linspace(0.0001, 1.0, 50),"C": np.linspace(0.1, 1, 50) e "class_weight": ["balanced", {0:0.8, 1:0.2}]
+         
+6) Inicialize o RandomizedSearchCV considerando os argumentos:  logreg, params e cv=kf
+
+7) Treine o modelo com o conjunto de treino.
+
+8) Mostre a melhor parametrização
+
+9) Mostre a melhor acurácia
+
+
