@@ -120,7 +120,6 @@ class Metrics:
         recall_c1 = np.sum(self.vp_c1) / (np.sum(self.vp_c1 ) + np.sum(self.fn_c1))
         return recall_c1
 
-
     def compute_recall_c0(self):
         recall_c0 = np.sum(self.vp_c0) / (np.sum(self.vp_c0) + np.sum(self.fn_c0))
         return recall_c0
@@ -134,20 +133,25 @@ class Metrics:
         return precision_c0
 
     def compute_f1_score_c1(self):
-        p1 = Metrics(y_pred, y_test)
-        r1 = Metrics(y_pred, y_test)
-        f1_score_c1 = 2 * (p1.compute_precision_c1() * r1.compute_recall_c1())/ (p1.compute_precision_c1() + r1.compute_recall_c1())
+        recall_c1 = np.sum(self.vp_c1) / (np.sum(self.vp_c1) + np.sum(self.fn_c1))
+        precision_c1 = np.sum(self.vp_c1) / (np.sum(self.vp_c1) + np.sum(self.fp_c1))
+        if precision_c1 > 0 or recall_c1 > 0:
+            f1_score_c1 = 2 * (precision_c1 * recall_c1) / (precision_c1 + recall_c1)
+        else:
+            f1_score_c1 = 0
         return f1_score_c1
     def compute_f1_score_c0(self):
-        p0 = Metrics(y_pred, y_test)
-        r0 = Metrics(y_pred, y_test)
-        f1_score_c0 = 2 * (p0.compute_precision_c0() * r0.compute_recall_c0()) / (
-                    p0.compute_precision_c0() + r0.compute_recall_c0())
+        recall_c0 = np.sum(self.vp_c0) / (np.sum(self.vp_c0) + np.sum(self.fn_c0))
+        precision_c0 = np.sum(self.vp_c0)/ (np.sum(self.vp_c0) + np.sum(self.fp_c0))
+        if precision_c0 > 0 or recall_c0 > 0:
+            f1_score_c0 = 2 * (precision_c0 * recall_c0) / (precision_c0 + recall_c0)
+        else:
+            f1_score_c0 = 0
         return f1_score_c0
 
     def compute_confusion_matriz(self):
-        confusion_matrix = [[(self.vp_c1 + self.vp_c0), (self.fn_c1 + self.fn_c0)],
-                            [(self.fp_c1 + self.fp_c0), (self.vn_c1 + self.vn_c0)]]
+        confusion_matrix = [[self.vp_c0, self.fp_c0],
+                            [self.fp_c1, self.vp_c1]]
         return confusion_matrix
 
 
