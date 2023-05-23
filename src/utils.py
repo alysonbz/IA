@@ -3,6 +3,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
+
 def load_volunteer_dataset():
     return pd.read_csv('../dataset/opportunities.csv')
 
@@ -25,7 +26,6 @@ def load_df1_unidade2():
 
 def load_df2_unidade2():
     return pd.read_csv('../dataset/df2_unidade2.csv')
-
 
 def load_churn_dataset():
     df = pd.read_csv('../dataset/churn_train.csv')
