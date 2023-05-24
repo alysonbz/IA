@@ -1,8 +1,11 @@
 #importe as bibliotecas necessárias
+import pandas as pd
 
 
 ## Carregue o dataset definido para você
-
+emissao = pd.read_csv('thailand_co2_emission_1987_2022.csv')
+print('\n DataSet: Emissão de CO2 da Tailândia ')
+print(emissao)
 
 
 # Verifique se existem celulas vazias ou Nan. Se existir, excluir e criar um novo dataframe.
