@@ -11,6 +11,7 @@ from sklearn.model_selection import train_test_split
 print(dados.columns)
 
 
+
 #KNN
 X = dados.drop('diabetes', axis=1)
 y = dados['diabetes']
