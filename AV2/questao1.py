@@ -1,4 +1,9 @@
 #importe as bibliotecas necessárias
+import pandas as pd
+
+# Carregar os dados
+data = pd.read_csv("forest_fires.csv")
+print(data)
 
 
 ## Carregue o dataset definido para você
