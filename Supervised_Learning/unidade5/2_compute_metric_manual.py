@@ -1,4 +1,9 @@
 from src.utils import process_diabetes
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import recall_score
+
+knn = KNeighborsClassifier()
 
 
 class Metrics:
@@ -36,13 +41,16 @@ class Metrics:
                 self.fn_c1 = self.fn_c1 + 1
             if yp == 0 and yt == 0:
                 self.vn_c1 = self.vn_c1 + 1
-        pass
 
     def compute_acuraccy(self):
-
-        return None
+        acuracia = accuracy_score(y_test, y_pred)
+        #print('Acurácia: %f' % acuracia)
+        return acuracia
 
     def compute_recall_c1(self):
+        recall = recall_score(y_test,)
+        print('Recall: %f' % recall)
+
         return None
 
     def compute_recall_c0(self):
