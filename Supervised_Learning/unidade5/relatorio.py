@@ -52,16 +52,16 @@ k_fold = KFold(n_splits=5, shuffle=True, random_state=42)
 cv_accuracy = cross_val_score(logreg, X, y, cv=k_fold)
 print('Acurácia usando cross-validation e k-fold:', cv_accuracy.mean())
 
-#grafico
+#grafico de barra
 import matplotlib.pyplot as plt
 
 # Acurácias da regressão logística e do KNN
-acuracia_logreg = 0.746  # Substitua pelo valor correto
-acuracia_knn = 0.779  # Substitua pelo valor correto
+acuracia_logreg = 0.746
+acuracia_knn = 0.779
 acuracia_logreg_Validation = 0.768
 acuracia_knn_Validation = 0.735
 
-# Preparando os dados para o gráfico de barras
+# Preparação dos dados
 models = ['Regressão Logística', 'KNN', 'Logreg_Valcross', 'KNN_Valcross']
 accuracies = [acuracia_logreg, acuracia_knn, acuracia_logreg_Validation, acuracia_knn_Validation]
 
@@ -74,4 +74,6 @@ plt.title('Comparação de Acurácia: Regressão Logística vs KNN')
 
 # Exibindo o gráfico
 plt.show()
+
+
 
