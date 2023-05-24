@@ -109,13 +109,13 @@ y_pred = knn.predict(X_test)
 
 # Gerando a matriz de confisão e o classification report
 print("\nConfusion Matrix:\n ", confusion_matrix(y_test, y_pred))
-print("\nClassification report:\n ", classification_report(y_test, y_pred))
+print("\nClassification report:\n ", classification_report(y_test, y_pred))'''
 
 
 
 
 # REGRESSÃO LOGÍSTICA
-from src.utils import load_diabetes_clean_dataset
+'''from src.utils import load_diabetes_clean_dataset
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, confusion_matrix
