@@ -20,7 +20,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 #Implemente o Knn exbindo sua acurácia nos dados de teste e mantenha sua parametrização default.
 knn = KNeighborsClassifier(n_neighbors=5)
 
-knn.fit(X_test, y_test)  #treina o modelo com os dados de treino
+knn.fit(X_train, y_train)  #treina o modelo com os dados de treino
 y_pred = knn.predict(X_test)   #realiza as predições com os dados de teste
 
 print('acurácia:', knn.score(X_test, y_test))  #calcula a acuracia
