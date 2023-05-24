@@ -1,9 +1,9 @@
 #importe as bibliotecas necessárias
-
+import pandas as pd
 
 ## Carregue o dataset definido para você
-
-
+ds=pd.read_csv('C:\luCD\Clean_Dataset.csv')
+print(ds)
 
 # Verifique se existem celulas vazias ou Nan. Se existir, excluir e criar um novo dataframe.
 
