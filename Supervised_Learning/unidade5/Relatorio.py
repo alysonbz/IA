@@ -7,12 +7,12 @@ from sklearn.model_selection import cross_val_score, KFold
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report, confusion_matrix
 
 print(dados.columns)
-
-
-
 #KNN
+
+
 X = dados.drop('diabetes', axis=1)
 y = dados['diabetes']
 
@@ -24,12 +24,22 @@ knn = KNeighborsClassifier(n_neighbors=12)
 knn.fit(X_train, y_train)
 
 accuracy = knn.score(X_test, y_test)
-print('Acurácia:', accuracy)
+print('Acurácia do KNN sem cross-validation:', accuracy)
 
 k_fold = KFold(n_splits=5, shuffle=True, random_state=42)
 cv_accuracy = cross_val_score(knn, X, y, cv=k_fold)
-print('Acurácia usando cross-validation e k-fold:', cv_accuracy.mean())
+print('Acurácia usando cross-validation do KNN:', cv_accuracy.mean())
 
+
+
+#Matriz de confusão
+y_pred = knn.predict(X_test)
+print('Matriz de confusão do KNN:')
+print(confusion_matrix(y_test, y_pred))
+
+#classification report
+print('Classification report do KNN:')
+print(classification_report(y_test, y_pred))
 
 #regressão logistica
 
@@ -47,14 +57,23 @@ logreg.fit(X_train, y_train)
 
 # Usando train_test_split
 accuracy = logreg.score(X_test, y_test)
-print('Acurácia usando train_test_split:', accuracy)
+print('Acurácia da logistica de regressão sem cross-validation:', accuracy)
 
 
 # Usando cross-validation com k-fold
 k_fold = KFold(n_splits=5, shuffle=True, random_state=42)
 cv_accuracy = cross_val_score(logreg, X, y, cv=k_fold)
-print('Acurácia usando cross-validation e k-fold:', cv_accuracy.mean())
+print('Acurácia usando cross-validation da logistica de regressão:', cv_accuracy.mean())
 
+#Matriz de confusão
+y_pred = logreg.predict(X_test)
+print('Matriz de confusão de logística de regressão:')
+print(confusion_matrix(y_test, y_pred))
+
+
+#classification report
+print('Classification report da regressão logistica:')
+print(classification_report(y_test, y_pred))
 
 #grafico de barra
 import matplotlib.pyplot as plt
