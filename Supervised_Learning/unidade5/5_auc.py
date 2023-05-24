@@ -4,7 +4,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 # Import roc_auc_score
 from sklearn.metrics import  roc_auc_score
 
-y_prob,y_test,y_pred = log_reg_diabetes()
+y_prob, y_test, y_pred = log_reg_diabetes()
 
 # Calculate roc_auc_score
 print(roc_auc_score(y_test, y_prob))
