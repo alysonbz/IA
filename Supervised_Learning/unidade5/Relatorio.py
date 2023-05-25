@@ -87,12 +87,12 @@ acuracia_knn_Validation = 0.735
 
 
 # Preparação dos dados
-models = ['Regressão Logística', 'KNN', 'Logreg_Valcross', 'KNN_Valcross']
-accuracies = [acuracia_logreg, acuracia_knn, acuracia_logreg_Validation, acuracia_knn_Validation]
+models = ['Regressão Logística', 'KNN']
+accuracies = [acuracia_logreg, acuracia_knn]
 
 
 # Criando o gráfico de barras
-plt.bar(models, accuracies, color=['blue', 'orange'])
+plt.bar(models, accuracies, color=['black', 'gray'])
 plt.ylim(0.7, 0.9)  # Definindo os limites do eixo y
 plt.xlabel('Modelos')
 plt.ylabel('Acurácia')
