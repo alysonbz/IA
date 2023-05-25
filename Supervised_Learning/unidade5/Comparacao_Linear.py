@@ -45,7 +45,7 @@ models = ['Regressão Logística', 'KNN', 'Logreg_Valcross', 'KNN_Valcross']
 accuracies = [acuracia_logreg, acuracia_knn, acuracia_logreg_Validation, acuracia_knn_Validation]
 
 # Criando o gráfico de barras
-plt.bar(models, accuracies, color=['pink', 'black'])
+plt.bar(models, accuracies)
 plt.ylim(0.7, 0.9)  # Definindo os limites do eixo y
 plt.xlabel('Modelos')
 plt.ylabel('Acurácia')
