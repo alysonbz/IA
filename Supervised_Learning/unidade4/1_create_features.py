@@ -2,7 +2,7 @@ import numpy as np
 from src.utils import load_sales_clean_dataset
 
 sales_df = load_sales_clean_dataset()
-
+print(sales_df.head)
 # Create X from the radio column's values
 x = sales_df['radio'].values
 
