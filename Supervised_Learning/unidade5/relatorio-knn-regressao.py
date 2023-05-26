@@ -1,5 +1,5 @@
 #dataset
-#ruan
+#ruanr
 from src.utils import load_diabetes_clean_dataset
 dados = load_diabetes_clean_dataset()
 
