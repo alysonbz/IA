@@ -2,20 +2,17 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.linear_model import Lasso
-#import data set
-df = pd.read_csv(r"C:\Users\Aluno\Desktop\savio\IA\AV2\Ubisoft.csv")
-#print(df)
-print(df.columns)
+#import dataset
+df = pd.read_csv(r"C:\Users\Aluno\Desktop\savio\IA\AV2\arquivo.csv")
+#print(df.columns)
+print(df.head(5))
+
 #Verifique se existem celulas vazias ou Nan. Se existir, excluir e criar um novo dataframe.
-'''print(df.isnull().sum())'''
-df = df.dropna()
-'''print(df.isnull().sum())'''
+print(df.isnull().sum())
 
 # Verifique quais colunas são as mais relevantes e crie um novo dataframe.
-#df = df.drop(['Date'], axis=1)
-
 # Create X and y arrays
-X = df.drop(["Open","Date"], axis=1)
+X = df.drop(["Open",'Date'], axis=1)
 y = df["Open"].values
 sales_columns = X.columns
 
@@ -29,18 +26,11 @@ plt.bar(sales_columns, lasso_coef)
 plt.xticks(rotation=45)
 plt.show()
 
+# Removendo a coluna Date e nomeando o novo df
+df = df.drop(['Date'], axis=1)
+ubisoft = pd.DataFrame(df)
+df.to_csv('ubisoft.csv', index=False)
 
-# Calcular a matriz de correlação
-correlation_matrix = df.corr()
+with open("C:\\Users\\Aluno\\Desktop\\tabela.txt", 'w') as f:
+    print(df.head(10), file=f)
 
-# Exibir a matriz de correlação
-print(correlation_matrix)
-
-# Plotar um gráfico de calor para visualizar a matriz de correlação
-plt.figure(figsize=(10, 8))
-plt.title('Matriz de Correlação')
-plt.imshow(correlation_matrix, cmap='coolwarm', interpolation='none')
-plt.colorbar()
-plt.xticks(range(len(df.columns)), df.columns, rotation=45)
-plt.yticks(range(len(df.columns)), df.columns)
-plt.show()
