@@ -20,7 +20,7 @@ print(dm)
 
 
 #atributo mais relevante
-X = dm[['brand']]
+X = dm[['processor_brand']]
 y = dm['Price']
 
 
@@ -38,7 +38,7 @@ print(pred)
 # Plotar a nuvem de pontos do atributo e a reta de regressão
 plt.scatter(X, y, color='blue', label='Dados')
 plt.plot(X, pred, color='red', linewidth=2, label='Regressão Linear')
-plt.xlabel('brand')
+plt.xlabel('processor_brand')
 plt.ylabel('Price')
 plt.legend()
 plt.show()
