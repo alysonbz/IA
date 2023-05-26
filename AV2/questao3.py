@@ -13,6 +13,8 @@ print(dm)
 # Separar os atributos de entrada (X) e o atributo alvo (y)
 X = dm.drop(['Price'], axis=1)
 y = dm['Price']
+print(y)
+
 
 
 #Dividir o dataset em treino e teste

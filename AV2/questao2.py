@@ -7,21 +7,15 @@ import seaborn as sns
 import pandas as pd
 
 
-
-
-
-
 #Carregue o dataset. Se houver o dataset atualizado, carregue o atualizado.
 dm = pd.read_csv('dados.csv')
 
-print(dm)
-
 
 #atributo mais relevante
-X = dm[['Gear box type']]
-y = dm['Price']
-print(X)
+X = dm[['Manufacturer']].values
+y = dm['Price'].values
 
+print(dm.columns)
 
 regressor = LinearRegression()
 
@@ -30,18 +24,27 @@ regressor.fit(X, y)
 
 pred = regressor.predict(X)
 
-# Exibir as predições
-print(pred)
+
+'''# Create scatter plot
+plt.scatter(X, y, color="blue")
+
+# Create line plot
+plt.plot(X, pred, color="red")
+plt.xlabel("Gear box type")
+plt.ylabel("Price")
+plt.show()
+'''
 
 
 # Plotar a nuvem de pontos do atributo e a reta de regressão
 plt.scatter(X, y, color='blue', label='Dados')
 plt.plot(X, pred, color='red', linewidth=2, label='Regressão Linear')
-plt.xlabel('Gear box type')
+plt.xlabel('Manufacturer')
 plt.ylabel('Price')
 plt.legend()
 plt.show()
 
+'''
 #metricas
 def compute_RSS(predictions,y):
     sub_squared= np.square(y - predictions)
@@ -67,4 +70,5 @@ def compute_R_squared(predictions,y):
 print("RSS: {}".format(compute_RSS(pred, y)))
 print("MSE: {}".format(compute_MSE(pred, y)))
 print("RMSE: {}".format(compute_RMSE(pred, y)))
-print("R^2: {}".format(compute_R_squared(pred, y)))
+print("R^2: {}".format(compute_R_squared(pred, y)))'''
+

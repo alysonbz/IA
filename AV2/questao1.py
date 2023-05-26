@@ -12,7 +12,7 @@ print(dados.columns)
 
 #Verifique qual atributo será o alvo para regressão no seu dataset e faça uma análise de qual atributo é mais relevante para realizar
 # a regressão do alvo escolhido.
-# Lembre de comprovar via gráfico. Obs: Registrar na seção de resultados a análise realizada e discutir sobre o resultado encontrado.
+#Lembre de comprovar via gráfico. Obs: Registrar na seção de resultados a análise realizada e discutir sobre o resultado encontrado.
 
 #Vendo se tem Na ou Null
 
@@ -20,13 +20,12 @@ print(dados.columns)
 print(dados.isna().sum())'''
 
 
-
-
-
 # Verifique quais colunas são as mais relevantes e crie um novo dataframe
 colunas_relevantes = ['Price', 'Manufacturer', 'Category', 'Leather interior', 'Fuel type', 'Engine volume', 'Mileage',
        'Cylinders', 'Gear box type', 'Drive wheels']
 dm = dados[colunas_relevantes].copy()
+
+
 
 # Criar uma instância do LabelEncoder
 label_encoder = LabelEncoder()
@@ -46,7 +45,6 @@ y = dm['Price'].values
 dm_columns = X.columns
 
 
-
 # Instantiate a lasso regression model
 lasso = Lasso(alpha=0.3)
 
@@ -59,3 +57,4 @@ plt.show()
 
 
 dm.to_csv("dados.csv", index=False)
+
