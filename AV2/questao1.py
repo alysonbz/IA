@@ -31,6 +31,5 @@ df = df.drop(['Date'], axis=1)
 ubisoft = pd.DataFrame(df)
 df.to_csv('ubisoft.csv', index=False)
 
-with open("C:\\Users\\Aluno\\Desktop\\tabela.txt", 'w') as f:
-    print(df.head(10), file=f)
+
 

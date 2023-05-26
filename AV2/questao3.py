@@ -37,7 +37,7 @@ lasso_grid.fit(X_train, y_train)
 ridge_grid.fit(X_train, y_train)
 
 # Imprimir as melhores configurações e scores para cada regressor
-print("Melhores configurações para Lasso: ",lasso_grid.best_params_)
+print("Melhor parametrização para Lasso: ",lasso_grid.best_params_)
 print("Melhor score para Lasso: ",lasso_grid.best_score_)
-print("Melhores configurações para Ridge: ", ridge_grid.best_params_)
+print("Melhor parametrização para Ridge: ", ridge_grid.best_params_)
 print("Melhor score para Ridge:", ridge_grid.best_score_)
