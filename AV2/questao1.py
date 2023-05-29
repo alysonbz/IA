@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #importe as bibliotecas necessárias
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -77,3 +78,5 @@ df_final.to_csv("df_final.csv")
 
 #Salve o dataset atualizado se houver modificações.1
 #bodyfat_ajust.to_csv("bodyfat_final.csv")
+=======
+>>>>>>> origin/main
