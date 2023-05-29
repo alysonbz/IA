@@ -21,7 +21,7 @@ ERICK RAMOS COUTINHO: https://www.kaggle.com/datasets/thaweewatboy/thailand-carb
 
 ERYKA CARVALHO DA SILVA:https://www.kaggle.com/datasets/kapturovalexander/lg-and-samsung-share-prices-2002-2023
 
-GIOVANNA DIAS CASTRO DE OLIVEIRA: https://www.kaggle.com/datasets/vivek468/superstore-dataset-final
+GIOVANNA DIAS CASTRO DE OLIVEIRA: [https://www.kaggle.com/datasets/vivek468/superstore-dataset-final](https://www.kaggle.com/datasets/vivek468/superstore-dataset-final)
 
 LARISSA VITORIA VASCONCELOS SOUSA: https://www.kaggle.com/datasets/harshghadiya/car-price-prediction
 

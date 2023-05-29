@@ -14,7 +14,7 @@ y = df['target'].values
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y) # divide o dataset em treino e teste
 
-neighbors = np.arange(1, 20) # cria os vizinhos/neighbors
+neighbors = np.arange(1, 9) # cria os vizinhos/neighbors
 train_accuracies = {} # cria uma lista para as acuracias de treino
 test_accuracies = {} # cria uma lista para as acuracias de treino
 
