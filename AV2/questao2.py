@@ -1,71 +1,37 @@
-import numpy as np
 import pandas as pd
-from sklearn.linear_model import LinearRegression
+import numpy as np
 import matplotlib.pyplot as plt
-
-
-#Utilizando o atributo mais relevante calculado na questão 1, implemente uma regressão linear utilizando somente este atributo mais
-#relevante, para predição do atributo alvo determinado na questão 1 também. Mostre o gráfico da reta de regressão  em conjunto com a nuvem
-#de atributo.
-#Determine também os valores:
-#RSS, MSE, RMSE e R_squared para esta regressão baseada somente no atributo mais relevante.
-#Obs: Registrar na seção de resultados a análise realizada e discutir sobre os resultados encontrados.
-
-
-
-#Carregue o dataset. Se houver o dataset atualizado, carregue o atualizado.
-
-df_final= pd.read_csv("df_final.csv")
-print(df_final)
-
-
-#atributo mais relevante
-X = df_final[['Height']]
-y = df_final['BodyFat']
-
-
-
-regressor = LinearRegression()
-
-# Treinar o modelo utilizando o atributo mais relevante
-regressor.fit(X, y)
-
-pred = regressor.predict(X)
-
-# Exibir as predições
-print(pred)
-
-# Plotar a nuvem de pontos do atributo e a reta de regressão
-plt.scatter(X, y, color='blue', label='Dados')
-plt.plot(X, pred, color='red', linewidth=2, label='Regressão Linear')
-plt.xlabel('Height')
-plt.ylabel('BodyFat')
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+# Carregar o dataset
+df = pd.read_csv("df.csv")
+# Selecionar o atributo alvo e o atributo mais relevante
+target_attribute = 'BodyFat'
+relevant_attribute = 'Weight'
+# Extrair os valores do atributo alvo e do atributo mais relevante
+X = df[relevant_attribute].values.reshape(-1, 1)
+y = df[target_attribute].values
+# Criar uma instância do modelo de regressão linear
+regression_model = LinearRegression()
+# Treinar o modelo
+regression_model.fit(X, y)
+# Realizar a previsão usando o atributo mais relevante
+y_pred = regression_model.predict(X)
+# Calcular as métricas de avaliação
+rss = np.sum((y - y_pred) ** 2)
+mse = mean_squared_error(y, y_pred)
+rmse = np.sqrt(mse)
+r2 = r2_score(y, y_pred)
+# Plotar a reta de regressão e a nuvem de pontos
+plt.scatter(X, y, color='blue', label='Dados reais')
+plt.plot(X, y_pred, color='red', linewidth=2, label='Regressão Linear')
+plt.xlabel(relevant_attribute)
+plt.ylabel(target_attribute)
 plt.legend()
+plt.title('Regressão Linear com Atributo mais Relevante')
 plt.show()
-
-#metricas
-def compute_RSS(predictions,y):
-    sub_squared= np.square(y - predictions)
-    RSS = np.sum(sub_squared)
-    return RSS
-
-def compute_MSE(predictions,y):
-    RSS= compute_RSS(predictions, y)
-    MSE= np.divide(RSS, len(predictions))
-    return MSE
-
-def compute_RMSE(predictions,y):
-    MSE= compute_MSE(predictions, y)
-    RMSE = np.sqrt(MSE)
-    return RMSE
-
-def compute_R_squared(predictions,y):
-    var_pred = np.sum(np.square(predictions - np.mean(y)))
-    var_data = np.sum(np.square(y - np.mean(y)))
-    r_squared = np.divide(var_pred, var_data)
-    return r_squared
-
-print("RSS: {}".format(compute_RSS(pred, y)))
-print("MSE: {}".format(compute_MSE(pred, y)))
-print("RMSE: {}".format(compute_RMSE(pred, y)))
-print("R^2: {}".format(compute_R_squared(pred, y)))
+# Imprimir os resultados
+print("RSS:", rss)
+print("MSE:", mse)
+print("RMSE:", rmse)
+print("R-squared:", r2)

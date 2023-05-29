@@ -1,82 +1,58 @@
-<<<<<<< HEAD
-#importe as bibliotecas necessárias
+#bibliotecas
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score
-import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.linear_model import Lasso
-from sklearn.preprocessing import LabelEncoder
+import seaborn as sns
+
+##importação do dataset
+dados = pd.read_csv(r"C:\Users\ruanr\Downloads\archive (1)\bodyfat.csv")
+print(dados.columns)
+print(dados.isna().sum())
+# Selecionar apenas as colunas relevantes
+df=dados[['Density',
+            'BodyFat',
+            'Age',
+            'Weight',
+          'Height']]
+print(df)
+
+correlation_matrix = df.corr()
+
+plt.figure(figsize=(10, 8))
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
+plt.title('Matriz de Correlação')
+plt.show()
+# Separar atributos e alvo
+X = df.drop(['BodyFat'], axis=1)
+y = df['BodyFat']
 
 
-## Carregue o dataset definido para você
-df= pd.read_csv(r"C:\Users\ruanr\Downloads\archive (1)\bodyfat.csv")
-df.info()
-
-
-
-# Verifique se existem celulas vazias ou Nan. Se existir, excluir e criar um novo dataframe.
-print("\n Verificação da existência de células vaizas ou Nan")
-print(df.isna().sum())
-
-
-
-# Verifique quais colunas são as mais relevantes e crie um novo dataframe.
-print("\n colunas relevantes")
-df_final = df[['Density',
-                          'BodyFat',
-                          'Age',
-                          'Weight',
-                         'Height',]]
-
-
-#Print o dataframe final e mostre a distribuição de classes que você deve classificar
-print(df_final)
-# Create X and y arrays
-X = df_final.drop(["BodyFat"], axis=1).select_dtypes(exclude=["object"])
-y = df_final["BodyFat"].values
-sales_columns = X.columns
-# Instantiate a lasso regression model
+# Ajustar o modelo Lasso
 lasso = Lasso(alpha=0.3)
+lasso.fit(X, y)
 
-# Compute and print the coefficients
-lasso_coef = lasso.fit(X,y).coef_
-print(lasso_coef)
-plt.bar(sales_columns, lasso_coef)
-
+# Obter os coeficientes e plotar
+lasso_coef = lasso.coef_
+plt.bar(X.columns, lasso_coef)
 plt.xticks(rotation=45)
+plt.xlabel('Atributos')
+plt.ylabel('Coeficientes')
+plt.title('Coeficientes do modelo Lasso')
 plt.show()
 
+# Verificar a correlação entre os atributos
+correlation_matrix = df.corr()
+print(correlation_matrix)
 
-#observe se a coluna de classes precisa ser renomeada para atributos numéricos, realize a conversão, se necessário
-# Criar uma instância do LabelEncoder
-#label_encoder = LabelEncoder()
-# Aplicar o LabelEncoder às colunas categóricas
-#for coluna in bodyfat_ajust:
-    #if bodyfat_ajust[coluna].dtype == 'object':
-        #bodyfat_ajust.loc[:, coluna] = label_encoder.fit_transform(bodyfat_ajust[coluna])
-#atributo mais relevante
-#X = bodyfat_ajust.drop(['BodyFat'], axis=1)
-#y = bodyfat_ajust['BodyFat'].values
-#y = bodyfat_ajust['BodyFat'].values
-#bodyfat_ajust_columns = X.columns
-''# Instantiate a lasso regression model
-#lasso = Lasso(alpha=0.1)
-# Instantiate a lasso regression model
-#lasso = Lasso(alpha=0.3)
+# Selecionar o atributo alvo
+target_attribute = 'BodyFat'
 
-# Compute and print the coefficients
-#lasso_coef = lasso.fit(X, y).coef_
-#print(lasso_coef)
-#plt.bar(bodyfat_ajust_columns, lasso_coef)
-#plt.xticks(rotation=45)
-#plt.show()
+# Calcular a correlação entre os atributos e o atributo alvo
+correlations = correlation_matrix[target_attribute]
+
+# Ordenar as correlações em ordem decrescente
+sorted_correlations = correlations.abs().sort_values(ascending=False)
 
 
-df_final.to_csv("df_final.csv")
+df.to_csv('df.csv')
 
-#Salve o dataset atualizado se houver modificações.1
-#bodyfat_ajust.to_csv("bodyfat_final.csv")
-=======
->>>>>>> origin/main

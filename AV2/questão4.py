@@ -5,17 +5,15 @@ from sklearn.linear_model import Lasso, Ridge
 from sklearn.preprocessing import LabelEncoder
 
 # Carregar o dataset
-df_final= pd.read_csv("df_final.csv")
-print(df_final)
-
+df = pd.read_csv("df.csv")
 # Selecionar os atributos relevantes
-relevant_columns = ['Height']
-X = df_final[relevant_columns]
-y = df_final['BodyFat']
+relevant_columns = ['Weight']
+X = df[relevant_columns]
+y = df['BodyFat']
 
 # Realizar a codificação de atributos categóricos, se necessário
 label_encoder = LabelEncoder()
-X['Height'] = label_encoder.fit_transform(X['Height'])
+X['Weight'] = label_encoder.fit_transform(X['Weight'])
 
 # Definir o número de folds para k-fold
 n_folds = 5
