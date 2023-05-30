@@ -3,8 +3,9 @@ import pandas as pd
 import numpy as np
 from sklearn.linear_model import Lasso, Ridge
 from sklearn.model_selection import train_test_split
-from sklearn.model_selection import GridSearchCV, cross_val_score
+from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import KFold
+
 
 #Carregue o dataset. Se houver o dataset atualizado, carregue o atualizado.
 dm = pd.read_csv('dados.csv')
@@ -43,7 +44,6 @@ print("Melhores configurações para Lasso: ")
 print(lasso_grid.best_params_)
 print("Melhor score para Lasso: ")
 print(lasso_grid.best_score_)
-
 print("Melhores configurações para Ridge: ")
 print(ridge_grid.best_params_)
 print("Melhor score para Ridge: ")

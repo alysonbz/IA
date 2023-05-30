@@ -9,7 +9,6 @@ from sklearn.preprocessing import LabelEncoder
 dados = pd.read_csv('laptopPrice.csv')
 
 
-
 # Verifique quais colunas são as mais relevantes e crie um novo dataframe
 colunas_relevantes = ['brand', 'processor_brand', 'processor_name', 'processor_gnrtn', 'ram_gb', 'ram_type', 'ssd', 'Price', 'rating', 'Number of Ratings', 'Number of Reviews']
 dm = dados[colunas_relevantes].copy()

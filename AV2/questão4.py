@@ -1,10 +1,9 @@
 #bibliotecas
 import pandas as pd
-import numpy as np
-from sklearn.linear_model import Lasso, Ridge
-from sklearn.model_selection import train_test_split
-from sklearn.model_selection import GridSearchCV, cross_val_score
-from sklearn.model_selection import KFold
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import cross_val_score, KFold
+
+
 
 #Carregue o dataset. Se houver o dataset atualizado, carregue o atualizado.
 dm = pd.read_csv('dados.csv')
@@ -15,8 +14,6 @@ X = dm.drop(['Price'], axis=1)
 y = dm['Price']
 
 
-from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import cross_val_score, KFold
 
 # Inicializar o modelo de regressão linear
 regressor = LinearRegression()
