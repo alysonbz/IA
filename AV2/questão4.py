@@ -5,7 +5,6 @@ from sklearn.model_selection import cross_val_score, KFold
 
 
 
-
 #Carregue o dataset. Se houver o dataset atualizado, carregue o atualizado.
 dm = pd.read_csv('dados.csv')
 print(dm)

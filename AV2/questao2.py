@@ -5,7 +5,6 @@ from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 
 
-
 #Carregue o dataset. Se houver o dataset atualizado, carregue o atualizado.
 dm = pd.read_csv('dados.csv')
 print(dm)

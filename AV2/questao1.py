@@ -17,6 +17,7 @@ dm = dados[colunas_relevantes].copy()
 # Criar uma instância do LabelEncoder
 label_encoder = LabelEncoder()
 
+
 # Aplicar o LabelEncoder às colunas categóricas
 for coluna in colunas_relevantes:
     if dm[coluna].dtype == 'object':
