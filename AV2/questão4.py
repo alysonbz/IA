@@ -1,29 +1,24 @@
 import pandas as pd
+import numpy as np
 from sklearn.model_selection import cross_val_score
 from sklearn.linear_model import LinearRegression
 
 # Carregar o dataset
 data = pd.read_csv(r'C:\Users\eryka\Downloads\archive\Samsung Electronics.csv')
 
-# Selecionar os atributos relevantes
-relevant_attributes = ['High', 'Low', 'Close']  # Exemplo, substitua pelos atributos relevantes identificados
+# Separar atributo alvo e atributo relevante
+X = data[['Close']]
+y = data[['Close']]
 
-# Filtrar o DataFrame com os atributos relevantes
-data_relevant = data[relevant_attributes]
+# Criar objeto do modelo de regressão linear
+model = LinearRegression()
 
-X = data[['Open', 'Low', 'Volume']].values
-y = data[['Close', 'High']].values
+# Realizar a validação cruzada utilizando k-fold
+scores = cross_val_score(model, X, y, cv=5)
 
+# Imprimir os scores de cada fold
+for i, score in enumerate(scores):
+    print("Fold", i+1, ":", score)
 
-# Definir os atributos de entrada (X) e o atributo alvo (y)
-X = data_relevant.drop(['Close', 'High'], axis=1).values
-y = data_relevant[['Close', 'High']].values
-
-# Criar um objeto de regressão linear
-regressor = LinearRegression()
-
-# Executar k-fold cross-validation com 5 folds
-scores = cross_val_score(regressor, X, y, cv=5)
-
-# Imprimir os scores de desempenho para cada fold
-print("Scores de desempenho:", scores)
+# Imprimir o score médio
+print("Score médio:", np.mean(scores))

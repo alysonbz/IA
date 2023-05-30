@@ -7,32 +7,40 @@ from sklearn.linear_model import Lasso, Ridge
 data = pd.read_csv(r'C:\Users\eryka\Downloads\archive\Samsung Electronics.csv')
 
 # Selecionar os atributos relevantes
-relevant_attributes = ['High', 'Low', 'Close']  # Exemplo, substitua pelos atributos relevantes identificados
+relevant_attributes = ['High', 'Low', 'Close']
 
 # Filtrar o DataFrame com os atributos relevantes
 data_relevant = data[relevant_attributes]
 
 # Separar os dados em atributos e alvo
-X = data_relevant.drop(['Close', 'High'], axis=1).values
-y = data_relevant[['Close','High']].values
+X = data[['Close']]
+y = data[['Close']]
 
-# Definir os parâmetros para o grid search
-param_grid = {'alpha': [0.1, 1, 10]}
+# Definir os valores a serem testados para os parâmetros de regularização
+lasso_params = {'alpha': [0.1, 1.0, 10.0]}
+ridge_params = {'alpha': [0.1, 1.0, 10.0]}
 
-# Realizar o grid search para o regressor Lasso
-lasso_model = Lasso()
-lasso_grid_search = GridSearchCV(lasso_model, param_grid, cv=5)
-lasso_grid_search.fit(X, y)
+# Criar objetos dos regressores Lasso e Ridge
+lasso = Lasso()
+ridge = Ridge()
 
-# Imprimir as melhores configurações e o melhor score para o regressor Lasso
-print("Melhores configurações para Lasso:", lasso_grid_search.best_params_)
-print("Melhor score para Lasso:", lasso_grid_search.best_score_)
+# Criar objeto de busca de grade com validação cruzada
+lasso_grid = GridSearchCV(lasso, lasso_params, cv=5)
+ridge_grid = GridSearchCV(ridge, ridge_params, cv=5)
 
-# Realizar o grid search para o regressor Ridge
-ridge_model = Ridge()
-ridge_grid_search = GridSearchCV(ridge_model, param_grid, cv=5)
-ridge_grid_search.fit(X, y)
+# Ajustar o modelo de Lasso aos dados
+lasso_grid.fit(X, y)
 
-# Imprimir as melhores configurações e o melhor score para o regressor Ridge
-print("Melhores configurações para Ridge:", ridge_grid_search.best_params_)
-print("Melhor score para Ridge:", ridge_grid_search.best_score_)
+# Ajustar o modelo de Ridge aos dados
+ridge_grid.fit(X, y)
+
+# Imprimir as melhores configurações e os melhores scores
+print("Melhores configurações do Lasso:")
+print(lasso_grid.best_params_)
+print("Melhor score do Lasso:")
+print(lasso_grid.best_score_)
+
+print("\nMelhores configurações do Ridge:")
+print(ridge_grid.best_params_)
+print("Melhor score do Ridge:")
+print(ridge_grid.best_score_)
