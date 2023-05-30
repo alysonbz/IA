@@ -5,15 +5,6 @@ from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 
 
-#Utilizando o atributo mais relevante calculado na questão 1, implemente uma regressão linear utilizando somente este atributo mais
-#relevante, para predição do atributo alvo determinado na questão 1 também. Mostre o gráfico da reta de regressão  em conjunto com a nuvem
-#de atributo.
-#Determine também os valores:
-#RSS, MSE, RMSE e R_squared para esta regressão baseada somente no atributo mais relevante.
-#Obs: Registrar na seção de resultados a análise realizada e discutir sobre os resultados encontrados.
-
-
-
 #Carregue o dataset. Se houver o dataset atualizado, carregue o atualizado.
 dm = pd.read_csv('dados.csv')
 print(dm)
@@ -22,8 +13,6 @@ print(dm)
 #atributo mais relevante
 X = dm[['processor_brand']]
 y = dm['Price']
-
-
 
 regressor = LinearRegression()
 

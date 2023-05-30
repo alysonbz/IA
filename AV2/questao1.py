@@ -9,18 +9,20 @@ from sklearn.preprocessing import LabelEncoder
 dados = pd.read_csv('laptopPrice.csv')
 
 
-
 # Verifique quais colunas são as mais relevantes e crie um novo dataframe
 colunas_relevantes = ['brand', 'processor_brand', 'processor_name', 'processor_gnrtn', 'ram_gb', 'ram_type', 'ssd', 'Price', 'rating', 'Number of Ratings', 'Number of Reviews']
 dm = dados[colunas_relevantes].copy()
 
+
 # Criar uma instância do LabelEncoder
 label_encoder = LabelEncoder()
+
 
 # Aplicar o LabelEncoder às colunas categóricas
 for coluna in colunas_relevantes:
     if dm[coluna].dtype == 'object':
         dm.loc[:, coluna] = label_encoder.fit_transform(dm[coluna])
+
 
 # Exibir o DataFrame com as colunas codificadas
 print(dm)
