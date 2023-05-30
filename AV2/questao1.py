@@ -23,6 +23,7 @@ for coluna in colunas_relevantes:
     if dm[coluna].dtype == 'object':
         dm.loc[:, coluna] = label_encoder.fit_transform(dm[coluna])
 
+
 # Exibir o DataFrame com as colunas codificadas
 print(dm)
 

@@ -27,6 +27,7 @@ ridge_params = {'alpha': np.linspace(0.01, 10, 20)}
 lasso = Lasso()
 ridge = Ridge()
 
+
 # Inicializar o objeto KFold para validação cruzada
 kf = KFold(n_splits=6, shuffle=True, random_state=42)
 

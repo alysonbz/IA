@@ -14,7 +14,6 @@ print(dm)
 X = dm[['processor_brand']]
 y = dm['Price']
 
-
 regressor = LinearRegression()
 
 # Treinar o modelo utilizando o atributo mais relevante
