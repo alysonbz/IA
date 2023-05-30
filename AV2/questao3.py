@@ -7,6 +7,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import KFold
 
 
+
 #Carregue o dataset. Se houver o dataset atualizado, carregue o atualizado.
 dm = pd.read_csv('dados.csv')
 print(dm)

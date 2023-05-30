@@ -13,6 +13,7 @@ dados = pd.read_csv('laptopPrice.csv')
 colunas_relevantes = ['brand', 'processor_brand', 'processor_name', 'processor_gnrtn', 'ram_gb', 'ram_type', 'ssd', 'Price', 'rating', 'Number of Ratings', 'Number of Reviews']
 dm = dados[colunas_relevantes].copy()
 
+
 # Criar uma instância do LabelEncoder
 label_encoder = LabelEncoder()
 
