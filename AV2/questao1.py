@@ -9,12 +9,15 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.linear_model import Lasso
 
-df = pd.read_csv(r'C:\Users\Guilherme\Documents\G\IA\AV2\Sample - Superstore.csv', encoding='latin-1')
+df = pd.read_csv(r'C:\Users\LAB1_00\Documents\GD\IA\AV2\Sample - Superstore.csv', encoding='latin-1')
 
 print(df.columns)
-#print(df.head())
+df['Profit'] = df['Profit'].astype(int)
+print(df['Profit'].values)
 #print(df.describe())
 print("Info:", df.info())
+#print("Shape:", df.shape)
+reshape(-1,)
 
 #X = df.drop(["Sales"], axis=1).select_dtypes(exclude="object")
 #y = df["Sales"].values
@@ -45,3 +48,4 @@ sorted_coef = lasso_coef.abs().sort_values(ascending=False)
 
 # Exibir os atributos mais importantes
 print(sorted_coef)
+'''

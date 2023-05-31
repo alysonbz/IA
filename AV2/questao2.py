@@ -13,12 +13,14 @@ from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 
 
-df = pd.read_csv(r'C:\Users\Guilherme\Documents\G\IA\AV2\Sample - Superstore.csv', encoding='latin-1')
-
+#df = pd.read_csv(r'C:\Users\Guilherme\Documents\G\IA\AV2\Sample - Superstore.csv', encoding='latin-1')
+df = pd.read_csv(r'C:\Users\LAB1_00\Documents\GD\IA\AV2\Sample - Superstore.csv', encoding='latin-1')
 
 #atributo mais relevante
-X = df[['Quantity']]
-y = df['Profit']
+
+
+X = df[['Profit']]
+y = df['Sales']
 
 
 
@@ -35,8 +37,8 @@ print(pred)
 # Plotar a nuvem de pontos do atributo e a reta de regressão
 plt.scatter(X, y, color='blue', label='Dados')
 plt.plot(X, pred, color='red', linewidth=2, label='Regressão Linear')
-plt.xlabel('S')
-plt.ylabel('P')
+plt.xlabel('PROFIT')
+plt.ylabel('SALES')
 plt.legend()
 plt.show()
 
