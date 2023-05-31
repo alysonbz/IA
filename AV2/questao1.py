@@ -2,7 +2,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.linear_model import Lasso
-import seaborn as sns
 
 ##importação do dataset
 dados = pd.read_csv(r"C:\Users\ruanr\Downloads\archive (1)\bodyfat.csv")
