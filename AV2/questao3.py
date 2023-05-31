@@ -1,38 +1,35 @@
-#bibliotecas
-import pandas as pd
 from sklearn.linear_model import Lasso, Ridge
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import GridSearchCV
-from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import KFold
 
-#Carregue o dataset. Se houver o dataset atualizado, carregue o atualizado.
 df = pd.read_csv("df.csv")
-
-
-
-X = df.drop(['BodyFat'], axis=1)
+X = df.drop(['BodyFat'],axis=1)
 y = df['BodyFat'].values
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
-# Dividir os dados em treinamento e teste
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# Definir os parâmetros para busca em grade
-param_grid = {'alpha': [0.1, 1.0, 10.0]}
-
-# Realizar busca em grade com validação cruzada para o regressor Lasso
+#inicialize Lasso
 lasso = Lasso()
-lasso_cv = GridSearchCV(lasso, param_grid, cv=5)
+#inicialize kfold
+kf = KFold(n_splits=5, shuffle=True, random_state=42)
+
+#Set up the parameter grid
+param_grid = {"alpha": np.arange(0.00001, 1, 20)}
+
+# Instantiate lasso_cv
+lasso_cv = GridSearchCV(lasso, param_grid, cv = kf)
+
+# Fit to the training data
 lasso_cv.fit(X_train, y_train)
 
-# Imprimir os melhores parâmetros e score para o regressor Lasso
-print("Melhores parâmetros para Lasso:", lasso_cv.best_params_)
-print("Melhor score para Lasso:", lasso_cv.best_score_)
+print("Tuned lasso paramaters: {}".format(lasso_cv.best_params_))
+print("Tuned lasso score: {}".format(lasso_cv.best_score_))
+print("\nRIDGE\n")
 
-# Realizar busca em grade com validação cruzada para o regressor Ridge
+param_grid2 = {"alpha": np.arange(0.00001, 1, 20),
+              "solver":["sag","lsqr"]}
 ridge = Ridge()
-ridge_cv = GridSearchCV(ridge, param_grid, cv=5)
-ridge_cv.fit(X_train, y_train)
-
-# Imprimir os melhores parâmetros e score para o regressor Ridge
-print("Melhores parâmetros para Ridge:", ridge_cv.best_params_)
-print("Melhor score para Ridge:", ridge_cv.best_score_)
+ridge_cv = GridSearchCV(ridge, param_grid2, cv=kf)
+ridge_cv.fit(X_train,y_train)
+print("Tuned Ridge paramaters: {}".format(ridge_cv.best_params_))
+print("Tuned Ridge score: {}".format(ridge_cv.best_score_))

@@ -1,37 +1,52 @@
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
-# Carregar o dataset
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
 df = pd.read_csv("df.csv")
-# Selecionar o atributo alvo e o atributo mais relevante
-target_attribute = 'BodyFat'
-relevant_attribute = 'Weight'
-# Extrair os valores do atributo alvo e do atributo mais relevante
-X = df[relevant_attribute].values.reshape(-1, 1)
-y = df[target_attribute].values
-# Criar uma instância do modelo de regressão linear
-regression_model = LinearRegression()
-# Treinar o modelo
-regression_model.fit(X, y)
-# Realizar a previsão usando o atributo mais relevante
-y_pred = regression_model.predict(X)
-# Calcular as métricas de avaliação
-rss = np.sum((y - y_pred) ** 2)
-mse = mean_squared_error(y, y_pred)
-rmse = np.sqrt(mse)
-r2 = r2_score(y, y_pred)
-# Plotar a reta de regressão e a nuvem de pontos
-plt.scatter(X, y, color='blue', label='Dados reais')
-plt.plot(X, y_pred, color='red', linewidth=2, label='Regressão Linear')
-plt.xlabel(relevant_attribute)
-plt.ylabel(target_attribute)
-plt.legend()
-plt.title('Regressão Linear com Atributo mais Relevante')
+y = df["BodyFat"].values
+X = df["Weight"].values.reshape(-1, 1)
+
+# Create the model
+reg = LinearRegression()
+
+# Fit the model to the data
+reg.fit(X, y)
+
+# Make predictions
+predictions = reg.predict(X)
+
+print(predictions[:5])
+
+# Create scatter plot
+plt.scatter(X, y, color="blue")
+
+# Create line plot
+plt.plot(X, predictions, color="red")
+plt.xlabel("Weight")
+plt.ylabel("BodyFat")
+'''plt.suptitle("", fontsize=10,y=0.95)'''
+# Display the plot
 plt.show()
-# Imprimir os resultados
-print("RSS:", rss)
-print("MSE:", mse)
-print("RMSE:", rmse)
-print("R-squared:", r2)
+
+def compute_RSS(predictions,y):
+    RSS = np.sum(np.square(y - predictions))
+    return RSS
+
+def compute_MSE(predictions,y):
+    MSE= np.sum(np.square(y-predictions))/len(predictions)
+    return MSE
+def compute_RMSE(predictions,y):
+    MSE = compute_MSE(predictions, y)
+    RMSE = np.sqrt(MSE)
+    return RMSE
+def compute_R_squared(predictions,y):
+    var_pred = np.sum(np.square(predictions - np.mean(y)))
+    var_data = np.sum(np.square(y-np.mean(y)))
+    r_squared = np.divide(var_pred, var_data)
+    return r_squared
+
+print("RSS: {}".format(compute_RSS(predictions,y)))
+print("MSE: {}".format(compute_MSE(predictions,y)))
+print("RMSE: {}".format(compute_RMSE(predictions,y)))
+print("R^2: {}".format(compute_R_squared(predictions,y)))
