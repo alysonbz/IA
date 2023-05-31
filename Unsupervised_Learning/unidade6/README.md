@@ -15,7 +15,7 @@ Nesta questão você vai agrupar pontos com o K-means
 
 #### Instruções:
 
-1)  Inicialize o k-means.
+1)  Inicialize o k-means com 3 clusters.
    
 2)  Execute a função fit do para ``train_points``. 
 
