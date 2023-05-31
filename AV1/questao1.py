@@ -22,10 +22,6 @@ star_class_new = (star_class.drop(["u", "i", "cam_col", "field_ID", "spec_obj_ID
 star_class_new = star_class_new.rename(columns={"class":"classe"})
 print(star_class_new)
 
-
-
-
-
 #Print o dataframe final e mostre a distribuição de classes que você deve classificar
 
 print(star_class_new["classe"].value_counts(),'\n','\n')

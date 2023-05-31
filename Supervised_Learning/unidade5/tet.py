@@ -24,6 +24,7 @@ y_pred = knn.predict(X_test)
 
 # Predict probabilities
 y_pred_probs = logreg.predict_proba(X_test)[:, 1]
+print(y_pred_probs)
 
 #acuracia
 acuracy= knn.score(X_test, y_test)
