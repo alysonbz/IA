@@ -12,7 +12,7 @@ dm = pd.read_csv('dados.csv')
 print(dm)
 
 # Separar os atributos de entrada (X) e o atributo alvo (y)
-X = dm.drop(['Model'], axis=1)
+X = dm.drop(['Price'], axis=1)
 y = dm['Price']
 
 

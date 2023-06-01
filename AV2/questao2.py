@@ -6,13 +6,11 @@ import matplotlib.pyplot as plt
 
 
 #Carregue o dataset. Se houver o dataset atualizado, carregue o atualizado.
-dm = pd.read_csv('dados.csv')
-print(dm)
-
+ubisoft = pd.read_csv('dados.csv')
 
 #atributo mais relevante
-X = dm[['Model']]
-y = dm['Price']
+X = ubisoft[['Storage ']]
+y = ubisoft['Price']
 
 regressor = LinearRegression()
 
@@ -22,12 +20,12 @@ regressor.fit(X, y)
 pred = regressor.predict(X)
 
 # Exibir as predições
-print(pred)
+print('Predição:', pred)
 
 # Plotar a nuvem de pontos do atributo e a reta de regressão
 plt.scatter(X, y, color='blue', label='Dados')
 plt.plot(X, pred, color='red', linewidth=2, label='Regressão Linear')
-plt.xlabel('Model')
+plt.xlabel('Storage ')
 plt.ylabel('Price')
 plt.legend()
 plt.show()
