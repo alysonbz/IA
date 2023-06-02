@@ -11,7 +11,7 @@ fpr, tpr, thresholds = roc_curve(y_test,y_prob)
 plt.plot([0, 1], [0, 1], 'k--')
 
 # Plot tpr against fpr
-plt.plot(fpr, tpr)
+plt.plot(fpr, tpr, color = "#c93995ff")
 plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
 plt.title('ROC Curve for Diabetes Prediction')
