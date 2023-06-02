@@ -72,9 +72,8 @@ class Metrics:
         return f1_score_c0
 
     def compute_confusion_matriz(self):
-        confusion_matrix = [[self.vp_c0, self.fp_c0], [self.fn_c0, self.vn_c0]], [[self.vp_c1, self.fp_c1],
-                                                                                  [self.fn_c1, self.vn_c1]]
-
+        confusion_matrix = [[self.vp_c0, self.fp_c0], [self.fn_c0, self.vn_c0]], [[self.vp_c1, self.fp_c1],[self.fn_c1, self.vn_c1]]
+        return confusion_matrix
 
 y_pred, y_test = process_diabetes()
 mt = Metrics(y_pred, y_test)
