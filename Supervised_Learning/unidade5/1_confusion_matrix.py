@@ -1,9 +1,10 @@
+
 #Questão 1
 from src.utils import load_diabetes_clean_dataset
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix
 import numpy as np
+from sklearn.metrics import classification_report, confusion_matrix
 import matplotlib.pyplot as plt
 
 # Carregar os dados
@@ -21,6 +22,8 @@ y_pred = knn.predict(X_test)
 
 # Calcular a matriz de confusão
 cm = confusion_matrix(y_test, y_pred)
+print(cm)
+print(classification_report(y_test, y_pred))
 
 # Plotar a matriz de confusão
 plt.imshow(cm, interpolation='nearest', cmap=plt.cm.RdPu)  # Definir o colormap como 'RdPu' (rosa)
