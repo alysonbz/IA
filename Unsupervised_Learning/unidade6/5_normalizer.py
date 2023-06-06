@@ -11,19 +11,19 @@ movements = movements_df.drop(['company'],axis=1)
 companies = movements_df['company'].values
 
 # Create a normalizer: normalizer
-normalizer = ____
+normalizer = Normalizer()
 
 # Create a KMeans model with 10 clusters: kmeans
-kmeans = ____
+kmeans = KMeans()
 
 # Make a pipeline chaining normalizer and kmeans: pipeline
-pipeline = ____
+pipeline = make_pipeline()
 
 # Fit pipeline to the daily price movements
-____
+pipeline.fit(movements)
 
 # Predict the cluster labels: labels
-labels = __
+labels = pipeline.predict(movements)
 
 # Create a DataFrame aligning labels and companies: df
 df = pd.DataFrame({'labels': labels, 'companies': companies})
