@@ -6,7 +6,7 @@ from sklearn.cluster import KMeans
 points = load_points()
 
 # Create a KMeans instance with 3 clusters: model
-model = KMeans(n_clusters= 3)
+model = KMeans(n_clusters= 2)
 
 test_points = points[:50,:]
 train_points = points[50:,:]
