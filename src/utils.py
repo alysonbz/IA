@@ -410,3 +410,11 @@ def load_points():
                     [-1.408588, 0.25635431],
                     [-1.98274626, -0.54584475]])
 
+def load_grains_dataset():
+    return pd.read_csv('../dataset/grains.csv')
+
+def load_fish_dataset():
+    return pd.read_csv('../dataset/fish.csv')
+
+def load_movements_price_dataset():
+    return pd.read_csv('../dataset/company-stock-movements-2010-2015-incl.csv')
