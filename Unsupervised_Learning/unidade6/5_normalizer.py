@@ -11,10 +11,10 @@ movements = movements_df.drop(['company'],axis=1)
 companies = movements_df['company'].values
 
 # Create a normalizer: normalizer
-normalizer = ____
+normalizer = Normalizer()
 
 # Create a KMeans model with 10 clusters: kmeans
-kmeans = ____
+kmeans = KMeans(n_clusters=10)
 
 # Make a pipeline chaining normalizer and kmeans: pipeline
 pipeline = ____
