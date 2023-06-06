@@ -5,16 +5,16 @@ from sklearn.cluster import KMeans
 points = load_points()
 
 # Create a KMeans instance with 3 clusters: model
-model = __(__)
+model = KMeans(n_clusters=3)
 
 test_points = points[:50,:]
 train_points = points[50:,:]
 
 # Fit model to train_points
-___
+model.fit(samples)
 
 # Determine the cluster labels of new_points: labels
-labels = __
+labels = model.predict(samples)
 
 # Print cluster labels of new_points
 print(labels)
