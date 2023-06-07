@@ -17,16 +17,16 @@ normalizer = Normalizer()
 kmeans = KMeans(n_clusters=10)
 
 # Make a pipeline chaining normalizer and kmeans: pipeline
-pipeline = ____
+pipeline = make_pipeline(normalizer, kmeans)
 
 # Fit pipeline to the daily price movements
-____
+pipeline.fit(movements)
 
 # Predict the cluster labels: labels
-labels = __
+labels = pipeline.predict(movements)
 
 # Create a DataFrame aligning labels and companies: df
 df = pd.DataFrame({'labels': labels, 'companies': companies})
 
 # Display df sorted by cluster label
-print()
+print(df.sort_values('labels'))
