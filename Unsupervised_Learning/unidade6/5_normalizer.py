@@ -7,17 +7,17 @@ from sklearn.cluster import KMeans
 from src.utils import load_movements_price_dataset
 
 movements_df = load_movements_price_dataset()
-movements = movements_df.drop(['company'],axis=1)
+movements = movements_df.drop(['company'], axis=1)
 companies = movements_df['company'].values
 
 # Create a normalizer: normalizer
-normalizer = ____
+normalizer = Normalizer()
 
 # Create a KMeans model with 10 clusters: kmeans
 kmeans = KMeans(n_clusters=10)
 
 # Make a pipeline chaining normalizer and kmeans: pipeline
-pipeline = make_pipeline(normalizer, KMeans)
+pipeline = make_pipeline(normalizer, kmeans)
 
 # Fit pipeline to the daily price movements
 pipeline.fit(movements)
@@ -29,4 +29,4 @@ labels = pipeline.predict(movements)
 df = pd.DataFrame({'labels': labels, 'companies': companies})
 
 # Display df sorted by cluster label
-print(df)
+print(df.sort_values('labels'))

@@ -7,7 +7,7 @@ from sklearn.pipeline import make_pipeline
 from src.utils import load_fish_dataset
 
 samples_df = load_fish_dataset()
-samples = samples_df.drop(['specie'],axis=1)
+samples = samples_df.drop(['specie'], axis=1)
 species = samples_df['specie'].values
 
 
@@ -15,10 +15,10 @@ species = samples_df['specie'].values
 scaler = StandardScaler()
 
 # Create KMeans instance: kmeans
-kmeans = KMeans(n_clusters=3)
+kmeans = KMeans(n_clusters= 4)
 
 # Create pipeline: pipeline
-pipeline = make_pipeline(scaler, KMeans)
+pipeline = make_pipeline(scaler, kmeans)
 
 # Fit the pipeline to samples
 pipeline.fit(samples)
@@ -27,10 +27,10 @@ pipeline.fit(samples)
 labels = pipeline.predict(samples)
 
 # Create a DataFrame with labels and species as columns: df
-df = pd.DataFrame({'labels': labels, 'columns': species})
+df = pd.DataFrame({'labels': labels, 'species': species})
 
 # Create crosstab: ct
-ct = pd.crosstab(df['labels'], df['specie'])
+ct = pd.crosstab(df['labels'], df['species'])
 
 # Display ct
 print(ct)
