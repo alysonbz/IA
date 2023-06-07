@@ -29,4 +29,4 @@ labels = pipeline.predict(movements)
 df = pd.DataFrame({'labels': labels, 'companies': companies})
 
 # Display df sorted by cluster label
-print(df.sort_values(['labels']))
+print(df.sort_values('labels'))
