@@ -3,7 +3,7 @@ from src.utils import load_grains_dataset
 from sklearn.cluster import KMeans
 
 samples_df = load_grains_dataset()
-samples = samples_df.drop(['variety'],axis=1)
+samples = samples_df.drop(['variety','variety_number'],axis=1)
 varieties = samples_df['variety'].values
 
 # Create a KMeans model with 3 clusters: model
