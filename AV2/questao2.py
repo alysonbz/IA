@@ -53,8 +53,8 @@ print("R^2: {}".format(compute_R_squared(pred, y)))
 
 
 # Plotar a nuvem de pontos do atributo e a reta de regressão
-plt.scatter(X, y, color='blue', label='Dados')
-plt.plot(X, pred, color='red', linewidth=2, label='Regressão Linear')
+plt.scatter(X, y, color='red', label='Dados')
+plt.plot(X, pred, color='black', linewidth=2, label='Regressão Linear')
 plt.xlabel('Fuel Consumption Hwy (L/100 km)')
 plt.ylabel('CO2 Emissions(g/km)')
 plt.legend()
