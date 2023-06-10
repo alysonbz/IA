@@ -410,3 +410,18 @@ def load_points():
                     [-1.408588, 0.25635431],
                     [-1.98274626, -0.54584475]])
 
+def load_grains_dataset():
+    return pd.read_csv('../dataset/grains.csv')
+
+def load_fish_dataset():
+    return pd.read_csv('../dataset/fish.csv')
+
+def load_movements_price_dataset():
+    return pd.read_csv('../dataset/company-stock-movements-2010-2015-incl.csv')
+
+def load_grains_splited_datadet():
+    df = pd.read_csv('../dataset/grains.csv')
+    X =  df.drop(['variety','variety_number'],axis=1)
+    y =  df['variety'].values
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.05, random_state=42, stratify=y)
+    return  X_train, X_test, y_train, y_test
