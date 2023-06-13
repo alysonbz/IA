@@ -16,10 +16,10 @@ species = samples_df['specie'].values
 scaler = StandardScaler()
 
 # Create KMeans instance: kmeans
-kmeans = KMeans()
+kmeans = KMeans(n_clusters=3)
 
 # Create pipeline: pipeline
-pipeline = make_pipeline()
+pipeline = make_pipeline(scaler, kmeans)
 
 # Fit the pipeline to samples
 pipeline.fit(samples)
@@ -28,10 +28,10 @@ pipeline.fit(samples)
 labels = pipeline.predict(samples)
 
 # Create a DataFrame with labels and species as columns: df
-df = pd.DataFrame({'labels': labels, 'varietes': specie })
+df = pd.DataFrame({'labels': labels, 'varieties': species })
 
 # Create crosstab: ct
-ct = ct = pd.crosstab([df] )
+ct = pd.crosstab(df['labels'], df['varieties'])
 
 # Display ct
 print(ct)
