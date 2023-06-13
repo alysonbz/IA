@@ -60,3 +60,47 @@ Nesta questão você vai analisar se a clusterização ocorreu adequadamente ana
 
 5) crie um crosstab relacioando labels e companies
 
+### Questão 4
+
+[4_tsne.py](4_tsne.py)
+
+#### T-SNE
+
+Nesta questão você vai reduzir o dataset para duas dimensões e plotar os atributos
+
+#### Instruções:
+
+#### Instruções:
+
+1)  Instancie o T-SNE com learning_rate igual a 200.
+   
+2)  Execute a função fit_transform no conjunto de dados samples 
+
+3)  Selecione a primeira coluna de tsne_features
+
+4)  Selecione a segunda coluna de tsne_features
+
+5)  Crie um scatter plot indicando a cor pelas labels variety_numbers
+
+
+### Questão 5
+
+[5_tsne_2.py](5_tsne_2.py)
+
+#### T-SNE 2
+
+Nesta questão você vai reduzir o dataset para duas dimensões e plotar os atributos
+
+#### Instruções:
+
+#### Instruções:
+
+1)  Instancie o T-SNE com learning_rate igual a 50.
+   
+2)  Execute a função fit_transform no conjunto de dados normalized_movements 
+
+3)  Selecione a primeira coluna de tsne_features
+
+4)  Selecione a segunda coluna de tsne_features
+
+5)  Crie um scatter plot indicando alpha igual a 0.5
