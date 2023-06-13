@@ -18,7 +18,7 @@ scaler = StandardScaler()
 # Create KMeans instance: kmeans
 kmeans = KMeans(n_clusters=3)
 
-# Create pipeline: pipeline
+# Create pipeline: pipeline=
 pipeline = make_pipeline(scaler,kmeans)
 
 # Fit the pipeline to samples
