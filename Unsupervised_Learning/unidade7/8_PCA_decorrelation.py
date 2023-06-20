@@ -9,16 +9,16 @@ from src.utils import load_grains_dataset
 grains = load_grains_dataset()
 grains = grains.drop(['variety','variety_number'],axis=1)
 # Create PCA instance: model
-model = __
+model = PCA()
 
 # Apply the fit_transform method of model to grains: pca_features
-pca_features = ____
+pca_features = model.fit_transform(grains)
 
 # Assign 0th column of pca_features: xs
-xs = ___
+xs = ['0']
 
 # Assign 1st column of pca_features: ys
-ys = ___
+ys = ['1']
 
 # Scatter plot xs vs ys
 plt.scatter(xs, ys)
