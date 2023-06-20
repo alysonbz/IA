@@ -104,3 +104,66 @@ Nesta questão você vai reduzir o dataset para duas dimensões e plotar os atri
 4)  Selecione a segunda coluna de tsne_features
 
 5)  Crie um scatter plot indicando alpha igual a 0.5
+
+
+### Questão 6
+
+[6_pearson_correlation.py](6_pearson_correlation.py)
+
+#### Correlação de Pearson
+
+Nesta questão você vai aplicar o calculo da correlação de pearson
+
+
+#### Instruções:
+
+1)  Armazene em width a primeira coluna do dataset grains.
+   
+2)  Armazene em lenght a segunda coluna do dataset grains 
+
+3)  Crie um scatter plot de width em função de lenght
+
+4)  calcule a correlação de pearson utilizando a função importada pearsonr. Esta função recebe dois argumentos para calcular a correlçao entre estes.
+
+
+
+### Questão 7
+
+[7_manual_pearson_correlation.py](7_manual_pearson_correlation.py)
+
+#### Correlação de Pearson
+
+Nesta questão você vai aplicar o calculo da correlação de pearson de forma manual
+
+
+#### Instruções:
+
+1)  Armazene em width a primeira coluna do dataset grains.
+   
+2)  Armazene em lenght a segunda coluna do dataset grains 
+
+3)  Crie um scatter plot de width em função de lenght
+
+4)  calcule a correlação de pearson utilizando a função que você deve implementar. Esta função recebe dois argumentos para calcular a correlçao entre estes e retorna a correlação.
+
+
+### Questão 8
+
+[8_PCA_decorrelation.py](8_PCA_decorrelation.py)
+
+#### Correlação de Pearson
+
+Nesta questão você vai aplicar o calculo da descorrelação com o método PCA.
+
+
+#### Instruções:
+
+1)  Instancie o modelo do PCA.
+   
+2)  Execute a função fit_transform para gerar os atributos descorrelacionados 
+
+3) Armazene em xs a primeira coluna de pca_features e em ys a segunda coluna.
+4) Crie um scatter plot de xs em função de ys.
+5)  Calcule a correlação de pearson.
+6) Mostre o valor da correlação.
+
