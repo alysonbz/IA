@@ -26,5 +26,5 @@ plt.scatter(xs, ys, alpha = 0.5)
 
 # Annotate the points
 for x, y, company in zip(xs, ys, companies):
-    plt.annotate(company, (x, y), fontsize=5, alpha= 0.75  )
+    plt.annotate(company, (x, y), fontsize=5, alpha=0.75)
 plt.show()
