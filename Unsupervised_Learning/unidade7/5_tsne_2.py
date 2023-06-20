@@ -13,16 +13,16 @@ companies = movements_df['company'].values
 normalized_movements = normalize(movements)
 
 # Apply fit_transform to normalized_movements: tsne_features
-tsne_features = ____
+tsne_features = TSNE(learning_rate=50)
 
 # Select the 0th feature: xs
-xs = ____
+xs = tsne_features[:,0]
 
 # Select the 1th feature: ys
 ys = tsne_features[:,1]
 
 # Scatter plot
-____
+plt.scatter(xs, ys, alpha=0.5)
 
 # Annotate the points
 for x, y, company in zip(xs, ys, companies):
