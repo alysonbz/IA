@@ -5,8 +5,6 @@ from src.utils import load_grains_dataset
 
 
 def pearson_correlation(x,y):
-
-
      return None
 
 
