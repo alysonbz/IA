@@ -3,7 +3,6 @@ import numpy as np
 
 # Import KNeighborsClassifier
 from sklearn.neighbors import KNeighborsClassifier
-
 churn_df = load_churn_dataset()
 
 # Create arrays for the features and the target variable
