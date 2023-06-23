@@ -1,21 +1,26 @@
 import matplotlib.pyplot as plt
-from src.utils import load_grains_dataset
-from scipy.stats import pearsonr
+import numpy as np
 
-def pearson_correlation(x, y):
-    correlation, pvalue = pearsonr(x, y)
-    return correlation
+from src.utils import load_grains_dataset
+
+
+
+def pearson_correlation(x,y):
+    r = sum((x - np.mean(x)) * (y - np.mean(y))) / np.sqrt(sum((x - np.mean(x)) ** 2) * sum(((y - np.mean(y))**2)))
+    return r
+
 
 grains_df = load_grains_dataset()
 
+
 # Assign the 0th column of grains: width
-width = grains_df.iloc[:, 0]
+width = grains_df['0']
 
 # Assign the 1st column of grains: length
-length = grains_df.iloc[:, 1]
+length = grains_df['1']
 
 # Calculate the Pearson correlation
-correlation = pearson_correlation(width, length)
+correlation = pearson_correlation(width,length)
 
 # Display the correlation
 print(correlation)
