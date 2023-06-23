@@ -1,4 +1,4 @@
-#importe as bibliotecas necessárias
+#importe as bibliotecas necessáriass
 
 import pandas as pd
 
