@@ -11,7 +11,7 @@ scaled_samples = scaler.fit_transform(samples)
 
 
 # Create a PCA model with components in adequate number: pca
-pca = __
+pca = LabelEncoder(samples)
 
 # Fit the PCA instance to the scaled samples
 __

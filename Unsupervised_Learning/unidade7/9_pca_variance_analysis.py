@@ -10,10 +10,10 @@ samples = samples.drop(['specie'],axis=1)
 
 
 # Create scaler: scaler
-scaler = ___
+scaler = StandardScaler()
 
 # Create a PCA instance: pca
-pca = ___
+pca =
 
 # Create pipeline: pipeline
 pipeline = ___(__,__)
