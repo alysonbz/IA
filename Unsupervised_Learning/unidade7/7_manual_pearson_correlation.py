@@ -1,11 +1,15 @@
 # Perform the necessary imports
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
+import numpy as np
 
 from src.utils import load_grains_dataset
 
 
 def pearson_correlation(x,y):
-     return None
+     a = sum((np.array(x) - np.mean(x)) * (np.array(y) - np.mean(y)))
+     b = np.sqrt(sum((np.array(x) - np.mean(x)) **2) * (sum((np.array(y) - np.mean(y)) ** 2)))
+     r = a/b
+     return r
 
 
 grains_df = load_grains_dataset()

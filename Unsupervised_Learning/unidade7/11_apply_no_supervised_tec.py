@@ -16,4 +16,3 @@ pca = PCA(n_components=2)
 pca.fit(scaled_samples)
 transformed = pca.transform(scaled_samples)
 print(transformed.shape)
-
