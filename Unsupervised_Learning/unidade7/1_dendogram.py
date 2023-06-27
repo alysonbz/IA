@@ -5,6 +5,7 @@ from src.utils import load_grains_splited_datadet
 from scipy.cluster.hierarchy import linkage, dendrogram
 
 X_train, samples, y_train, varieties = load_grains_splited_datadet()
+print(load_grains_splited_datadet())
 
 # Calculate the linkage: mergings
 mergings = linkage(samples, method='complete')

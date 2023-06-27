@@ -13,17 +13,17 @@ samples = samples.drop(['specie'],axis=1)
 scaler = StandardScaler()
 
 # Create a PCA instance: pca
-pca =
+pca = PCA()
 
 # Create pipeline: pipeline
-pipeline = ___(__,__)
+pipeline = make_pipeline(scaler,pca)
 
 # Fit the pipeline to 'samples'
-___
+pipeline.fit(samples)
 
 # Plot the explained variances
-features = ____
-plt.bar(____, ____)
+features = range(pca.n_components_)
+plt.bar(features, pca.explained_variance_)
 plt.xlabel('PCA feature')
 plt.ylabel('variance')
 plt.xticks(features)
