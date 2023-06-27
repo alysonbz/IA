@@ -1,6 +1,5 @@
 # Import PCA
 import matplotlib.pyplot as plt
-
 from sklearn.decomposition import PCA
 from scipy.stats import pearsonr
 from src.utils import load_grains_dataset
