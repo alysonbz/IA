@@ -46,7 +46,7 @@ ys = tsne_features[:,1]
 plt.scatter(xs, ys, c = smoking_valor)
 plt.show()"""
 
-#PCA
+"""#PCA
 scaled_samples = scaler.fit_transform(normalized_df)
 class_pca = lb.fit_transform(normalized_df['class'])
 # Create a PCA model with components in adequate number: pca
@@ -59,4 +59,4 @@ tramsformed = pca.transform(normalized_df)
 xs = tramsformed[:,0]
 ys = tramsformed[:,1]
 plt.scatter(xs, ys, c=class_pca)
-plt.show()
+plt.show()"""
