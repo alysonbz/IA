@@ -12,7 +12,6 @@ https://docs.google.com/document/d/1hIwPx9W-k3LnXRJrkWYTsbrtx4NfP88_/edit?usp=sh
 ANA LIVIA SOUSA DAVI TAVEIRA :https://www.kaggle.com/datasets/uciml/mushroom-classification
 
 CARLOS EDUARDO TELES ALENCAR: https://www.kaggle.com/datasets/uciml/glass
-
 DAVI GONCALVES RAMOS DE MESQUITA:https://www.kaggle.com/datasets/andrewmvd/fetal-health-classification
 
 EMILY CAMELO MENDONCA: https://www.kaggle.com/datasets/christianlillelund/csgo-round-winner-classification
