@@ -18,7 +18,7 @@ lb = LabelEncoder()
 # T-SNE
 normalized_movements = normalize(samples)
 # Create a TSNE instance: model
-model = TSNE(learning_rate=200)
+model = TSNE(n_components=2)
 # Apply fit_transform to samples: tsne_features
 tsne_features = model.fit_transform(normalized_movements)
 # Select the 0th feature: xs
