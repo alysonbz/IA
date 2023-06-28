@@ -40,11 +40,33 @@ accuracy = accuracy_score(y_test, y_pred)
 print("Acurácia do k-NN:", accuracy)
 
 
+#### dendograma
+
+from scipy.cluster import hierarchy
 
 
-#dendrogram(mergings,
-         #  labels= ,
-        #   leaf_rotation=90,
-       #    leaf_font_size=8,
-#)
-#plt.show()
+
+# Selecionar apenas as colunas relevantes para o dendrograma
+columns = ['P8', 'T8', 'FC6', 'F4', 'F8', 'AF4']
+
+# Calcular a matriz de distâncias
+distances = estado_do_olho[columns].values
+
+# Calcular o dendrograma
+Z = hierarchy.linkage(distances, method='ward')
+
+# Plotar o dendrograma
+plt.figure(figsize=(100, 40))
+plt.title('Dendrograma')
+plt.xlabel('Amostras')
+plt.ylabel('Distâncias')
+#dendrograma = hierarchy.dendrogram(Z, labels=estado_do_olho.index)
+
+# Exibir o dendrograma
+
+dendrogram(Z,
+           labels= estado_do_olho.index,
+           leaf_rotation=90,
+           leaf_font_size=8,
+)
+plt.show()
