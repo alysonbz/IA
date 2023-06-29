@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from sklearn.linear_model import Lasso
 from sklearn.preprocessing import StandardScaler
@@ -36,10 +37,8 @@ df_atualizado = df_atualizado.dropna()
 
 X = df_atualizado.drop(['Class'], axis=1)
 y = df_atualizado["Class"].values
-
 scaler = StandardScaler()
 normalized = scaler.fit_transform(X)
-
 mergings = linkage(normalized, method='complete')
 
 # Plot the dendrogram
@@ -48,3 +47,15 @@ dendrogram(mergings,
            leaf_font_size=6,
 )
 plt.show()
+
+
+# Clusterização - K_means
+model = KMeans(n_clusters=3)
+# Use fit_predict to fit model and obtain cluster labels: labels
+labels = model.fit_predict(df_atualizado)
+# Create a DataFrame with labels and varieties as columns: df
+df = pd.DataFrame({'labels': labels, 'Class': y})
+# Create crosstab: ct
+ct = pd.crosstab(df['labels'], df['y'])
+# Display ct
+print(ct)
