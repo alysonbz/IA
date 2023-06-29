@@ -1,12 +1,8 @@
 #Importando Bibliotecas
-
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
-from sklearn.decomposition import PCA
-from sklearn.linear_model import Lasso
 from sklearn.preprocessing import normalize
-from sklearn.model_selection import train_test_split
 from scipy.cluster.hierarchy import linkage, dendrogram
 
 # Carregar o conjunto de dados
@@ -19,7 +15,7 @@ num_linhas = int(len(data) * 0.3)
 csgo_round = data.sample(n=num_linhas)
 
 # Salvar o novo conjunto de dados em um arquivo CSV
-csgo_round.to_csv('csgo_round_snapshots_50percent.csv', index=False)
+csgo_round.to_csv('csgo_round_snapshots_30percent.csv', index=False)
 
 #Verificando se há valores nulos
 print("\n Verificação da existência de células vazias ou NaN")
@@ -33,7 +29,6 @@ map_round_winner = {
 csgo_round['round_winner'] = csgo_round['round_winner'].map(map_round_winner)
 
 '''pd.set_option('display.max_columns', None)
-
 print(csgo_round_sample)'''
 
 #Salvando um novo dataset atualizado
@@ -57,7 +52,7 @@ dendrogram(mergings,
 )
 '''plt.show()'''
 
-# Clusterização - K_means
+# Clusterização - Kmeans
 model = KMeans(n_clusters=6)
 labels = model.fit_predict(X)
 df = pd.DataFrame({'labels': labels, 'round_winner': y})
