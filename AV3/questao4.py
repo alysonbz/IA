@@ -1,51 +1,69 @@
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
 import pandas as pd
+from sklearn.decomposition import PCA
+from sklearn.manifold import TSNE
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import accuracy_score
-from sklearn.decomposition import PCA
+from sklearn.metrics import classification_report, confusion_matrix
 
-# Carregue o conjunto de dados em um DataFrame do Pandas
-df = pd.read_csv('oil_spill.csv')
+# Carregar o conjunto de dados
+oleo_df = pd.read_csv(r"C:\Users\LAB1_00\Desktop\SAVIO\IA\AV3\oil_spill.csv")
+test = oleo_df.drop(['target'],axis=1)
+Area = oleo_df['target'].values
 
-# Separar os atributos (X) e o target (y)
-X = df.drop('target', axis=1)
-y = df['target']
-
-# Dividir o conjunto de dados em treino e teste
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# Criar uma instância do PCA
+#PCA_VARIANCE
+scaler = StandardScaler()
 pca = PCA()
+# Create pipeline: pipeline
+pipeline = make_pipeline(scaler, pca)
 
-# Ajustar o PCA aos dados de treino
-pca.fit(X_train)
+pipeline.fit(test)
 
-# Calcular as variâncias das componentes principais
-variances = pca.explained_variance_ratio_
+# Plot the explained variances
+features = range(pca.n_features_)
+plt.bar(features, pca.explained_variance_)
+plt.xlabel('PCA feature')
+plt.ylabel('variance')
+plt.xticks(features)
+plt.show()
 
-# Ordenar as variâncias em ordem decrescente
-sorted_variances = sorted(variances, reverse=True)
+#COLUNAS COM MAIOR VARIANCIA
+colunas_v= test[['f_1', 'f_2', 'f_3', 'f_4']]
 
-# Definir o número de componentes principais a serem selecionadas (por exemplo, as top 10)
-num_components = 10
+#DESEMPENHO
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(colunas_v)
+tsne = TSNE(n_components=2)
+X_tsne = tsne.fit_transform(colunas_v)
 
-# Selecionar as top N componentes principais com as maiores variâncias
-top_components = sorted_variances[:num_components]
+# Dividir os dados reduzidos em treinamento e teste
+pca_train, pca_test, y_train1, y_test1 = train_test_split(X_pca, Area, test_size=0.2, random_state=42)
+tsne_train, tsne_test, y_train, y_test = train_test_split(X_tsne, Area, test_size=0.2, random_state=42)
 
-# Obter os índices das top N componentes principais
-top_component_indices = [variances.tolist().index(component) for component in top_components]
+# Criar classificadores k-NN para PCA e t-SNE
+knn_pca = KNeighborsClassifier(n_neighbors=3)
+knn_tsne = KNeighborsClassifier(n_neighbors=3)
 
-# Reduzir a dimensionalidade dos conjuntos de treino e teste para as top N componentes principais selecionadas
-X_train_pca = pca.transform(X_train)[:, top_component_indices]
-X_test_pca = pca.transform(X_test)[:, top_component_indices]
+# Treinar os classificadores usando os dados de treinamento
+knn_pca.fit(pca_train, y_train1)
+knn_tsne.fit(tsne_train, y_train)
 
-# Criar e treinar um classificador KNN usando os dados reduzidos pelo PCA
-knn_pca = KNeighborsClassifier(n_neighbors=5)
-knn_pca.fit(X_train_pca, y_train)
+# Fazer previsões sobre os dados de teste
+y_pred_pca = knn_pca.predict(pca_test)
+y_pred_tsne = knn_tsne.predict(tsne_test)
 
-# Fazer previsões no conjunto de teste reduzido pelo PCA
-y_pred_pca = knn_pca.predict(X_test_pca)
 
-# Calcular a acurácia do classificador com os dados reduzidos pelo PCA
-accuracy_pca = accuracy_score(y_test, y_pred_pca)
-print("Acurácia usando PCA:", accuracy_pca)
+# Calcular métricas de avaliação para PCA
+print("classification_report para PCA:")
+print(classification_report(y_test1, y_pred_pca))
+print("confusion Matrix para PCA:")
+print(confusion_matrix(y_test1, y_pred_pca))
+
+
+# Calcular métricas de avaliação para t-SNE
+print("classification_report para t-SNE:")
+print(classification_report(y_test, y_pred_tsne))
+print("confusion Matrix para t-SNE:")
+print(confusion_matrix(y_test, y_pred_tsne))

@@ -1,41 +1,53 @@
+#importe as bibliotecas necessárias
 import pandas as pd
-import matplotlib.pyplot as plt
-from scipy.cluster.hierarchy import linkage, dendrogram
-from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import normalize
+from scipy.cluster.hierarchy import linkage, dendrogram
+import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 
-oleo_df= pd.read_csv(r"C:\Users\LAB1_00\Desktop\SAVIO\IA\AV3\oil_spill.csv")
 
-#normalização dos dados
-scaler = StandardScaler()
-df_normalized = scaler.fit_transform(oleo_df)
+## Carregar o dataset
+oleo_df = pd.read_csv(r"C:\Users\LAB1_00\Desktop\SAVIO\IA\AV3\oil_spill.csv")
 
-movements = oleo_df.drop(['target'],axis=1)
-companies = oleo_df['target'].values
 
-# Normalize the movements: normalized_movements
-normalized_movements = normalize(movements)
+# Verificar se tem Na ou isnull
+'''
+print(oleo_df.isna().sum())
+print(oleo_df.isnull().sum())
+'''
 
-# Calculate the linkage: mergings
-mergings = linkage(normalized_movements, method='complete')
+# DENDOGRAMA
+test = oleo_df.drop(['target'], axis=1)
+Area = oleo_df['target'].values
 
-# Plot the dendrogram
-dendrogram(mergings, labels=companies,leaf_rotation=90, leaf_font_size=6)
+# Normalizar os dados
+normalized_test = normalize(test)
+
+# Calcular o linkage: mergings
+mergings = linkage(normalized_test, method='complete')
+# Plotar o dendrograma
+plt.figure(figsize=(10, 6))
+dendrogram(mergings,
+           labels=Area,
+           leaf_rotation=90,
+           leaf_font_size=8)
+
+plt.title('Dendrograma')
+plt.xlabel('Amostras')
+plt.ylabel('Distância')
 plt.show()
 
-# Clusterização - K_means
-model = KMeans(n_clusters=3)
-# Use fit_predict to fit model and obtain cluster labels: labels
-labels = model.fit_predict(movements)
+
+# clusterização e aplique o k-medias
+model = KMeans(n_clusters=4)
+
+# Use fit_predict em model
+labels = model.fit_predict(test)
 # Create a DataFrame with labels and varieties as columns: df
-df = pd.DataFrame({'labels': labels, 'class_values': companies})
+df = pd.DataFrame({'labels': labels, 'Area': Area})
 # Create crosstab: ct
-ct = pd.crosstab(df['labels'], df['class_values'])
+ct = pd.crosstab(df['labels'], df['Area'])
 # Display ct
 print(ct)
 
-
-#exportando
-oleo_df.to_csv('oil_spill.csv')
 

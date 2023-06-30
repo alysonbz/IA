@@ -1,62 +1,84 @@
+#Bibliotecas
 import pandas as pd
-from sklearn.model_selection import train_test_split
 from sklearn.decomposition import PCA
-from sklearn.preprocessing import StandardScaler
+from sklearn.manifold import TSNE
+from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import classification_report, confusion_matrix
+
+
+# Carregar o Dataset
+test_df = pd.read_csv(r"C:\Users\LAB1_00\Desktop\SAVIO\IA\AV3\oil_spill.csv")
+
+#DIvidindo
+test = test_df.drop(['target'],axis=1)
+Area = test_df['target'].values
+colunas_V = test[['f_1', 'f_2', 'f_3', 'f_4']]
+
+#PCA e TSNE
+pca = PCA(n_components=2)
+Column_pca = pca.fit_transform(colunas_V)
+tsne = TSNE(n_components=2)
+Column_tsne = tsne.fit_transform(colunas_V)
+
+
+# Dividir os dados reduzidos em treinamento e teste
+X_pca_train, X_pca_test, y_train1, y_test1 = train_test_split(Column_pca, Area, test_size=0.2, random_state=42)
+X_tsne_train, X_tsne_test, y_train, y_test = train_test_split(Column_tsne, Area, test_size=0.2, random_state=42)
+
+
+#k-NN para PCA e tSNE
+knn_pca = KNeighborsClassifier(n_neighbors=3)
+knn_tsne = KNeighborsClassifier(n_neighbors=3)
+
+
+# Treinar os modelos
+knn_pca.fit(X_pca_train, y_train1)
+knn_tsne.fit(X_tsne_train, y_train)
+
+
+# Fazer previsões sobre os dados de teste
+y_pred_pca = knn_pca.predict(X_pca_test)
+y_pred_tsne = knn_tsne.predict(X_tsne_test)
+
+
+#PCA
+print("classification_report para PCA:")
+print(classification_report(y_test1, y_pred_pca))
+print("confusion_matrix para PCA:")
+print(confusion_matrix(y_test1, y_pred_pca))
+
+#TSNE
+print("classification_report para t-SNE:")
+print(classification_report(y_test, y_pred_tsne))
+print("confusion_matrix para t-SNE:")
+print(confusion_matrix(y_test, y_pred_tsne))
+
+#(Regressão Logistica)
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.metrics import accuracy_score
 
-#importando dados
-df = pd.read_csv('oil_spill.csv')
+#usando o Train_test_split
+X_train2, X_test2, y_train2, y_test2 = train_test_split(colunas_V, Area, test_size=0.2, random_state=42)
 
-
-X = df.drop('target', axis=1)  # Features (colunas f_1 a f_49)
-y = df['target']  # Target (coluna target)
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-
-# Pré-processamento com PCA
-scaler = StandardScaler()
-X_train_scaled = scaler.fit_transform(X_train)
-X_test_scaled = scaler.transform(X_test)
-
-pca = PCA(n_components=10)  # Defina o número de componentes desejado
-X_train_pca = pca.fit_transform(X_train_scaled)
-X_test_pca = pca.transform(X_test_scaled)
-
-# Classificador KNN
-knn = KNeighborsClassifier(n_neighbors=5)
-knn.fit(X_train_pca, y_train)
-y_pred_knn = knn.predict(X_test_pca)
-
-# Métricas de avaliação para KNN
-accuracy_knn = accuracy_score(y_test, y_pred_knn)
-precision_knn = precision_score(y_test, y_pred_knn)
-recall_knn = recall_score(y_test, y_pred_knn)
-f1_knn = f1_score(y_test, y_pred_knn)
-
-# Classificador Regressão Logística
+# Criar uma instância do classificador de Regressão Logística
 logreg = LogisticRegression()
-logreg.fit(X_train_pca, y_train)
-y_pred_logreg = logreg.predict(X_test_pca)
 
-# Métricas de avaliação para Regressão Logística
-accuracy_logreg = accuracy_score(y_test, y_pred_logreg)
-precision_logreg = precision_score(y_test, y_pred_logreg)
-recall_logreg = recall_score(y_test, y_pred_logreg)
-f1_logreg = f1_score(y_test, y_pred_logreg)
+# Treinar o classificador com os dados de treinamento
+logreg.fit(X_train2, y_train2)
 
-# Comparação dos resultados
-print("Resultados do KNN:")
-print("Acurácia:", accuracy_knn)
-print("Precisão:", precision_knn)
-print("Recall:", recall_knn)
-print("F1-score:", f1_knn)
-print()
+# Fazer previsões usando o conjunto de teste
+y_pred2 = logreg.predict(X_test2)
 
-print("Resultados da Regressão Logística:")
-print("Acurácia:", accuracy_logreg)
-print("Precisão:", precision_logreg)
-print("Recall:", recall_logreg)
-print("F1-score:", f1_logreg)
+# Criar a matriz de confusão
+confusion_matrix = confusion_matrix(y_test2, y_pred2)
+print('confusion_matrix:')
+print(confusion_matrix)
+
+# Gerar o relatório de classificação
+report = classification_report(y_test, y_pred2)
+print('\nClassification Report:')
+print(report)
+# Calcular a acurácia do modelo
+accuracy = accuracy_score(y_test, y_pred2)
+print("\nAcurácia da Regressão Logística:", accuracy)

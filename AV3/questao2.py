@@ -1,36 +1,51 @@
-import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.manifold import TSNE
+import pandas as pd
+from sklearn.preprocessing import normalize
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
-# Carregue o conjunto de dados em um DataFrame do Pandas
 
-df = pd.read_csv('oil_spill.csv')
+#PROCESSANDO
+oleo_df = pd.read_csv(r"C:\Users\LAB1_00\Desktop\SAVIO\IA\AV3\oil_spill.csv")
+test = oleo_df.drop(['target'],axis=1)
+Area = oleo_df['target'].values
 
-# Redução de dimensionalidade usando T-SNE
-tsne = TSNE(n_components=2, random_state=42)
-tsne_result = tsne.fit_transform(df)
+#INICIALIZANDO
+scaler = StandardScaler()
 
-# Redução de dimensionalidade usando PCA
+# T-SNE
+normalized_test = normalize(test)
+
+# Instancializar o TSNE em model
+model = TSNE(n_components=2)
+
+# Aplicar o fit transform no test normalizado
+tsne = model.fit_transform(normalized_test)
+
+# Select the 0th feature: xs
+xs = tsne[:,0]
+# Select the 1st feature: ys
+ys = tsne[:,1]
+# Scatter plot, Area
+plt.scatter(xs, ys, c=Area)
+plt.show()
+
+
+#PCA
+scaled_test = scaler.fit_transform(test)
+
+# Criar um PCA
 pca = PCA(n_components=2)
-pca_result = pca.fit_transform(df)
 
-# Plote os gráficos
-plt.figure(figsize=(12, 6))
+# Fit o PCA em scaled_test
+pca.fit(scaled_test)
 
-plt.subplot(1, 2, 1)
-plt.scatter(tsne_result[:, 0], tsne_result[:, 1], c=df['target'])
-plt.title('T-SNE')
-plt.xlabel('Componente 1')
-plt.ylabel('Componente 2')
+# Transform o scaled_test: transformed
+transformed = pca.transform(test)
 
-plt.subplot(1, 2, 2)
-plt.scatter(pca_result[:, 0], pca_result[:, 1], c=df['target'])
-plt.title('PCA')
-plt.xlabel('Componente 1')
-plt.ylabel('Componente 2')
-
-plt.tight_layout()
+#Gráfico
+xs = transformed[:,0]
+ys = transformed[:,1]
+plt.scatter(xs, ys, c=Area)
 plt.show()

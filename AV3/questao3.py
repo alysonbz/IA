@@ -1,52 +1,51 @@
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import accuracy_score
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import classification_report, confusion_matrix
+import pandas as pd
 
-# Carregue o conjunto de dados em um DataFrame do Pandas
-df = pd.read_csv('oil_spill.csv')
 
-# Separar os atributos (X) e o target (y)
-X = df.drop('target', axis=1)
-y = df['target']
+# Carregar o Dataset
 
-# Dividir o conjunto de dados em treino e teste
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+oleo_df = pd.read_csv(r"C:\Users\LAB1_00\Desktop\SAVIO\IA\AV3\oil_spill.csv")
+test = oleo_df.drop(['target'],axis=1)
+Area = oleo_df['target'].values
 
-# Criar uma instância do PCA
+
+# Criar um PCA
 pca = PCA(n_components=2)
+scaled_test = pca.fit_transform(test)
 
-# Reduzir a dimensionalidade dos conjuntos de treino e teste usando PCA
-X_train_pca = pca.fit_transform(X_train)
-X_test_pca = pca.transform(X_test)
+# Reduzir a dimensionalidade usando t-SNE
+model = TSNE(n_components=2)
+Normalized_test = model.fit_transform(test)
 
-# Criar uma instância do t-SNE
-tsne = TSNE(n_components=2, random_state=42)
+# Dividir os dados reduzidos em treinamento e teste
+pca_train, pca_test, y_train1, y_test1 = train_test_split(Normalized_test, Area, test_size=0.2, random_state=42)
+tsne_train, tsne_test, y_train, y_test = train_test_split(Normalized_test, Area, test_size=0.2, random_state=42)
 
-# Reduzir a dimensionalidade dos conjuntos de treino e teste usando t-SNE
-X_train_tsne = tsne.fit_transform(X_train)
-X_test_tsne = tsne.fit_transform(X_test)
+# Criar classificadores k-NN para PCA e t-SNE
+knn_pca = KNeighborsClassifier(n_neighbors=3)
+knn_tsne = KNeighborsClassifier(n_neighbors=3)
 
-# Criar e treinar um classificador KNN usando os dados reduzidos pelo PCA
-knn_pca = KNeighborsClassifier(n_neighbors=5)
-knn_pca.fit(X_train_pca, y_train)
+# Treinar os classificadores usando os dados de treinamento
+knn_pca.fit(pca_train, y_train1)
+knn_tsne.fit(tsne_train, y_train)
 
-# Fazer previsões no conjunto de teste reduzido pelo PCA
-y_pred_pca = knn_pca.predict(X_test_pca)
+# Fazer previsões sobre os dados de teste
+y_pred_pca = knn_pca.predict(pca_test)
+y_pred_tsne = knn_tsne.predict(tsne_test)
 
-# Calcular a acurácia do classificador com os dados reduzidos pelo PCA
-accuracy_pca = accuracy_score(y_test, y_pred_pca)
-print("Acurácia usando PCA:", accuracy_pca)
+# Calcular métricas para o PCA
+print("classification_report para PCA:")
+print(classification_report(y_test, y_pred_pca))
+print("confusion_Matrix para PCA:")
+print(confusion_matrix(y_test, y_pred_pca))
 
-# Criar e treinar um classificador KNN usando os dados reduzidos pelo t-SNE
-knn_tsne = KNeighborsClassifier(n_neighbors=5)
-knn_tsne.fit(X_train_tsne, y_train)
+# Calcular métricas para t-SNE
+print("classification_report para t-SNE:")
+print(classification_report(y_test, y_pred_tsne))
+print("confusion_Matrix para t-SNE:")
+print(confusion_matrix(y_test, y_pred_tsne))
 
-# Fazer previsões no conjunto de teste reduzido pelo t-SNE
-y_pred_tsne = knn_tsne.predict(X_test_tsne)
-
-# Calcular a acurácia do classificador com os dados reduzidos pelo t-SNE
-accuracy_tsne = accuracy_score(y_test, y_pred_tsne)
-print("Acurácia usando t-SNE:", accuracy_tsne)
