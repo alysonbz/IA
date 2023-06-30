@@ -4,9 +4,6 @@ from src.utils import load_grains_splited_datadet
 #import linkage and dendogram
 from scipy.cluster.hierarchy import linkage, dendrogram
 
-
-
-
 X_train, samples, y_train, varieties = load_grains_splited_datadet()
 
 
