@@ -4,7 +4,6 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 from sklearn.pipeline import make_pipeline
-
 from src.utils import load_fish_dataset
 
 samples_df = load_fish_dataset()
@@ -16,7 +15,7 @@ species = samples_df['specie'].values
 scaler = StandardScaler()
 
 # Create KMeans instance: kmeans
-kmeans = KMeans(n_clusters=3)
+kmeans = KMeans(n_clusters=4)
 
 # Create pipeline: pipeline
 pipeline = make_pipeline(scaler, kmeans)
