@@ -50,7 +50,7 @@ dendrogram(mergings,
            leaf_rotation=90,
            leaf_font_size=6,
 )
-'''plt.show()'''
+plt.show()
 
 # Clusterização - Kmeans
 model = KMeans(n_clusters=6)
