@@ -4,7 +4,6 @@ import numpy as np
 from sklearn.preprocessing import normalize
 from scipy.cluster.hierarchy import linkage, dendrogram
 import matplotlib.pyplot as plt
-from scipy.cluster.hierarchy import fcluster
 from sklearn.cluster import KMeans
 
 #OBS
@@ -48,29 +47,6 @@ df = pd.DataFrame({'labels': labels, 'class_values': class_values})
 ct = pd.crosstab(df['labels'], df['class_values'])
 # Display ct
 print(ct)
-
-
-
-
-
-
-"""#Clusterização
-# Use fcluster to extract labels: labels
-labels = fcluster(mergings, 1.2, criterion='distance')
-# Create a DataFrame with labels and varieties as columns: df
-df = pd.DataFrame({'labels':labels, 'class_values': class_values})
-# Create crosstab: ct
-ct = pd.crosstab(df['labels'], df['class_values'])
-# Display ct
-print(ct)"""
-
-
-
-
-
-
-
-
 
 
 

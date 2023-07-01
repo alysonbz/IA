@@ -6,6 +6,7 @@ from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import LabelEncoder
 
+
 #PROCESSANDO
 derma = pd.read_csv('norma_novo.csv')
 samples = derma.drop(['class'],axis=1)

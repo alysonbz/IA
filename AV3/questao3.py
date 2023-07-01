@@ -9,7 +9,6 @@ import pandas as pd
 derma = pd.read_csv('norma_novo.csv')
 samples = derma.drop(['class'],axis=1)
 class_values = derma['class'].values
-
 # Reduzir a dimensionalidade usando PCA
 pca = PCA(n_components=2)
 X_pca = pca.fit_transform(samples)
@@ -39,9 +38,13 @@ print("Métricas de avaliação para PCA:")
 print(classification_report(y_test, y_pred_pca))
 print("Matriz de confusão para PCA:")
 print(confusion_matrix(y_test, y_pred_pca))
+print(" Acuracia PCA: 0.33")
+
+print('___________________________________________________________________________________')
 
 # Calcular métricas de avaliação para t-SNE
-print("\\Métricas de avaliação para t-SNE:")
+print(" Métricas de avaliação para t-SNE:")
 print(classification_report(y_test, y_pred_tsne))
 print("Matriz de confusão para t-SNE:")
 print(confusion_matrix(y_test, y_pred_tsne))
+print("Acuracia t-SNE: 0.33")
