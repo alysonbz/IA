@@ -1,27 +1,23 @@
-#bibliotecas
+#bibliotecas;
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.linear_model import Lasso
 from sklearn.preprocessing import LabelEncoder
 
-#importação do dataset
+#importação do dataset;
 dados = pd.read_csv('car_price_prediction.csv')
 
 
 
-
-
-
-
-# Selecionar apenas as colunas relevantes
+# Selecionar apenas as colunas relevantes;
 numeric_columns = ['Price', 'Levy', 'Prod. year', 'Engine volume', 'Mileage', 'Cylinders', 'Airbags']
 df = dados[numeric_columns]
 
-# Remover linhas com valores ausentes
+# Remover linhas com valores ausentes;
 df = df.dropna()
 
-
+#Matriz de correlação;
 correlation_matrix = df.corr()
 
 plt.figure(figsize=(10, 8))

@@ -1,10 +1,8 @@
 #importe as bibliotecas necessárias
 import pandas as pd
-import numpy as np
 from sklearn.preprocessing import normalize
 from scipy.cluster.hierarchy import linkage, dendrogram
 import matplotlib.pyplot as plt
-from scipy.cluster.hierarchy import fcluster
 from sklearn.cluster import KMeans
 
 
@@ -18,8 +16,6 @@ print(test_df.isna().sum()
 print(test_df.isnull().sum())
 '''
 
-
-
 # DENDOGRAMA
 test = test_df.drop(['Area'], axis=1)
 Area = test_df['Area'].values
@@ -31,6 +27,7 @@ normalized_test = normalize(test)
 
 # Calcular o linkage: mergings
 mergings = linkage(normalized_test, method='complete')
+
 # Plotar o dendrograma
 plt.figure(figsize=(10, 6))
 dendrogram(mergings,
