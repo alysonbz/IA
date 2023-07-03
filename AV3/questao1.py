@@ -1,16 +1,12 @@
 import pandas as pd
-from sklearn.decomposition import PCA
 from scipy.cluster.hierarchy import linkage, dendrogram, fcluster
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.cluster import KMeans
-from sklearn.preprocessing import normalize
 
 
 
-smoking1 = pd.read_csv("smoking.csv")
-smoking2 = int(len(smoking1)* 0.7)
-smoking = smoking1.sample(n=smoking2)
+smoking = pd.read_csv("smoking.csv")
 
 map_gender = {
     'F': 0,
@@ -25,46 +21,37 @@ print(smoking)
 print("\nVerificando se existe células vazias ou Nan")
 print(smoking.isna().sum())
 
-"""smoking_df = smoking.drop(['tartar','oral','ID','age','waist(cm)','weight(kg)','eyesight(left)','eyesight(right)',
-                          'hearing(left)','hearing(right)','systolic','triglyceride','HDL','LDL','hemoglobin','Urine protein',
-                           'serum creatinine','AST','ALT'], axis = 1)
-smoking_df.to_csv('smoking_df.csv')
-print(smoking_df)"""
-
 smoking_df = smoking.drop(['tartar','oral'], axis=1)
 smoking_df.to_csv('smoking_df.csv')
 print(smoking_df)
 
-"""def load_smoking_data():
+def load_smoking_data():
     X = smoking_df.drop(['smoking'], axis=1)
     y = smoking_df['smoking'].values
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.5, random_state=42, stratify=y)
     return X_train, X_test, y_train, y_test
 
-X_train, df, y_train, smoking = load_smoking_data()"""
+X_train, df, y_train, smoking_valor = load_smoking_data()
 
-X = smoking_df.drop(['smoking'], axis=1)
-y = smoking_df['smoking'].values
 
-normalized = normalize(X)
 
-mergings = linkage(normalized, method='complete')
+mergings = linkage(df, method='complete')
 
 
 # Plot the dendrogram, using varieties as labels
 dendrogram(mergings,
-           labels= y,
+           labels= smoking_valor,
            leaf_rotation=90,
            leaf_font_size=6,
 )
 plt.show()
 
-"""# Kmeans
-model = KMeans(n_clusters=7)
+# Kmeans
+model = KMeans(n_clusters=4)
 
 labels = model.fit_predict(df)
 
-dataf = pd.DataFrame({'labels': labels, 'smoking': smoking})
+dataf = pd.DataFrame({'labels': labels, 'smoking': smoking_valor})
 
 # Create crosstab: ct
 ct = pd.crosstab(dataf['labels'], dataf['smoking'])
@@ -73,12 +60,12 @@ ct = pd.crosstab(dataf['labels'], dataf['smoking'])
 print(ct)
 
 # Fcluster
-labels = fcluster(mergings, 10000, criterion='distance')
+labels1 = fcluster(mergings, 20000, criterion='distance')
 
-dataf2 = pd.DataFrame({'labels': labels, 'smoking':smoking})
+dataf2 = pd.DataFrame({'labels': labels1, 'smoking':smoking_valor})
 
 # Create crosstab: ct
-ct = pd.crosstab(dataf2['labels'], dataf2['smoking'])
+ct2 = pd.crosstab(dataf2['labels'], dataf2['smoking'])
 
 # Display ct
-print(ct)"""
+print(ct2)
