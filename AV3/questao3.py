@@ -8,7 +8,7 @@ import pandas as pd
 
 # Carregar o Dataset
 
-oleo_df = pd.read_csv(r"C:\Users\LAB1_00\Desktop\SAVIO\IA\AV3\oil_spill.csv")
+oleo_df = pd.read_csv(r"C:\Users\UFC\Downloads\savio\IA\AV3\oil_spill.csv")
 test = oleo_df.drop(['target'],axis=1)
 Area = oleo_df['target'].values
 
@@ -22,7 +22,7 @@ model = TSNE(n_components=2)
 Normalized_test = model.fit_transform(test)
 
 # Dividir os dados reduzidos em treinamento e teste
-pca_train, pca_test, y_train1, y_test1 = train_test_split(Normalized_test, Area, test_size=0.2, random_state=42)
+pca_train, pca_test, y_train1, y_test1 = train_test_split(scaled_test, Area, test_size=0.2, random_state=42)
 tsne_train, tsne_test, y_train, y_test = train_test_split(Normalized_test, Area, test_size=0.2, random_state=42)
 
 # Criar classificadores k-NN para PCA e t-SNE

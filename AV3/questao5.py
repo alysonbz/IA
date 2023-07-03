@@ -8,18 +8,18 @@ from sklearn.metrics import classification_report, confusion_matrix
 
 
 # Carregar o Dataset
-test_df = pd.read_csv(r"C:\Users\LAB1_00\Desktop\SAVIO\IA\AV3\oil_spill.csv")
+test_df = pd.read_csv(r"C:\Users\UFC\Downloads\savio\IA\AV3\oil_spill.csv")
 
 #DIvidindo
 test = test_df.drop(['target'],axis=1)
 Area = test_df['target'].values
-colunas_V = test[['f_1', 'f_2', 'f_3', 'f_4']]
+colunas_R = test[['f_1', 'f_2', 'f_3', 'f_4']]
 
 #PCA e TSNE
 pca = PCA(n_components=2)
-Column_pca = pca.fit_transform(colunas_V)
+Column_pca = pca.fit_transform(colunas_R)
 tsne = TSNE(n_components=2)
-Column_tsne = tsne.fit_transform(colunas_V)
+Column_tsne = tsne.fit_transform(colunas_R)
 
 
 # Dividir os dados reduzidos em treinamento e teste
@@ -59,7 +59,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 
 #usando o Train_test_split
-X_train2, X_test2, y_train2, y_test2 = train_test_split(colunas_V, Area, test_size=0.2, random_state=42)
+X_train2, X_test2, y_train2, y_test2 = train_test_split(colunas_R, Area, test_size=0.2, random_state=42)
 
 # Criar uma instância do classificador de Regressão Logística
 logreg = LogisticRegression()

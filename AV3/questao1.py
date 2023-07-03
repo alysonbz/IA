@@ -7,14 +7,8 @@ from sklearn.cluster import KMeans
 
 
 ## Carregar o dataset
-oleo_df = pd.read_csv(r"C:\Users\LAB1_00\Desktop\SAVIO\IA\AV3\oil_spill.csv")
+oleo_df = pd.read_csv(r"C:\Users\UFC\Downloads\savio\IA\AV3\oil_spill.csv")
 
-
-# Verificar se tem Na ou isnull
-'''
-print(oleo_df.isna().sum())
-print(oleo_df.isnull().sum())
-'''
 
 # DENDOGRAMA
 test = oleo_df.drop(['target'], axis=1)

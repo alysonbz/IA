@@ -9,7 +9,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 
 # Carregar o conjunto de dados
-oleo_df = pd.read_csv(r"C:\Users\LAB1_00\Desktop\SAVIO\IA\AV3\oil_spill.csv")
+oleo_df = pd.read_csv(r"C:\Users\UFC\Downloads\savio\IA\AV3\oil_spill.csv")
 test = oleo_df.drop(['target'],axis=1)
 Area = oleo_df['target'].values
 
