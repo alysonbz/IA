@@ -6,6 +6,9 @@ from sklearn.metrics import classification_report, confusion_matrix
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 
+# Definir semente para geração de números aleatórios
+random_seed = 42
+
 # Carregar o Dataset
 cogu_df = pd.read_csv('mushrooms.csv')
 
@@ -19,28 +22,30 @@ for coluna in cogu_df.columns:
         # Aplicar o LabelEncoder na coluna
         cogu_df[coluna] = label_encoder.fit_transform(cogu_df[coluna])
 
-cogu = cogu_df.drop(['class'],axis=1)
+cogu = cogu_df.drop(['class'], axis=1)
 clas = cogu_df['class'].values
 
+# Dividir os dados em treinamento e teste
+cogu_train, cogu_test, y_train, y_test = train_test_split(cogu, clas, test_size=0.2, random_state=random_seed)
 
 # Criar um PCA
-pca = PCA(n_components=2)
-scaled_test = pca.fit_transform(cogu)
+pca = PCA(n_components=2, random_state=random_seed)
+pca_train = pca.fit_transform(cogu_train)
+pca_test = pca.transform(cogu_test)
 
 # Reduzir a dimensionalidade usando t-SNE
-model = TSNE(n_components=2)
-Normalized_test = model.fit_transform(cogu)
+model = TSNE(n_components=2, random_state=random_seed)
+tsne_train = model.fit_transform(cogu_train)
 
-# Dividir os dados reduzidos em treinamento e teste
-pca_train, pca_test, y_train1, y_test1 = train_test_split(Normalized_test, clas, test_size=0.2, random_state=42)
-tsne_train, tsne_test, y_train, y_test = train_test_split(Normalized_test, clas, test_size=0.2, random_state=42)
+# Transformar os dados de teste usando as mesmas transformações do t-SNE nos dados de treinamento
+tsne_test = model.fit_transform(cogu_test)
 
 # Criar classificadores k-NN para PCA e t-SNE
 knn_pca = KNeighborsClassifier(n_neighbors=3)
 knn_tsne = KNeighborsClassifier(n_neighbors=3)
 
 # Treinar os classificadores usando os dados de treinamento
-knn_pca.fit(pca_train, y_train1)
+knn_pca.fit(pca_train, y_train)
 knn_tsne.fit(tsne_train, y_train)
 
 # Fazer previsões sobre os dados de teste

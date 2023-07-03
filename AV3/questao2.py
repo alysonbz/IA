@@ -46,7 +46,6 @@ plt.scatter(xs, ys, c=clas)
 plt.show()
 
 
-
 #PCA
 scaled_cogu = scaler.fit_transform(cogu)
 

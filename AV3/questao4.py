@@ -9,6 +9,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.preprocessing import LabelEncoder
 
+
 # Carregar o conjunto de dados
 cogu_df = pd.read_csv('mushrooms.csv')
 

@@ -83,10 +83,6 @@ logreg.fit(X_train2, y_train2)
 # Fazer previsões usando o conjunto de teste
 y_pred2 = logreg.predict(X_test2)
 
-# Criar a matriz de confusão
-confusion_matrix = confusion_matrix(y_test2, y_pred2)
-print('confusion_matrix:')
-print(confusion_matrix)
 
 # Gerar o relatório de classificação
 report = classification_report(y_test, y_pred2)
@@ -95,3 +91,8 @@ print(report)
 # Calcular a acurácia do modelo
 accuracy = accuracy_score(y_test, y_pred2)
 print("\nAcurácia da Regressão Logística:", accuracy)
+
+# Criar a matriz de confusão
+confusion_matrix = confusion_matrix(y_test2, y_pred2)
+print('confusion_matrix:')
+print(confusion_matrix)

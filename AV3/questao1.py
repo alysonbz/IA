@@ -57,8 +57,8 @@ model = KMeans(n_clusters=3)
 # Use fit_predict em model
 labels = model.fit_predict(cogu)
 # Create a DataFrame with labels and varieties as columns: df
-df = pd.DataFrame({'labels': labels, 'Area': clas})
+df = pd.DataFrame({'labels': labels, 'class': clas})
 # Create crosstab: ct
-ct = pd.crosstab(df['labels'], df['Area'])
+ct = pd.crosstab(df['labels'], df['class'])
 # Display ct
 print(ct)
