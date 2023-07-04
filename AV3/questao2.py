@@ -28,17 +28,18 @@ ys = tsne_features[:,1]
 plt.scatter(xs, ys, c=y)
 plt.show()
 
-#PCA
-scaled_samples = scaler.fit_transform(y)
-class_pca = lb.fit_transform(df['class'])
-# Create a PCA model with components in adequate number: pca
+# PCA
+scaled_samples = scaler.fit_transform(X)
+class_pca = lb.fit_transform(df['FireAlarm'])
+# Create a PCA model with 2 components
 pca = PCA(n_components=2)
 # Fit the PCA instance to the scaled samples
 pca.fit(scaled_samples)
 # Transform the scaled samples: pca_features
-tramsformed = pca.transform(X)
-#vizualize scatter plot with dimension reduced
-xs = tramsformed[:,0]
-ys = tramsformed[:,1]
+transformed = pca.transform(scaled_samples)
+# Visualize scatter plot with dimension reduced
+xs = transformed[:, 0]
+ys = transformed[:, 1]
 plt.scatter(xs, ys, c=class_pca)
+plt.title('PCA')
 plt.show()
