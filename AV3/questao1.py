@@ -1,72 +1,46 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import accuracy_score
-from scipy.cluster.hierarchy import dendrogram
-import numpy as np
+from sklearn.preprocessing import  Normalizer
 import matplotlib.pyplot as plt
-from scipy.cluster.hierarchy import dendrogram, linkage
 from sklearn.cluster import KMeans
 
-########## pré processamento
+########## LINK DO COLAB: https://colab.research.google.com/drive/1R96LXaCIBnbV_Of4jVFrtNbATqD3KB18?usp=sharing
 #lendo o dataset
-estado_do_olho = pd.read_csv(r"C:\Users\LAB1_00\Desktop\BIANCA\ia_novo\IA\AV3\archive (2)\EEG_Eye_State_Classification.csv")
-print(estado_do_olho)
+estado_do_olho0 = pd.read_csv(r"C:\Users\LAB1_00\Desktop\BIANCA\ia_novo\IA\AV3\archive (2)\EEG_Eye_State_Classification.csv")
+estado_do_olho = estado_do_olho0.sample(n=1498, replace=False)  # Com 10% do dataset
 
-#printando as classes
-print(estado_do_olho["eyeDetection"].value_counts())
+# Separando os atributos das classes
+X = estado_do_olho.drop('eyeDetection', axis=1)
+y = estado_do_olho['eyeDetection']
 
-#'1'indica o estado de olho fechado e '0'o estado de olho aberto.
+# Aplicando a normalização
+scaler = Normalizer()
+normal = scaler.fit_transform(X)
 
-#################### KNN pq é classificação e depois comparar
-# Dividir os dados em atributos (X) e rótulos (y)
-X = estado_do_olho.drop("eyeDetection", axis=1)
-y = estado_do_olho["eyeDetection"]
+# Criando um novo DataFrame com os dados normalizados
+estado_do_olho2 = pd.DataFrame(normal, columns=X.columns)
 
-# Dividir os dados em treinamento e teste
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# k-means
+k = 2
+kmeans = KMeans(n_clusters=k)
+kmeans.fit(estado_do_olho2)
 
-# Criar o modelo k-NN
-knn = KNeighborsClassifier(n_neighbors=5)
+labels = kmeans.labels_
 
-# Treinar o modelo
-knn.fit(X_train, y_train)
+# Centróides dos clusters
+centroids = kmeans.cluster_centers_
 
-# Fazer previsões no conjunto de teste
-y_pred = knn.predict(X_test)
-
-# Calcular a acurácia das previsões
-accuracy = accuracy_score(y_test, y_pred)
-print("Acurácia do k-NN:", accuracy)
-
-
-#### dendograma
-
-from scipy.cluster import hierarchy
-
-
-
-# Selecionar apenas as colunas relevantes para o dendrograma
-columns = ['P8', 'T8', 'FC6', 'F4', 'F8', 'AF4']
-
-# Calcular a matriz de distâncias
-distances = estado_do_olho[columns].values
-
-# Calcular o dendrograma
-Z = hierarchy.linkage(distances, method='ward')
-
-# Plotar o dendrograma
-plt.figure(figsize=(100, 40))
-plt.title('Dendrograma')
-plt.xlabel('Amostras')
-plt.ylabel('Distâncias')
-#dendrograma = hierarchy.dendrogram(Z, labels=estado_do_olho.index)
-
-# Exibir o dendrograma
-
-dendrogram(Z,
-           labels= estado_do_olho.index,
-           leaf_rotation=90,
-           leaf_font_size=8,
-)
+# Plotando os resultados
+plt.figure(figsize=(8, 6))
+plt.scatter(estado_do_olho2.iloc[:, 0], estado_do_olho2.iloc[:, 1], c=labels)
+plt.scatter(centroids[:, 0], centroids[:, 1], marker='X', color='red', s=100, label='Centroids')
+plt.title('K-Means Clustering')
+plt.xlabel('label X')
+plt.ylabel('label Y')
+plt.legend()
 plt.show()
+
+print("Etiquetas de cluster:")
+print(labels)
+
+print("\nCentróides:")
+print(centroids)
