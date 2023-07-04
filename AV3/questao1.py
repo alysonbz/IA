@@ -1,4 +1,5 @@
 import pandas as pd
+
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
@@ -37,6 +38,7 @@ df_atualizado = df_atualizado.dropna()
 
 X = df_atualizado.drop(['Class'], axis=1)
 y = df_atualizado["Class"].values
+
 scaler = StandardScaler()
 normalized = scaler.fit_transform(X)
 mergings = linkage(normalized, method='complete')

@@ -51,7 +51,7 @@ print("Métricas de avaliação para PCA:")
 print(classification_report(y_test1, y_pred_pca))
 print("Matriz de confusão para PCA:")
 print(confusion_matrix(y_test1, y_pred_pca))
-print(" \nAcuracia PCA: 0.64")
+print(" \nAcuracia PCA: 0.58")
 
 print('\n_____________________________')
 
@@ -60,7 +60,7 @@ print(" Métricas de avaliação para t-SNE:")
 print(classification_report(y_test, y_pred_tsne))
 print("Matriz de confusão para t-SNE:")
 print(confusion_matrix(y_test, y_pred_tsne))
-print(" \nAcuracia T-SNE: 0.67")
+print(" \nAcuracia T-SNE: 0.57")
 print('\n_____________________________')
 
 
