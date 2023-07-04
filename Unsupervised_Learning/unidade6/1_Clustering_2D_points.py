@@ -1,6 +1,8 @@
 from src.utils import load_points
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
+import pandas as pd
+import numpy as np
 
 
 points = load_points()
