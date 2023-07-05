@@ -36,7 +36,6 @@ MAVERICK ALEKYNE DE SOUSA RIBEIRO: https://www.kaggle.com/datasets/deepcontracto
 PAULO HENRIQUE SANTOS MARQUES: https://www.kaggle.com/datasets/debajyotipodder/co2-emission-by-vehicles
 
 RUAN RODRIGUES SOUSA: https://www.kaggle.com/datasets/fedesoriano/body-fat-prediction-dataset
-
 SHELDA DE SOUZA RAMOS: https://www.kaggle.com/datasets/equilibriumm/sleep-efficiency
 
 THAIS ANDRADE CASTRO: https://www.kaggle.com/datasets/prasertk/average-screen-time-and-usage-by-country

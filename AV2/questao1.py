@@ -5,7 +5,7 @@ from sklearn.linear_model import Lasso
 import matplotlib.pyplot as plt
 
 df = pd.read_csv(r'C:\Users\Guilherme\Documents\G\IA\AV2\Sample - Superstore.csv', encoding='latin-1')
-
+df = df.dropna()
 #Verifique qual atributo será o alvo para regressão no seu dataset
 print(df.columns)
 print(df.head())

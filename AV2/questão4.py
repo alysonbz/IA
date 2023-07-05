@@ -1,21 +1,48 @@
-### Questão 4
+# 1 - Utilizando análise de variância do PCA. Reduza a dimensão para realizar uma classificação utilizando somente as colunas de maior variância.
+# 2 - Aplique o mesmo método de classificação testado na questão 3.
+# Gere os mesmos números que analisam o desempenho do classificador e verifique se houve melhoria no resultado.
 
+# pacotes
 import pandas as pd
-import numpy as np
-from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import cross_val_score, KFold
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import normalize
+from sklearn.pipeline import make_pipeline
 
-df = pd.read_csv(r'C:\Users\Guilherme\Documents\G\IA\AV2\Sample - Superstore.csv', encoding='latin-1')
+# dados
+df = pd.read_csv(r'C:\Users\guilh\OneDrive\Documentos\GD\INCART 2-lead Arrhythmia Database.csv')
+df = df.dropna()
 
-#Utilizando kfold e cross-validation faça uma regressão linear utilizando os mesmos atributos definidos na questão 3.
-X = df['Sales'].values.reshape(-1, 1)
-y = df['Profit'].values
-kf = KFold(n_splits=6, shuffle=True, random_state=5)
-reg = LinearRegression()
-cv_scores = cross_val_score(reg, X, y, cv=kf)
-print("Scores:\n", cv_scores)
-print("Média: ", np.mean(cv_scores))
+encoder = LabelEncoder()
+df['type'] = encoder.fit_transform(df['type'])
 
-#Obs: Com os resultados obtidos na questão 3 e da questão 4 faça uma comparação entre os desempenhos.
-#Escolha o regressor adequado e informe o motivo da escolha. Discuta sobre as limitações e acertos encontrados.
- 
+sample_size = int(0.3 * len(df))
+random_sample = df.sample(n=sample_size, random_state=42)
+
+samples = random_sample.drop(['type', 'record'], axis=1).select_dtypes(exclude="object")
+types = random_sample['type'].values
+
+normalized = normalize(samples)
+
+# 1
+# Create scaler: scaler
+scaler = StandardScaler()
+
+# Create a PCA instance: pca
+pca = PCA()
+
+# Create pipeline: pipeline
+pipeline = make_pipeline(scaler, pca)
+
+# Fit the pipeline to 'samples'
+pipeline.fit(samples)
+
+# Plot the explained variances
+features = range(pca.n_components_)
+plt.bar(features, pca.explained_variance_)
+plt.xlabel('PCA feature')
+plt.ylabel('variância')
+plt.xticks(features)
+plt.show()

@@ -1,26 +1,27 @@
-
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 from src.utils import load_fish_dataset
-from sklearn.preprocessing import LabelEncoder
+import matplotlib.pyplot as plt
 
 samples = load_fish_dataset()
-samples = samples.drop(['specie'],axis=1)
+samples = samples.drop(['specie'], axis=1)
 scaler = StandardScaler()
 scaled_samples = scaler.fit_transform(samples)
 
+#Create a PCA model with components in adequate number: pca
+pca = PCA(n_components=2)
 
-# Create a PCA model with components in adequate number: pca
-pca = __
+#Fit the PCA instance to the scaled samples
+pca.fit(scaled_samples)
 
-# Fit the PCA instance to the scaled samples
-__
+#Transform the scaled samples: pca_features
+pca_features = pca.transform(scaled_samples)
 
-# Transform the scaled samples: pca_features
-__
+#Print the shape of pca_features
+print("Shape of PCA features:", pca_features.shape)
 
-# Print the shape of pca_features
-__
-
-#vizualize scatter plot with dimension reduced
-__
+#Visualize scatter plot with dimension reduced
+plt.scatter(pca_features[:, 0], pca_features[:, 1])
+plt.xlabel("PCA Feature 1")
+plt.ylabel("PCA Feature 2")
+plt.show()
