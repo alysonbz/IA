@@ -11,13 +11,13 @@ inertias = []
 
 for k in ks:
     # Create a KMeans instance with k clusters: model
-    model = KMeans(n_clusters=ks)
+    model = KMeans(n_clusters=)
 
     # Fit model to samples
     model.fit(samples)
 
     # Append the inertia to the list of inertias
-    inertias.append(k)
+    inertias.append()
 
 # Plot ks vs inertias
 plt.plot(ks, inertias, '-o')
