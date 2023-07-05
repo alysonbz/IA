@@ -28,5 +28,5 @@ classifier.fit(X_train, y_train)
 y_pred = classifier.predict(X_test)
 
 # Calcular a acurácia do classificador
-accuracy = (accuracy_score)(y_test,y_pred)
+accuracy = accuracy_score(y_test,y_pred)
 print("Acurácia do classificador:{:.2f}%".format(accuracy * 100))
