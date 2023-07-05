@@ -1,28 +1,31 @@
+import pandas as pd
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import classification_report, confusion_matrix
-import pandas as pd
+from sklearn.preprocessing import LabelEncoder
 
+# INICIALIZANDO
+label_encoder = LabelEncoder()
 
-# Carregar o Dataset
-test_df = pd.read_csv('test_dataset.csv')
-test = test_df.drop(['Area'],axis=1)
-Area = test_df['Area'].values
+# PROCESSANDO
+train_df = pd.read_csv('train_dataset.csv')
 
+train = train_df.drop(['Class'], axis=1)
+Class = label_encoder.fit_transform(train_df['Class'])
 
 # Criar um PCA
 pca = PCA(n_components=2)
-scaled_test = pca.fit_transform(test)
+scaled_train = pca.fit_transform(train)
 
 # Reduzir a dimensionalidade usando t-SNE
 model = TSNE(n_components=2)
-Normalized_test = model.fit_transform(test)
+normalized_train = model.fit_transform(train)
 
 # Dividir os dados reduzidos em treinamento e teste
-pca_train, pca_test, y_train1, y_test1 = train_test_split(scaled_test, Area, test_size=0.2, random_state=42)
-tsne_train, tsne_test, y_train, y_test = train_test_split(Normalized_test, Area, test_size=0.2, random_state=42)
+pca_train, pca_test, y_train1, y_test1 = train_test_split(scaled_train, Class, test_size=0.2, random_state=42)
+tsne_train, tsne_test, y_train, y_test = train_test_split(normalized_train, Class, test_size=0.2, random_state=42)
 
 # Criar classificadores k-NN para PCA e t-SNE
 knn_pca = KNeighborsClassifier(n_neighbors=3)
@@ -47,6 +50,3 @@ print("classification_report para t-SNE:")
 print(classification_report(y_test, y_pred_tsne))
 print("confusion_Matrix para t-SNE:")
 print(confusion_matrix(y_test, y_pred_tsne))
-
-
-
