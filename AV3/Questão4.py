@@ -5,7 +5,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 
 # Carregar o dataset....
-df = pd.read_csv(r"C:\Users\ruanr\OneDrive\Área de Trabalho\IA\mitbih_train.csv")
+df = pd.read_csv("mitbih_train.csv")
 
 # Separar os atributos (X) e os rótulos (y)
 X = df.iloc[:, :-1]
@@ -22,11 +22,11 @@ X_train, X_test, y_train, y_test = train_test_split(X_pca, y, test_size=0.2, ran
 classifier = LogisticRegression()
 
 # Treinar o classificador
-classifier.fit(X_train, y_
+classifier.fit(X_train, y_train)
 
 # Fazer previsões no conjunto de teste
 y_pred = classifier.predict(X_test)
 
 # Calcular a acurácia do classificador
-accuracy = accuracy_score(y_test, y_pred)
-print("Acurácia do classificador: {:.2f}%".format(accuracy * 100))
+accuracy = (accuracy_score)(y_test,y_pred)
+print("Acurácia do classificador:{:.2f}%".format(accuracy * 100))

@@ -4,8 +4,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
 # Carregar o dataset pré-processado
-df = pd.read_csv(r"C:\Users\ruanr\OneDrive\Área de Trabalho\IA\mitbih_train.csv")
-
+df = pd.read_csv("mitbih_train.csv")
 # Separar os atributos das classes
 X = df.iloc[:, :-1]
 y = df.iloc[:, -1]

@@ -4,7 +4,7 @@ from scipy.cluster.hierarchy import dendrogram, linkage
 from sklearn.preprocessing import StandardScaler
 
 # Carregar o dataset
-df1= pd.read_csv(r"mitbih_train.csv")
+df1= pd.read_csv("mitbiih_train.csv")
 
 print(df1.head())
 print(df1.info())

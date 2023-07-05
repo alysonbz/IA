@@ -4,7 +4,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
 # Carregar o dataset
-df = pd.read_csv(r"C:\Users\ruanr\OneDrive\Área de Trabalho\IA\mitbih_train.csv")
+df = pd.read_csv("mitbih_train.csv")
 
 # Pré-processamento dos dados
 X = df.drop('9.779411554336547852e-01', axis=1)

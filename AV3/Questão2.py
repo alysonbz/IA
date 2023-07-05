@@ -4,7 +4,7 @@ from sklearn.manifold import TSNE
 from sklearn.decomposition import PCA
 
 # Carregar o dataset
-df1 = pd.read_csv('mitbih_train.csv')
+df1 = pd.read_csv('mitbiih_train.csv')
 
 
 # Selecionar as colunas relevantes para a normalização
