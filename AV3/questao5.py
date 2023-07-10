@@ -1,70 +1,1 @@
-# Você descobriu qual a melhor forma de pré-processar os dados. Assim, utilizando a metodologia que proporcionou o melhor acerto do classficador faça agora uma comparação entre classicadores para que você também possa descobrir qual classificador mais adequado.
-# Utilize outra técnica de classificação com os mesmo dados, gere os numeros que quantificam o desempenho e faça uma comparação entre estes.
-# Conclua o relatótório  com auxílio de um fluxogragrama mostrando qual a metodologia completa para classificação dos dados do seu dataset.
-
-# pacotes
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder
-from sklearn.preprocessing import normalize
-from sklearn.manifold import TSNE
-from sklearn.decomposition import PCA
-from sklearn.neighbors import KNeighborsClassifier
-
-# dados
-df = pd.read_csv(r'C:\Users\guilh\OneDrive\Documentos\GD\INCART 2-lead Arrhythmia Database.csv')
-df = df.dropna()
-
-encoder = LabelEncoder()
-df['type'] = encoder.fit_transform(df['type'])
-
-sample_size = int(0.3 * len(df))
-random_sample = df.sample(n=sample_size, random_state=42)
-
-samples = random_sample.drop(['type', 'record'], axis=1).select_dtypes(exclude="object")
-types = random_sample['type'].values
-
-normalized = normalize(samples)
-
-# TSNE KNN
-# Instanciar o t-SNE
-tmodel = TSNE(n_components=2)
-
-# Aplicar o fit_transform
-tsne_features = tmodel.fit_transform(normalized)
-
-# Dividir os dados em treinamento e teste
-Xt_train, Xt_test, yt_train, yt_test = train_test_split(tsne_features, types, test_size=0.2, random_state=42)
-
-# Instanciar o classificador KNN com o número de vizinhos desejado
-knn = KNeighborsClassifier(n_neighbors=5)
-
-# Treinar o classificador utilizando os dados de treinamento
-knn.fit(Xt_train, yt_train)
-
-# Realizar a predição dos rótulos utilizando os dados de teste
-y_pred1 = knn.predict(Xt_test)
-
-# Avaliar a acurácia do modelo nos dados de teste
-accuracy = knn.score(Xt_test, yt_test)
-print("Acurácia t-SNE - KNN: {:.2f}%".format(accuracy * 100))
-
-
-# PCA KNN
-# Aplicar o PCA para reduzir a dimensionalidade para 2 componentes
-pmodel = PCA(n_components=2)
-pca_features = pmodel.fit_transform(normalized)
-
-# Dividir os dados em treinamento e teste
-Xp_train, Xp_test, yp_train, yp_test = train_test_split(pca_features, types, test_size=0.2, random_state=42)
-
-# Instanciar o modelo KNN com o número de vizinhos desejado
-knn = KNeighborsClassifier(n_neighbors=5)
-
-# Treinar o modelo com os dados de treinamento
-knn.fit(Xp_train, yp_train)
-
-# Avaliar a acurácia do modelo nos dados de teste
-accuracy = knn.score(Xp_test, yp_test)
-print("Acurácia PCA - KNN: {:.2f}%".format(accuracy * 100))
-
+# Você descobriu qual a melhor forma de pré-processar os dados. Assim, utilizando a metodologia que proporcionou o melhor acerto do classficador faça agora uma comparação entre classicadores para que você também possa descobrir qual classificador mais adequado.# Utilize outra técnica de classificação com os mesmo dados, gere os numeros que quantificam o desempenho e faça uma comparação entre estes.# Conclua o relatótório  com auxílio de um fluxogragrama mostrando qual a metodologia completa para classificação dos dados do seu dataset.# pacotesimport pandas as pdfrom sklearn.model_selection import train_test_splitfrom sklearn.preprocessing import LabelEncoderfrom sklearn.preprocessing import normalizefrom sklearn.manifold import TSNEfrom sklearn.decomposition import PCAfrom sklearn.neighbors import KNeighborsClassifier# dadosdf = pd.read_csv(r'C:\Users\guilh\OneDrive\Documentos\GD\INCART 2-lead Arrhythmia Database.csv')df = df.dropna()encoder = LabelEncoder()df['type'] = encoder.fit_transform(df['type'])sample_size = int(0.3 * len(df))random_sample = df.sample(n=sample_size, random_state=42)samples = random_sample.drop(['type', 'record'], axis=1).select_dtypes(exclude="object")types = random_sample['type'].valuesnormalized = normalize(samples)# TSNE KNN# Instanciar o t-SNEtmodel = TSNE(n_components=2)# Aplicar o fit_transformtsne_features = tmodel.fit_transform(normalized)# Dividir os dados em treinamento e testeXt_train, Xt_test, yt_train, yt_test = train_test_split(tsne_features, types, test_size=0.2, random_state=42)# Instanciar o classificador KNN com o número de vizinhos desejadoknn = KNeighborsClassifier(n_neighbors=5)# Treinar o classificador utilizando os dados de treinamentoknn.fit(Xt_train, yt_train)# Realizar a predição dos rótulos utilizando os dados de testey_pred1 = knn.predict(Xt_test)# Avaliar a acurácia do modelo nos dados de testeaccuracy = knn.score(Xt_test, yt_test)print("Acurácia t-SNE - KNN: {:.2f}%".format(accuracy * 100))# PCA KNN# Aplicar o PCA para reduzir a dimensionalidade para 2 componentespmodel = PCA(n_components=2)pca_features = pmodel.fit_transform(normalized)# Dividir os dados em treinamento e testeXp_train, Xp_test, yp_train, yp_test = train_test_split(pca_features, types, test_size=0.2, random_state=42)# Instanciar o modelo KNN com o número de vizinhos desejadoknn = KNeighborsClassifier(n_neighbors=5)# Treinar o modelo com os dados de treinamentoknn.fit(Xp_train, yp_train)# Avaliar a acurácia do modelo nos dados de testeaccuracy = knn.score(Xp_test, yp_test)print("Acurácia PCA - KNN: {:.2f}%".format(accuracy * 100))
