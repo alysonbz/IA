@@ -9,7 +9,7 @@ https://docs.google.com/document/d/1hIwPx9W-k3LnXRJrkWYTsbrtx4NfP88_/edit?usp=sh
 
 ##  Dataset
 
-https://www.kaggle.com/datasets/utkarshsaxenadn/flower-classification-5-classes-roselilyetc
+https://www.kaggle.com/datasets/sujithmandala/obesity-classification-dataset
 
 ### Questão 1
 
