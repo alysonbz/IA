@@ -76,7 +76,7 @@ Neste exercicio vc deve buscar saber a melhor parametrização do knn.
 
 ### Questão 5
 
-```questao4.py```
+```questao5.py```
 
 Neste exercicio vc deve realizar uma redução de dimensão com PCA. Com base na análise de variância, reduza a dimensão
 e compare o resutado do KNN antes e depois da redução de dimensão.
