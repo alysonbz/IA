@@ -1,15 +1,13 @@
 from src.utils import load_volunteer_dataset
+import pandas as pd
 
 volunteer = load_volunteer_dataset()
 
-# Print os primeiros elementos da coluna hits
-___
+print(volunteer['hits'].head())
 
-# Print as caracteristicas da coluna hits
-__
+print(volunteer['hits'].dtype())
 
-# Converta a coluna hits para o tipo int
-___
 
-# Print as caracteristicas da coluna hits novamente
----
+volunteer['hits'] = volunteer['hits'].astype('int32')
+
+print(volunteer['hits'].head())
