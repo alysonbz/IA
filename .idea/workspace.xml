@@ -16,26 +16,26 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2eXocWQvbe3bjLgLvmoxYnKTAjN" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.0_class_anotation.executor": "Run",
-    "Python.1_pre_processing.executor": "Run",
-    "Python.2_data_types.executor": "Run",
-    "Python.3_training_and_test_sets.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/ALUNO/Desktop/IA_JoaoPaulo"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.0_class_anotation.executor&quot;: &quot;Run&quot;,
+    &quot;Python.1_pre_processing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.2_data_types.executor&quot;: &quot;Run&quot;,
+    &quot;Python.3_training_and_test_sets.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ALUNO/Desktop/IA_JoaoPaulo&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Python.3_training_and_test_sets">
     <configuration name="1_pre_processing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="IA_JoaoPaulo" />
@@ -90,7 +90,6 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.11" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Pre-processing/Unidade1" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
