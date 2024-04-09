@@ -10,7 +10,7 @@ volunteer_new = volunteer.drop(['Latitude', 'Longitude'], axis=1)
 volunteer = volunteer_new.dropna(subset=['category_desc'])
 
 # Mostre o balanceamento das classes em 'category_desc'
-print(volunteer['category_desc'].value_counts('\n','\n'))
+print(volunteer['category_desc'].value_counts(),'\n','\n')
 
 # Crie um DataFrame com todas as colunas, com exceção de ``category_desc``
 X = volunteer.drop('category_desc', axis=1)

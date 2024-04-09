@@ -6,7 +6,7 @@ volunteer = load_volunteer_dataset()
 print("Dimensão do dataset volunteer:", volunteer.shape)
 
 # Mostre os tipos de dados existentes no dataset
-print("Tipos de dados existentes no dataset:", volunteer.info)
+print(volunteer.info())
 
 # Mostre quantos elementos do dataset estão faltando na coluna locality
 print(volunteer['locality'].isnull().sum())
