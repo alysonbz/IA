@@ -5,8 +5,9 @@ from sklearn.model_selection import train_test_split
 wine = load_wine_dataset()
 
 print(wine)
+print()
 
-X = wine.drop(['Quality'],axis=1)
+X = wine.drop(['Quality'], axis=1)
 
 y = wine['Quality'].values
 
@@ -15,8 +16,13 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, random_sta
 
 knn = KNeighborsClassifier()
 
-# Aplique a função fit do knn
-knn.fit(X_train, y_train) # Calcular distâncias
+# Aplique a função fit do knn para calcular distâncias
+knn.fit(X_train, y_train)
+
+# Printar qntd de elementos NaN de 'locality' ( Não seria 'Quality'? )
+print("Quantidade de NaN em Quality:")
+print(wine['Quality'].isna().sum())
+print()
 
 # mostre o acerto do algoritmo
 print(knn.score(X_test, y_test)) # Calcular distâncias de cada ponto de teste
