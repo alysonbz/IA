@@ -9,7 +9,7 @@ Esse documento exibe as descrições das questões a serem resolvidas em sala
 
 ```1_pre_processing.py```
 
-#### Pré-processamento
+#### Pré-processamento 
 
 Neste primeiro exercício você deve realizar manipulação em um dataset com a biblioteca pandas.
 
