@@ -1,6 +1,7 @@
 from src.utils import load_wine_dataset
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
+#teste
 
 wine = load_wine_dataset()
 
