@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abbd6f94-cb6a-42b3-bf09-dbe9719c828e" name="Changes" comment="" />
+    <list default="true" id="abbd6f94-cb6a-42b3-bf09-dbe9719c828e" name="Changes" comment="Novos commits">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Supervised_Learning/unidade3/1_k-Nearest-Neighbors-Fit.py" beforeDir="false" afterPath="$PROJECT_DIR$/Supervised_Learning/unidade3/1_k-Nearest-Neighbors-Fit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Supervised_Learning/unidade3/2_evaluate_knn.py" beforeDir="false" afterPath="$PROJECT_DIR$/Supervised_Learning/unidade3/2_evaluate_knn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Supervised_Learning/unidade3/3_underfiting_overfiting.py" beforeDir="false" afterPath="$PROJECT_DIR$/Supervised_Learning/unidade3/3_underfiting_overfiting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +18,20 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;jparxd&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="8208447a-9ab1-4b74-aa15-ea1ddf93aa5b" />
+        <option name="url" value="https://github.com/alysonbz/IA.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -24,21 +44,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.0_class_anotation.executor&quot;: &quot;Run&quot;,
-    &quot;Python.1_pre_processing.executor&quot;: &quot;Run&quot;,
-    &quot;Python.2_data_types.executor&quot;: &quot;Run&quot;,
-    &quot;Python.3_training_and_test_sets.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ALUNO/Desktop/IA_JoaoPaulo&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.0_class_anotation.executor": "Run",
+    "Python.1_k-Nearest-Neighbors-Fit.executor": "Run",
+    "Python.1_pre_processing.executor": "Run",
+    "Python.2_data_types.executor": "Run",
+    "Python.2_evaluate_knn.executor": "Run",
+    "Python.3_training_and_test_sets.executor": "Run",
+    "Python.3_underfiting_overfiting.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "JoaoPaulo",
+    "last_opened_file_path": "C:/Users/ALUNO/Desktop/IA_JoaoPaulo"
   }
-}</component>
-  <component name="RunManager" selected="Python.3_training_and_test_sets">
-    <configuration name="1_pre_processing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="IA_JoaoPaulo" />
+}]]></component>
+  <component name="RunManager" selected="Python.3_underfiting_overfiting">
+    <configuration name="1_k-Nearest-Neighbors-Fit" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="JoaoPaulo_IA" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -46,11 +69,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Pre-processing/Unidade1" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Supervised_Learning/unidade3" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Pre-processing/Unidade1/1_pre_processing.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Supervised_Learning/unidade3/1_k-Nearest-Neighbors-Fit.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -81,6 +104,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="2_evaluate_knn" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="JoaoPaulo_IA" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Supervised_Learning/unidade3" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Supervised_Learning/unidade3/2_evaluate_knn.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="3_training_and_test_sets" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="IA_JoaoPaulo" />
       <option name="ENV_FILES" value="" />
@@ -103,11 +148,35 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="3_underfiting_overfiting" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="JoaoPaulo_IA" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Supervised_Learning/unidade3" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Supervised_Learning/unidade3/3_underfiting_overfiting.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.3_underfiting_overfiting" />
+        <item itemvalue="Python.2_evaluate_knn" />
+        <item itemvalue="Python.1_k-Nearest-Neighbors-Fit" />
         <item itemvalue="Python.3_training_and_test_sets" />
         <item itemvalue="Python.2_data_types" />
-        <item itemvalue="Python.1_pre_processing" />
       </list>
     </recent_temporary>
   </component>
@@ -127,6 +196,19 @@
       <option name="presentableId" value="Default" />
       <updated>1712060364707</updated>
     </task>
+    <task id="LOCAL-00001" summary="Novos commits">
+      <option name="closed" value="true" />
+      <created>1712605085777</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1712605085777</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Novos commits" />
+    <option name="LAST_COMMIT_MESSAGE" value="Novos commits" />
   </component>
 </project>
