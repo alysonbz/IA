@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="abbd6f94-cb6a-42b3-bf09-dbe9719c828e" name="Changes" comment="Novos commits">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Supervised_Learning/unidade3/1_k-Nearest-Neighbors-Fit.py" beforeDir="false" afterPath="$PROJECT_DIR$/Supervised_Learning/unidade3/1_k-Nearest-Neighbors-Fit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Supervised_Learning/unidade3/2_evaluate_knn.py" beforeDir="false" afterPath="$PROJECT_DIR$/Supervised_Learning/unidade3/2_evaluate_knn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Supervised_Learning/unidade3/3_underfiting_overfiting.py" beforeDir="false" afterPath="$PROJECT_DIR$/Supervised_Learning/unidade3/3_underfiting_overfiting.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pre-processing/Unidade2/Atividade_de_casa.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pre-processing/Unidade2/Atividade_de_casa.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,13 +50,14 @@
     "Python.2_evaluate_knn.executor": "Run",
     "Python.3_training_and_test_sets.executor": "Run",
     "Python.3_underfiting_overfiting.executor": "Run",
+    "Python.Atividade_de_casa.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "JoaoPaulo",
     "last_opened_file_path": "C:/Users/ALUNO/Desktop/IA_JoaoPaulo"
   }
 }]]></component>
-  <component name="RunManager" selected="Python.3_underfiting_overfiting">
+  <component name="RunManager" selected="Python.Atividade_de_casa">
     <configuration name="1_k-Nearest-Neighbors-Fit" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="JoaoPaulo_IA" />
       <option name="ENV_FILES" value="" />
@@ -74,28 +72,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Supervised_Learning/unidade3/1_k-Nearest-Neighbors-Fit.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="2_data_types" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="IA_JoaoPaulo" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Pre-processing/Unidade1" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Pre-processing/Unidade1/2_data_types.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -170,13 +146,35 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Atividade_de_casa" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="JoaoPaulo_IA" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Pre-processing/Unidade2" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Pre-processing/Unidade2/Atividade_de_casa.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Atividade_de_casa" />
         <item itemvalue="Python.3_underfiting_overfiting" />
         <item itemvalue="Python.2_evaluate_knn" />
         <item itemvalue="Python.1_k-Nearest-Neighbors-Fit" />
         <item itemvalue="Python.3_training_and_test_sets" />
-        <item itemvalue="Python.2_data_types" />
       </list>
     </recent_temporary>
   </component>
