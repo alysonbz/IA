@@ -118,7 +118,6 @@ def log_reg_diabetes():
 
     return y_pred_probs, y_test, y_pred
 
-
 def load_points():
     return np.array([[0.06544649, -0.76866376],
                      [-1.52901547, -0.42953079],
