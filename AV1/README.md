@@ -9,78 +9,43 @@ https://docs.google.com/document/d/1hIwPx9W-k3LnXRJrkWYTsbrtx4NfP88_/edit?usp=sh
 
 ##  Aluno - Dataset
 
-ANA LIVIA SOUSA DAVI TAVEIRA : https://www.kaggle.com/datasets/erdemtaha/cancer-data
+ALLAN MICHEL ROCHA DOS SANTOS: https://www.kaggle.com/datasets/erdemtaha/cancer-data
 
 [Cancer_Data.csv](dataset%2FCancer_Data.csv)
 
-CARLOS EDUARDO TELES ALENCAR: https://www.kaggle.com/datasets/ahsan81/hotel-reservations-classification-dataset
-
-[Hotel Reservations.csv](dataset%2FHotel%20Reservations.csv)
-
-DAVI GONCALVES RAMOS DE MESQUITA: https://www.kaggle.com/datasets/rashikrahmanpritom/heart-attack-analysis-prediction-dataset
+FRANCISCO SAMUEL SALES PINHEIRO PINTO: https://www.kaggle.com/datasets/rashikrahmanpritom/heart-attack-analysis-prediction-dataset
 
 [heart.csv](dataset%2Fheart.csv)
 
-EMILY CAMELO MENDONCA: https://www.kaggle.com/datasets/elakiricoder/gender-classification-dataset
+ANTONIO FILIPE SOUSA SILVA: https://www.kaggle.com/datasets/elakiricoder/gender-classification-dataset
 
 [gender_classification_v7.csv](dataset%2Fgender_classification_v7.csv)
 
-ERICK RAMOS COUTINHO: https://www.kaggle.com/datasets/jillanisofttech/brain-tumor
-
-[data_brain_tumor.csv](dataset%2Fdata_brain_tumor.csv)
-
-
-ERYKA CARVALHO DA SILVA:https://www.kaggle.com/datasets/teejmahal20/airline-passenger-satisfaction
-
-[airline_satisfaction.csv](dataset%2Fairline_satisfaction.csv)
-
-
-GIOVANNA DIAS CASTRO DE OLIVEIRA:https://www.kaggle.com/datasets/nextbigwhat/dataset-1?select=dataset_1.csv
-
-[dataset__binary.csv](dataset%2Fdataset__binary.csv)
-
-LARISSA VITORIA VASCONCELOS SOUSA: https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset
+GUILHERME PINHEIRO SERAFIM: https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset
 
 [healthcare-dataset-stroke-data.csv](dataset%2Fhealthcare-dataset-stroke-data.csv)
 
-LUCIANA SOUSA MARTINS: https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction
-
-[heart_desease.csv](dataset%2Fheart_desease.csv)
-
-LUIS SAVIO GOMES ROSA: https://www.kaggle.com/datasets/rtatman/chocolate-bar-ratings
+JOAO PAULO ROCHA MATOS: https://www.kaggle.com/datasets/rtatman/chocolate-bar-ratings
 
 [flavors_of_cacao.csv](dataset%2Fflavors_of_cacao.csv)
 
-MARIA BIANCA SOUSA COSTA: https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset
-
-[diabetes_012_health_indicators_BRFSS2015.csv](dataset%2Fdiabetes_012_health_indicators_BRFSS2015.csv)
-
-MAVERICK ALEKYNE DE SOUSA RIBEIRO:https://www.kaggle.com/datasets/yasserh/breast-cancer-dataset
-
-[breast-cancer.csv](dataset%2Fbreast-cancer.csv)
-
-PAULO HENRIQUE SANTOS MARQUES: https://www.kaggle.com/datasets/prathamtripathi/drug-classification
+JOAO LUIS FEITOSA LEITE: https://www.kaggle.com/datasets/prathamtripathi/drug-classification
 
 [drug200.csv](dataset%2Fdrug200.csv)
 
-
-RUAN RODRIGUES SOUSA: https://www.kaggle.com/datasets/zaraavagyan/weathercsv
-
-[weather.csv](dataset%2Fweather.csv)
-
-SHELDA DE SOUZA RAMOS: https://www.kaggle.com/datasets/whenamancodes/predict-diabities
+JURANDIR CAVALCANTI GOMES NETO: https://www.kaggle.com/datasets/whenamancodes/predict-diabities
 
 [diabetes.csv](dataset%2Fdiabetes.csv)
 
-THAIS ANDRADE CASTRO: https://www.kaggle.com/datasets/fedesoriano/stellar-classification-dataset-sdss17
+PEDRO JONNATHAN MATOS DE SOUSA: https://www.kaggle.com/datasets/fedesoriano/stellar-classification-dataset-sdss17
 
 [star_classification.csv](dataset%2Fstar_classification.csv)
 
-VICTOR MATHEUS ARAUJO OLIVEIRA: https://www.kaggle.com/datasets/praveengovi/credit-risk-classification-dataset?select=customer_data.csv
+WANDERSON WENDEL DE SOUSA LOPES: https://www.kaggle.com/datasets/praveengovi/credit-risk-classification-dataset?select=customer_data.csv
 
 [customer_data.csv](dataset%2Fcustomer_data.csv)
 
-WILLIAN KELVIN BORGES DA COSTA: https://www.kaggle.com/datasets/mssmartypants/water-quality
+VITORIA NASCIMENTO DE PAULA: https://www.kaggle.com/datasets/mssmartypants/water-quality
 
 [waterQuality1.csv](dataset%2FwaterQuality1.csv)
 
@@ -109,14 +74,19 @@ Neste primeiro exercício você deve realizar manipulação em um dataset com a 
 
 ```questao2.py```
 
-neste segundo exercício você deve realizar uma classificação utilizando KNN.
+neste segundo exercício você deve realizar uma classificação utilizando KNN implementado de forma manual.
 
 #### Instruções 
 
 1) Importe as bibliotecas necessárias.
 2) Carregue o dataset. Se houver o dataset atualizado, carregue o atualizado.
 3) Sem normalizar o conjunto de dados divida o dataset em treino e teste.
-4) Implemente o Knn exbindo sua acurácia nos dados de teste e mantenha sua parametrização default.
+4) Implemente o Knn exbindo sua acurácia nos dados de teste
+5) Compare as acurácias considerando que 4 possíveis cálculos de distancias diferentes:
+   a) distância de mahalanobis.
+   b) distancia de chebyshev
+   c) distância de manhattan
+   d) distancia euclidiana
 
 
 ### Questão 3
