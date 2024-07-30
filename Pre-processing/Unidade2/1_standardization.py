@@ -19,10 +19,9 @@ knn = KNeighborsClassifier()
 # Aplique a função fit do knn para calcular distâncias
 knn.fit(X_train, y_train)
 
-# Printar qntd de elementos NaN de 'locality' ( Não seria 'Quality'? )
-print("Quantidade de NaN em Quality:")
-print(wine['Quality'].isna().sum())
-print()
-
+pred = knn.predict(X_test)
 # mostre o acerto do algoritmo
 print(knn.score(X_test, y_test)) # Calcular distâncias de cada ponto de teste
+
+print("knn result: ", pred, "\n")
+print("label: ", y_test)

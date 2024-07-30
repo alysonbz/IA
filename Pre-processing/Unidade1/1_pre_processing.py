@@ -27,10 +27,11 @@ print("\n--- APÓS REMOVER AS COLUNAS ---\n", volunteer_cols.columns)
 print()
 
 # Exclua as linhas com valores null da coluna category_desc de volunteer_cols
-volunteer_cols.dropna(subset=["category_desc"], inplace=True)
+volunteer_cols = volunteer_cols.dropna(subset=["category_desc"])
 print(volunteer_cols.isna().sum())
 print()
 
 # Print o shape do subset
 print(volunteer.shape)
-print("Linhas:", volunteer.shape[0], "\nColunas:", volunteer.shape[-1])
+print("Linhas:", volunteer.shape[0],
+      "\nColunas:", volunteer.shape[1])
