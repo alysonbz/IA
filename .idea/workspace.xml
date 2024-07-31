@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abbd6f94-cb6a-42b3-bf09-dbe9719c828e" name="Changes" comment="Novos commits">
-      <change beforePath="$PROJECT_DIR$/.idea/IA.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/IA.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="abbd6f94-cb6a-42b3-bf09-dbe9719c828e" name="Changes" comment="Novos commits" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,25 +38,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.0_class_anotation.executor&quot;: &quot;Run&quot;,
-    &quot;Python.1_k-Nearest-Neighbors-Fit.executor&quot;: &quot;Run&quot;,
-    &quot;Python.1_pre_processing.executor&quot;: &quot;Run&quot;,
-    &quot;Python.1_standardization.executor&quot;: &quot;Run&quot;,
-    &quot;Python.2_data_types.executor&quot;: &quot;Run&quot;,
-    &quot;Python.2_evaluate_knn.executor&quot;: &quot;Run&quot;,
-    &quot;Python.3_Scaling_data.executor&quot;: &quot;Run&quot;,
-    &quot;Python.3_training_and_test_sets.executor&quot;: &quot;Run&quot;,
-    &quot;Python.3_underfiting_overfiting.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Atividade_de_casa.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Questao01.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;JoaoPaulo&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ALUNO/Desktop/IA_JoaoPaulo&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.0_class_anotation.executor": "Run",
+    "Python.1_k-Nearest-Neighbors-Fit.executor": "Run",
+    "Python.1_pre_processing.executor": "Run",
+    "Python.1_standardization.executor": "Run",
+    "Python.2_data_types.executor": "Run",
+    "Python.2_evaluate_knn.executor": "Run",
+    "Python.3_Scaling_data.executor": "Run",
+    "Python.3_training_and_test_sets.executor": "Run",
+    "Python.3_underfiting_overfiting.executor": "Run",
+    "Python.Atividade_de_casa.executor": "Run",
+    "Python.Questao01.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "JoaoPaulo",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/ALUNO/Desktop/IA_JoaoPaulo"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Python.Atividade_de_casa">
     <configuration name="1_standardization" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="IA" />
