@@ -58,8 +58,8 @@
     "last_opened_file_path": "C:/Users/ALUNO/Desktop/IA_JoaoPaulo"
   }
 }]]></component>
-  <component name="RunManager" selected="Python.Atividade_de_casa">
-    <configuration name="1_standardization" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.3_underfiting_overfiting">
+    <configuration name="2_data_types" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="IA" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -68,11 +68,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Pre-processing/Unidade2" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Pre-processing/Unidade1" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Pre-processing/Unidade2/1_standardization.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Pre-processing/Unidade1/2_data_types.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -172,11 +172,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Atividade_de_casa" />
         <item itemvalue="Python.3_underfiting_overfiting" />
         <item itemvalue="Python.3_Scaling_data" />
+        <item itemvalue="Python.Atividade_de_casa" />
+        <item itemvalue="Python.2_data_types" />
         <item itemvalue="Python.Questao01" />
-        <item itemvalue="Python.1_standardization" />
       </list>
     </recent_temporary>
   </component>
