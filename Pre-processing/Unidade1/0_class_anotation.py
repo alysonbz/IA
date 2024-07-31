@@ -26,6 +26,7 @@ print(df1)
 
 #
 #print(df1.drop(["A","B"], axis= 1))
+
 # === Se não é numero ===
 #print(df1.isna())
 
@@ -37,12 +38,3 @@ print(df1)
 
 # === pq tira além do 2 o 3?
 print(df1.dropna(thresh=2))
-
-
-
-
-
-
-
-
-

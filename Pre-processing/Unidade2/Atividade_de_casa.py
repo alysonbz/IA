@@ -1,4 +1,4 @@
-
+import math
 
 lista=[]
 with open('iris.data', 'r') as f:
@@ -39,7 +39,7 @@ for lis in lista:
     else:
         teste.append(lis)
 
-import math
+
 def dist_euclidiana(v1,v2):
     dim, soma = len(v1), 0
     for i in range(dim -1):

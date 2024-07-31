@@ -9,7 +9,7 @@ import pandas as pd
 
 wine = load_wine_dataset()
 
-# Inicializer o scale
+print('=== 1 - Inicializer o scale')
 scaler = StandardScaler()
 
 # exclua do dataset a coluna Quality

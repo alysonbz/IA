@@ -4,7 +4,9 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.linear_model import LinearRegression , LogisticRegression
 from sklearn.model_selection import train_test_split
 
-
+#PROVA AV1
+def load_cancer_dataset():
+    return pd.read_csv('../AV1/dataset/Cancer_Data.csv')
 
 def load_volunteer_dataset():
     return pd.read_csv('../dataset/opportunities.csv')
@@ -106,7 +108,6 @@ def log_reg_diabetes():
     y_pred = logreg.predict(X_test)
 
     return y_pred_probs , y_test, y_pred
-
 
 def load_points():
     return np.array([[0.06544649, -0.76866376],
