@@ -52,5 +52,3 @@ plt.axvline(x=best_k, color='r', linestyle='--', label=f'Melhor k = {best_k}')
 plt.legend()
 plt.grid(True)
 plt.show()
-
-#Testando
