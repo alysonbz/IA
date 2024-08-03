@@ -1,65 +1,108 @@
-# Importar as bibliotecas necessárias
-import pandas as pd
+from collections import Counter
 import numpy as np
+import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
-from scipy.spatial import distance
 
-# Carregar o dataset
-file_path = 'dataset/flavors_of_cacao_ajustado.csv'
-df = pd.read_csv(file_path)
+# 2) Carregue o dataset. Se houver o dataset atualizado, carregue o atualizado.
+dataset_path = 'dataset/flavors_of_cacao_ajustado.csv'  # Atualize com o caminho correto
+data = pd.read_csv(dataset_path)
 
-# Separar o dataset em características e rótulo
-X = df.drop(columns=['Rating'])
-y = df['Rating']
+# Supondo que as colunas 'feature1', 'feature2', ..., 'featureN' são as características e 'Rating' é o rótulo
+X = data.drop('Rating', axis=1)
+y = data['Rating']
 
 # Converter a coluna de rótulos em valores numéricos
 y = y.astype('category').cat.codes
 
-# Converter todas as colunas de X para valores numéricos
+# Converter todas as colunas categóricas de X para valores numéricos
 X = X.apply(lambda col: col.astype('category').cat.codes if col.dtype == 'object' else col)
 
-# Dividir o dataset em treino e teste
+# Transformar X e y em arrays numpy
+X = X.values
+y = y.values
+
+# 3) Sem normalizar o conjunto de dados, divida o dataset em treino e teste.
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
 
-# Função para predição KNN
-def knn_predict(X_train, y_train, X_test, k, distance_metric):
-    y_pred = []
-    for test_point in X_test.values:
-        distances = []
-        for i, train_point in enumerate(X_train.values):
-            if distance_metric == 'euclidean':
-                dist = np.linalg.norm(test_point - train_point)
-            elif distance_metric == 'manhattan':
-                dist = np.sum(np.abs(test_point - train_point))
-            elif distance_metric == 'chebyshev':
-                dist = np.max(np.abs(test_point - train_point))
-            elif distance_metric == 'mahalanobis':
-                vi = np.linalg.inv(np.cov(X_train.T))
-                dist = distance.mahalanobis(test_point, train_point, vi)
-            else:
-                raise ValueError("Métrica de distância não suportada")
-            distances.append((dist, y_train.iloc[i]))
-        distances.sort(key=lambda x: x[0])
-        neighbors = distances[:k]
-        neighbor_labels = [label for _, label in neighbors]
-        most_common = max(set(neighbor_labels), key=neighbor_labels.count)
-        y_pred.append(most_common)
-    return np.array(y_pred)
+# Função para calcular a matriz de covariância inversa, necessária para a distância de Mahalanobis
+def inverse_covariance_matrix(X):
+    cov_matrix = np.cov(X, rowvar=False)
+    inv_cov_matrix = np.linalg.inv(cov_matrix)
+    return inv_cov_matrix
 
 
-# Predições e cálculos de acurácia para diferentes métricas de distância
+# Função para calcular a distância de Mahalanobis manualmente
+def mahalanobis_distance(u, v, inv_cov_matrix):
+    delta = u - v
+    m_dist = np.sqrt(np.dot(np.dot(delta, inv_cov_matrix), delta.T))
+    return m_dist
+
+
+# Função para calcular a distância entre dois pontos com base no tipo de distância especificado
+def calculate_distance(u, v, distance_type, inv_cov_matrix=None):
+    if distance_type == 'euclidean':
+        return np.linalg.norm(u - v)
+    elif distance_type == 'chebyshev':
+        return np.max(np.abs(u - v))
+    elif distance_type == 'manhattan':
+        return np.sum(np.abs(u - v))
+    elif distance_type == 'mahalanobis' and inv_cov_matrix is not None:
+        return mahalanobis_distance(u, v, inv_cov_matrix)
+    else:
+        raise ValueError("Tipo de distância não suportado ou parâmetros inválidos.")
+
+
+# Função para encontrar os k vizinhos mais próximos
+def get_k_nearest_neighbors(X_train, y_train, test_sample, k, distance_type, inv_cov_matrix=None):
+    distances = []
+    for i in range(len(X_train)):
+        dist = calculate_distance(test_sample, X_train[i], distance_type, inv_cov_matrix)
+        distances.append((dist, y_train[i]))
+    distances.sort(key=lambda x: x[0])
+    neighbors = distances[:k]
+    return neighbors
+
+
+# Função para prever a classe com base nos k vizinhos mais próximos
+def predict_classification(X_train, y_train, X_test, k, distance_type, inv_cov_matrix=None):
+    predictions = []
+    for test_sample in X_test:
+        neighbors = get_k_nearest_neighbors(X_train, y_train, test_sample, k, distance_type, inv_cov_matrix)
+        output_values = [neighbor[1] for neighbor in neighbors]
+        prediction = Counter(output_values).most_common(1)[0][0]
+        predictions.append(prediction)
+    return predictions
+
+
+# Função para calcular a acurácia
+def calculate_accuracy(y_test, y_pred):
+    correct = np.sum(y_test == y_pred)
+    accuracy = correct / len(y_test)
+    return accuracy
+
+
+# Número de vizinhos
 k = 5
-distances = ['euclidean', 'manhattan', 'chebyshev', 'mahalanobis']
-accuracies = {}
 
-for dist in distances:
-    y_pred = knn_predict(X_train, y_train, X_test, k, dist)
-    accuracy = accuracy_score(y_test, y_pred)
-    accuracies[dist] = accuracy
+# 4) e 5) Implementar e comparar as acurácias com diferentes distâncias
+# a) Distância de Mahalanobis
+inv_cov_matrix = inverse_covariance_matrix(X_train)
+y_pred_mahalanobis = predict_classification(X_train, y_train, X_test, k, 'mahalanobis', inv_cov_matrix)
+accuracy_mahalanobis = calculate_accuracy(y_test, y_pred_mahalanobis)
+print(f'Acurácia com distância de Mahalanobis: {accuracy_mahalanobis:.2f}')
 
-# Mostrar acurácia para cada métrica
-for dist, acc in accuracies.items():
-    print(f'Acurácia com distância {dist}: {acc:.2f}')
+# b) Distância de Chebyshev
+y_pred_chebyshev = predict_classification(X_train, y_train, X_test, k, 'chebyshev')
+accuracy_chebyshev = calculate_accuracy(y_test, y_pred_chebyshev)
+print(f'Acurácia com distância de Chebyshev: {accuracy_chebyshev:.2f}')
 
+# c) Distância de Manhattan
+y_pred_manhattan = predict_classification(X_train, y_train, X_test, k, 'manhattan')
+accuracy_manhattan = calculate_accuracy(y_test, y_pred_manhattan)
+print(f'Acurácia com distância de Manhattan: {accuracy_manhattan:.2f}')
+
+# d) Distância Euclidiana
+y_pred_euclidean = predict_classification(X_train, y_train, X_test, k, 'euclidean')
+accuracy_euclidean = calculate_accuracy(y_test, y_pred_euclidean)
+print(f'Acurácia com distância Euclidiana: {accuracy_euclidean:.2f}')
