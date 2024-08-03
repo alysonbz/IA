@@ -11,7 +11,7 @@ from sklearn.preprocessing import StandardScaler
 dataset_path = 'dataset/gender_classification_v7.csv'  # Atualize com o caminho correto
 data = pd.read_csv(dataset_path)
 
-# Supondo que as colunas 'feature1', 'feature2', ..., 'featureN' são as características e 'label' é o rótulo
+# Supondo que as colunas 'feature1', 'feature2', ..., 'featureN' são as características e 'gender' é o rótulo
 X = data.drop('gender', axis=1).values
 y = data['gender'].values
 
