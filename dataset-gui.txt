@@ -1,0 +1,249 @@
+Questão 1
+
+# Importe as bibliotecas necessárias.
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+
+# Carregue o dataset definido para você.
+healthcare_data= pd.read_csv('dataset/healthcare-dataset-stroke-data.csv')
+
+# Mostrar as primeiras linhas do dataset
+print(healthcare_data.head())
+
+
+# Verifique se existem celulas vazias ou Nan. Se existir, excluir e criar um novo dataframe.
+print(healthcare_data.isna().sum())
+healthcare_data = healthcare_data.dropna(axis=0)
+print(healthcare_data.isna().sum())
+
+
+# Verifique quais colunas são as mais relevantes e crie um novo dataframe.
+print("Coluna 'id' irrelevante para a análise. Sendo deletada!")
+healthcare_data_new = healthcare_data.drop("id", axis=1)
+
+print("Apresentando dataset novo:")
+print(healthcare_data_new)
+
+
+# Print o dataframe final e mostre a distribuição de classes que você deve classificar.
+print(healthcare_data_new)
+
+print("Distribuição da classe stroke:")
+class_dist = healthcare_data_new
+print(class_dist['stroke'].value_counts(), '\n','\n')
+
+
+# Observe se a coluna de classes precisa ser renomeada para atributos numéricos, realize a conversão, se necessário.
+print("Tipos")
+print(healthcare_data_new.dtypes)
+
+# Lista de colunas para codificar
+columns_to_encode = ['gender', 'ever_married', 'work_type', 'Residence_type', 'smoking_status']
+
+# Aplica o LabelEncoder a cada coluna
+le = LabelEncoder()
+
+for column in columns_to_encode:
+   healthcare_data_new[column] = le.fit_transform(healthcare_data_new[column])
+print()
+
+print("Convertida")
+print(healthcare_data_new.info())
+
+
+
+# Salve o dataset atualizado se houver modificações.
+healthcare_data_new.to_csv('dataset/healthcare-dataset-stroke-data-new.csv', index=False)
+
+
+
+
+
+Questão 2
+# Importe as bibliotecas necessárias.
+import pandas as pd
+from scipy.spatial.distance import mahalanobis, chebyshev, cityblock
+from sklearn.model_selection import train_test_split
+import numpy as np
+from collections import Counter
+
+# Carregue o dataset definido para você.
+healthcare_data = pd.read_csv('dataset/healthcare-dataset-stroke-data-new.csv')
+print(healthcare_data.head())
+
+# Sem normalizar o conjunto de dados divida o dataset em treino e teste.
+X = healthcare_data.drop(columns=['stroke'])
+y = healthcare_data['stroke']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Função para calcular a distância euclidiana
+def euclidean_distance(a, b):
+    return np.sqrt(np.sum((a - b) ** 2))
+
+def manhattan_distance(a, b):
+    return np.sum(np.abs(a - b))
+
+def chebyshev_distance(a, b):
+    return np.max(np.abs(a - b))
+
+def mahalanobis_distance(a, b, VI):
+    return mahalanobis(a, b, VI)
+
+# Função KNN manual
+def knn_predict(X_train, y_train, X_test, k, distance_func, VI=None):
+    predictions = []
+    for test_point in X_test:
+        distances = []
+        for i, train_point in enumerate(X_train):
+            if distance_func == mahalanobis_distance:
+                distance = distance_func(test_point, train_point, VI)
+            else:
+                distance = distance_func(test_point, train_point)
+            distances.append((distance, y_train[i]))
+        # Ordenar as distâncias e selecionar os k vizinhos mais próximos
+        distances.sort(key=lambda x: x[0])
+        k_nearest_neighbors = distances[:k]
+        # Determinar a classe majoritária entre os k vizinhos mais próximos
+        classes = [neighbor[1] for neighbor in k_nearest_neighbors]
+        majority_class = Counter(classes).most_common(1)[0][0]
+        predictions.append(majority_class)
+    return predictions
+
+# Preparando os dados para a predição
+X_test_np = X_test.to_numpy()
+X_train_np = X_train.to_numpy()
+y_train_np = y_train.to_numpy()
+
+# Calculando a matriz inversa da covariância para a distância de Mahalanobis
+VI = np.linalg.inv(np.cov(X_train_np.T))
+
+# Calculando a acurácia para cada métrica de distância
+distances = {
+    'Euclidiana': euclidean_distance,
+    'Manhattan': manhattan_distance,
+    'Chebyshev': chebyshev_distance,
+    'Mahalanobis': mahalanobis_distance
+}
+
+accuracies = {}
+
+for name, func in distances.items():
+    if name == 'Mahalanobis':
+        y_pred = knn_predict(X_train_np, y_train_np, X_test_np, k=1, distance_func=func, VI=VI)
+    else:
+        y_pred = knn_predict(X_train_np, y_train_np, X_test_np, k=1, distance_func=func)
+    accuracy = np.mean(y_pred == y_test.to_numpy())
+    accuracies[name] = accuracy
+
+# Calculando a acurácia manualmente
+accuracy = np.mean(y_pred == y_test.to_numpy())
+
+# Exibindo a acurácia
+print(f'Acurácia do KNN manual: {accuracy}')
+print()
+
+# Exibindo as acurácias
+for name, accuracy in accuracies.items():
+    print(f'Acurácia do KNN com distância {name}: {accuracy}')
+
+
+
+
+
+Questão 3
+
+# Importe as bibliotecas necessárias
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler, FunctionTransformer
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+
+# Carregue o dataset definido para você.
+healthcare_data = pd.read_csv('dataset/healthcare-dataset-stroke-data-new.csv')
+print(healthcare_data.head())
+
+# Normalize o conjunto de dados com normalização logarítmica  e verifique a acurácia do knn.
+X = healthcare_data.drop(columns=['stroke'], axis=1)
+y = healthcare_data['stroke']
+
+# Dividir em treino e teste
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+def log_normalize(X):
+    return np.log1p(X)
+
+log_transformer = FunctionTransformer(func=log_normalize, validate=False)
+X_train_log = log_transformer.fit_transform(X_train)
+X_test_log = log_transformer.transform(X_test)
+
+# Treinar o modelo KNN
+knn = KNeighborsClassifier(n_neighbors=5)
+knn.fit(X_train_log, y_train)
+
+# Fazer previsões e calcular acurácia
+y_pred_log = knn.predict(X_test_log)
+accuracy_log = accuracy_score(y_test, y_pred_log)
+print(f'Acurácia com normalização logarítmica: {accuracy_log:.2f}')
+
+
+# Normalize o conjunto de dados com normalização de media zero e variância unitária e verifique a acurácia do knn.
+# Normalização de média zero e variância unitária
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Treinar o modelo KNN
+knn.fit(X_train_scaled, y_train)
+
+# Fazer previsões e calcular acurácia
+y_pred_scaled = knn.predict(X_test_scaled)
+accuracy_scaled = accuracy_score(y_test, y_pred_scaled)
+print(f'Acurácia com normalização de média zero e variância unitária: {accuracy_scaled:.2f}')
+print()
+
+
+
+
+
+Questão 4
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import KNeighborsClassifier
+import matplotlib.pyplot as plt
+from src.utils import load_new_customer_dataset
+
+# Carregue o dataset definido para você.
+healthcare_data = pd.read_csv('dataset/healthcare-dataset-stroke-data-new.csv')
+print(healthcare_data.head())
+
+# Normalizar os dados
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Definir e otimizar o modelo KNN
+param_grid = {'n_neighbors': range(1, 21)}
+grid_search = GridSearchCV(KNeighborsClassifier(), param_grid, cv=5, scoring='accuracy')
+grid_search.fit(X_train_scaled, y_train)
+
+# Obter os melhores parâmetros e acurácia
+best_k = grid_search.best_params_['n_neighbors']
+best_accuracy = grid_search.best_score_
+
+print(f'Melhor valor de k: {best_k}')
+print(f'Acurácia com o melhor k: {best_accuracy:.4f}')
+
+# Visualizar os resultados
+results = grid_search.cv_results_
+plt.figure(figsize=(10, 6))
+plt.plot(results['param_n_neighbors'], results['mean_test_score'], marker='o')
+plt.xlabel('Número de Vizinhos (k)')
+plt.ylabel('Acurácia Média')
+plt.title('Acurácia Média versus Número de Vizinhos')
+plt.axvline(x=best_k, color='r', linestyle='--', label=f'Melhor k = {best_k}')
+plt.legend()
+plt.grid(True)
+plt.show()
