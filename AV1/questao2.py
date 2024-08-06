@@ -4,7 +4,7 @@ from sklearn.metrics import accuracy_score
 from scipy.spatial.distance import mahalanobis, chebyshev, cityblock, euclidean
 import numpy as np
 
-# Carregue o dataset (substitua 'diabetes_atualizado.csv' pelo nome do seu arquivo)
+# Carregue o dataset
 diabetes_atualizado = pd.read_csv('diabetes_atualizado.csv')
 print(diabetes_atualizado.head())
 
@@ -19,7 +19,6 @@ def knn_predict(X_train, y_train, X_test, k, distance_metric):
         distances = []
         for i, train_point in enumerate(X_train.values):
             if distance_metric == 'mahalanobis':
-                # Calcula a matriz de covariância dos dados de treinamento
                 cov_matrix = np.cov(X_train.T)
                 dist = mahalanobis(test_point, train_point, cov_matrix)
             elif distance_metric == 'chebyshev':
@@ -33,13 +32,12 @@ def knn_predict(X_train, y_train, X_test, k, distance_metric):
             distances.append((dist, y_train.iloc[i]))
         distances.sort(key=lambda x: x[0])
         k_nearest = distances[:k]
-        # Calcula a classe mais frequente entre os k vizinhos mais próximos
         classes = [neighbor[1] for neighbor in k_nearest]
         predicted_class = max(set(classes), key=classes.count)
         y_pred.append(predicted_class)
     return y_pred
 
-# Define o valor de k
+
 k = 5
 
 # Calcula a acurácia para cada métrica de distância
