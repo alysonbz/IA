@@ -1,13 +1,17 @@
 from src.utils import load_volunteer_dataset
-import pandas as pd
 
 volunteer = load_volunteer_dataset()
 
-print(volunteer['hits'].head())
+# Print os primeiros elementos da coluna hits
+print(volunteer["hits"].head())
+print()
 
-print(volunteer['hits'].dtype())
+# Print as caracteristicas da coluna hits
+print("\nCaracterísticas da coluna hits:", volunteer["hits"].dtypes)
 
+# Converta a coluna hits para o tipo int
+print("\nConvertendo a coluna hits para int..")
+volunteer['hits'] = volunteer["hits"].astype(int)
 
-volunteer['hits'] = volunteer['hits'].astype('int32')
-
-print(volunteer['hits'].head())
+# Print as caracteristicas da coluna hits novamente
+print("\nColuna volunteer convertida para:", volunteer['hits'].dtypes)
