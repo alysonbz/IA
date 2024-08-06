@@ -13,7 +13,9 @@ print('Aplique a função de nomarlização logarítmica na coluna Proline')
 wine['Proline_log'] = np.log(wine['Proline'])
 
 print('Print a variância da coluna proline')
-print(np.var(wine['proline']))
+#sem log
+print(np.var(wine['Proline']))
 
 print('print a variância da coluna proline normalizada')
+#com logaritmo
 print(np.var(wine['Proline_log']))

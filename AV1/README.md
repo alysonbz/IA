@@ -13,43 +13,6 @@ ALLAN MICHEL ROCHA DOS SANTOS: https://www.kaggle.com/datasets/erdemtaha/cancer-
 
 [Cancer_Data.csv](dataset%2FCancer_Data.csv)
 
-FRANCISCO SAMUEL SALES PINHEIRO PINTO: https://www.kaggle.com/datasets/rashikrahmanpritom/heart-attack-analysis-prediction-dataset
-
-[heart.csv](dataset%2Fheart.csv)
-
-ANTONIO FILIPE SOUSA SILVA: https://www.kaggle.com/datasets/elakiricoder/gender-classification-dataset
-
-[gender_classification_v7.csv](dataset%2Fgender_classification_v7.csv)
-
-GUILHERME PINHEIRO SERAFIM: https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset
-
-[healthcare-dataset-stroke-data.csv](dataset%2Fhealthcare-dataset-stroke-data.csv)
-
-JOAO PAULO ROCHA MATOS: https://www.kaggle.com/datasets/rtatman/chocolate-bar-ratings
-
-[flavors_of_cacao.csv](dataset%2Fflavors_of_cacao.csv)
-
-JOAO LUIS FEITOSA LEITE: https://www.kaggle.com/datasets/prathamtripathi/drug-classification
-
-[drug200.csv](dataset%2Fdrug200.csv)
-
-JURANDIR CAVALCANTI GOMES NETO: https://www.kaggle.com/datasets/whenamancodes/predict-diabities
-
-[diabetes.csv](dataset%2Fdiabetes.csv)
-
-PEDRO JONNATHAN MATOS DE SOUSA: https://www.kaggle.com/datasets/fedesoriano/stellar-classification-dataset-sdss17
-
-[star_classification.csv](dataset%2Fstar_classification.csv)
-
-WANDERSON WENDEL DE SOUSA LOPES: https://www.kaggle.com/datasets/praveengovi/credit-risk-classification-dataset?select=customer_data.csv
-
-[customer_data.csv](dataset%2Fcustomer_data.csv)
-
-VITORIA NASCIMENTO DE PAULA: https://www.kaggle.com/datasets/mssmartypants/water-quality
-
-[waterQuality1.csv](dataset%2FwaterQuality1.csv)
-
-
 ### Questão 1
 
 ```questao1.py```

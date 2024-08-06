@@ -16,5 +16,5 @@ knn = KNeighborsClassifier()
 print('=== 2 - Aplique a função fit do knn ===')
 knn.fit(X_train, y_train)
 
-print('=== mostre o acerto do algoritmo ===')
+print('=== 3 - mostre o acerto do algoritmo ===')
 print(knn.score(X_test, y_test))

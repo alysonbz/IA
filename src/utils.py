@@ -5,8 +5,14 @@ from sklearn.linear_model import LinearRegression , LogisticRegression
 from sklearn.model_selection import train_test_split
 
 #PROVA AV1
+def load_cancer_dataset_cleaned():
+    return pd.read_csv('../AV1/dataset/Cancer_Data_Cleaned.csv')
+
 def load_cancer_dataset():
     return pd.read_csv('../AV1/dataset/Cancer_Data.csv')
+
+
+
 
 def load_volunteer_dataset():
     return pd.read_csv('../dataset/opportunities.csv')
