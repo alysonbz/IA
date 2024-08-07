@@ -16,7 +16,6 @@ print(diabetes_relevante.head())
 print(diabetes_relevante['Outcome'].value_counts())
 
 # Observe se a coluna de classes precisa ser renomeada para atributos numéricos, realize a conversão, se necessário
-# Se a coluna 'Outcome' tiver valores como 'Sim' e 'Não', você pode converter para 1 e 0:
 diabetes_relevante['Outcome'] = diabetes_relevante['Outcome'].replace({1: 'Sim', 0: 'Não'})
 
 # Salve o dataset atualizado se houver modificações.
