@@ -39,7 +39,7 @@ def knn_predict(X_train, y_train, X_test, k, distance_metric):
 
 
 k = 5
-
+#comentario
 # Calcula a acurácia para cada métrica de distância
 for distance_metric in ['mahalanobis', 'chebyshev', 'manhattan', 'euclidean']:
     y_pred = knn_predict(X_train, y_train, X_test, k, distance_metric)
@@ -47,6 +47,7 @@ for distance_metric in ['mahalanobis', 'chebyshev', 'manhattan', 'euclidean']:
     print(f'Acurácia com {distance_metric} distance: {accuracy:.4f}')
 #5) Compare as acurácias considerando que 4 possíveis cálculos de distancias diferentes:
    #a) distância de mahalanobis.
+
 
    #Acurácia com mahalanobis distance: 0.7208
 
