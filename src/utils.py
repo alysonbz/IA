@@ -4,6 +4,9 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.linear_model import LinearRegression , LogisticRegression
 from sklearn.model_selection import train_test_split
 
+def load_sales_clean_dataset():
+    path = "dataset/sales_clean.csv"
+    return pd.read_csv(path)
 def load_gender_classification_dataset():
     path = "dataset/gender_classification_v7.csv"
     return pd.read_csv(path)
