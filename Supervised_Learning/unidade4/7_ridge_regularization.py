@@ -22,4 +22,4 @@ for alpha in alphas:
     # Obtain R-squared
     score = ridge.score(X_test, y_test)
     ridge_scores.append(score)
-print(ridge_scores)
+print(ridge_scores)  
