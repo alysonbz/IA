@@ -8,8 +8,9 @@ from sklearn.preprocessing import StandardScaler
 ClanWaterQuality = pd.read_csv('dataset/CleanWaterQuality1.csv')
 
 scaler = StandardScaler()
-X = ClanWaterQuality[["aluminium","ammonia","arsenic","barium","cadmium","chloramine","chromium","copper","flouride","bacteria",
-                      "viruses","lead","nitrates","nitrites","mercury","perchlorate","radium","selenium","silver","uranium"]].values
+X = ClanWaterQuality[["aluminium","ammonia","arsenic","barium","cadmium","chloramine","chromium","copper",
+                      "flouride","bacteria", "viruses","lead","nitrates","nitrites","mercury","perchlorate",
+                      "radium","selenium","silver","uranium"]].values
 y = ClanWaterQuality["is_safe"].values
 
 # Split into training and test sets

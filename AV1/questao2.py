@@ -137,13 +137,10 @@ def dist_mahalanobis(v1, v2, inv_cov):
 def distancia_de_chebyshev(p, q):
         if len(p) != len(q):
             raise ValueError("Os pontos devem ter a mesma dimensão")
-
         max_diferenca = 0
-
         for i in range(len(p)):
             # Calcula a diferença absoluta entre as coordenadas correspondentes
             diferenca = abs(p[i] - q[i])
-
             # Atualiza o valor máximo da diferença
             if diferenca > max_diferenca:
                 max_diferenca = diferenca
@@ -152,7 +149,6 @@ def distancia_de_chebyshev(p, q):
 
 
 def distance_de_manhattan(ponto1, ponto2):
-
     return sum(abs(a - b) for a, b in zip(ponto1, ponto2))
 
 def knn(treinamento, nova_amostra, K, distancia):

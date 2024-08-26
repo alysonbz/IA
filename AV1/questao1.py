@@ -16,7 +16,6 @@ waterQuality.replace('@NUM!', np.nan, inplace=True)
 waterQuality = waterQuality.apply(pd.to_numeric, errors='coerce')
 print(waterQuality.isna().sum())
 
-
 waterQuality = waterQuality.dropna(how='any')
 
 CleanWaterQuality = waterQuality
