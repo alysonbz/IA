@@ -20,6 +20,6 @@ for alpha in alphas:
     ridge.fit(X_train, y_train)
 
     # Obtain R-squared
-    score = ridge.score(X_train, y_train)
+    score = ridge.score(X_test, y_test)
     ridge_scores.append(score)
 print(ridge_scores)
