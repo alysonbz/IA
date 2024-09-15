@@ -1,4 +1,4 @@
-# AVALIAÇÃO 2 -prazo para envio do relatório e código : 31/05/2023
+# AVALIAÇÃO 2 -prazo para envio do relatório e código : 20/09/20
 > Orientações para execução da prova.
 
 Esse documento exibe as descrições das questões e a relação dos datasets que devem ser utiizados 
