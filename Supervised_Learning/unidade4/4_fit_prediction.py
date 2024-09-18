@@ -1,11 +1,12 @@
+import numpy as np
+
 from src.utils import load_sales_clean_dataset
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
-
-sales_df = load_sales_clean_dataset()
-
 # Import mean_squared_error
 from sklearn.metrics import mean_squared_error
+
+sales_df = load_sales_clean_dataset()
 
 # Create X and y arrays
 X = sales_df.drop(["sales", "social_media", "influencer"], axis=1)
@@ -27,7 +28,8 @@ print("Predictions: {}, Actual Values: {}".format(y_pred[:2], y_test[:2]))
 r_squared = reg.score(X_test, y_test)
 
 # Compute RMSE
-rmse = mean_squared_error(y_test, y_pred, squared=False)
+mse = mean_squared_error(y_test, y_pred)  # Compute MSE
+rmse = np.sqrt(mse)  # Compute RMSE by taking the square root of MSE
 
 # Print the metrics
 print("R^2: {}".format(r_squared))
