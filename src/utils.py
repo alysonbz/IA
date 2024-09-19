@@ -10,6 +10,9 @@ def load_customer_dataset():
 def load_new_customer_dataset():
     return pd.read_csv('../AV1/dataset/new_customer_data.csv')
 
+def load_activision_blizzard_dataset():
+    return pd.read_csv('../AV2/dataset/activision_blizzard.csv')
+
 def load_volunteer_dataset():
     return pd.read_csv('../dataset/opportunities.csv')
 
