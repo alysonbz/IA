@@ -13,6 +13,7 @@ import matplotlib.pyplot as plt
 # Lendo o dataset
 act_blz = load_activision_blizzard_dataset()
 print(act_blz.head())
+print(act_blz.dtypes)
 
 # Foi preciso criar um dataset sem a coluna Date, pois ela não entra no cálculo de correlações
 act_blz_new = act_blz.select_dtypes(include=[float, int])

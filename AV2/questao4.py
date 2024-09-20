@@ -64,7 +64,6 @@ print("Lasso - Média R²:", mean_cv_score_lasso, "Desvio Padrão:", std_cv_scor
 print("Ridge - Média R²:", mean_cv_score_ridge, "Desvio Padrão:", std_cv_score_ridge)
 
 # Escolha do melhor regressor baseado nos resultados:
-# Se os scores forem semelhantes, escolha o modelo mais simples
 if mean_cv_score_linear >= mean_cv_score_lasso and mean_cv_score_linear >= mean_cv_score_ridge:
     print("\nRegressão Linear é o modelo mais adequado.")
 elif mean_cv_score_lasso > mean_cv_score_linear and mean_cv_score_lasso >= mean_cv_score_ridge:

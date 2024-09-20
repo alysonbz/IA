@@ -11,7 +11,7 @@
 """
 
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.metrics import r2_score, mean_squared_error
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
@@ -19,26 +19,27 @@ from src.utils import load_activision_blizzard_dataset
 
 act_blz = load_activision_blizzard_dataset()
 
-# Definir o atributo mais relevante (Adj Close) e o alvo (Close)
-X = act_blz[['Adj Close']].values
-y = act_blz['Close'].values
+# Definindo o atributo mais relevante (Close) e o alvo (Adj Close)
+X = act_blz[['Close']].values
+y = act_blz['Adj Close'].values
 
-# Dividir os dados em conjuntos de treino e teste
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+# Dividindo os dados em conjuntos de treino e teste
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Criar o modelo de regressão linear
+# Inicializando o modelo de regressão linear e ajustando aos dados de treino
 lr = LinearRegression()
-
-# Treinar o modelo
 lr.fit(X_train, y_train)
 
-# Fazer previsões
+# Fazendo previsões nos dados de teste
 y_pred = lr.predict(X_test)
 
-# Calcular as métricas
-RSS = np.sum(np.square(y_test - y_pred))
+# Calculando RSS (Soma Residual dos Quadrados)
+RSS = np.sum((y_test - y_pred) ** 2)
+
 MSE = mean_squared_error(y_test, y_pred)
+
 RMSE = np.sqrt(MSE)
+
 R_squared = r2_score(y_test, y_pred)
 
 print("RSS:", RSS)
