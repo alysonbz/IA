@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Importe as bibliotecas necessárias.
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
@@ -52,3 +53,29 @@ print(healthcare_data_new.info())
 
 # Salve o dataset atualizado se houver modificações.
 healthcare_data_new.to_csv('dataset/healthcare-dataset-stroke-data-new.csv', index=False)
+=======
+#importe as bibliotecas necessárias
+
+
+## Carregue o dataset definido para você
+
+
+
+# Verifique se existem celulas vazias ou Nan. Se existir, excluir e criar um novo dataframe.
+
+
+
+# Verifique quais colunas são as mais relevantes e crie um novo dataframe.
+
+
+
+#Print o dataframe final e mostre a distribuição de classes que você deve classificar
+
+
+
+#observe se a coluna de classes precisa ser renomeada para atributos numéricos, realize a conversão, se necessário
+
+
+
+#Salve o dataset atualizado se houver modificações.
+>>>>>>> 97e940d2647336b47c19a5910c43581bbe81a5bb
