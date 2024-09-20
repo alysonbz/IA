@@ -17,19 +17,17 @@ print(act_blz.head())
 # Foi preciso criar um dataset sem a coluna Date, pois ela não entra no cálculo de correlações
 act_blz_new = act_blz.select_dtypes(include=[float, int])
 
-# Calcular a correlação entre as variáveis
+# Calcular a matriz de correlação
 correlation_matrix = act_blz_new.corr()
 
-# Extraindo as correlações com o alvo 'Adj Close'
-target_corr = correlation_matrix['Adj Close'].drop('Adj Close')
+# Extrair a correlação com o alvo (Adj Close)
+target_correlation = correlation_matrix["Adj Close"].drop("Adj Close")
 
-# Visualizar as correlações via gráfico de barras
-plt.figure(figsize=(8,6))
-sns.barplot(x=target_corr.index, y=target_corr.values, palette='viridis')
-plt.title('Correlação entre atributos e Adj Close')
-plt.ylabel('Coeficiente de Correlação')
-plt.xticks(rotation=45)
+# Montando um gráfico heatmap para visualizar as correlações
+plt.figure(figsize=(8, 6))
+sns.heatmap(target_correlation.to_frame(), annot=True, cmap="coolwarm", vmin=-1, vmax=1)
+plt.title("Correlação dos Atributos com o Atributo Alvo (Adj Close)")
 plt.show()
 
-# Mostrar a matriz de correlação completa para análise
-correlation_matrix['Adj Close'].sort_values(ascending=False)
+# Mostrar a correlação com o alvo 'Adj Close'
+print(target_correlation)
