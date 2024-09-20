@@ -1,28 +1,29 @@
 import numpy as np
-
 from src.utils import load_sales_clean_dataset
 from sklearn.linear_model import LinearRegression
-# Import the necessary modules
+
+# Importa os módulos necessários.
 from sklearn.model_selection import KFold, cross_val_score
 
 sales_df = load_sales_clean_dataset()
-# Create X and y arrays
+
+# Cria matrizes X e y.
 X = sales_df["radio"].values.reshape(-1, 1)
 y = sales_df["sales"].values
 
-# Create a KFold object
+# Cria um objeto KFold.
 kf = KFold(n_splits=6, shuffle=True, random_state=5)
 
 reg = LinearRegression()
 
-# Compute 6-fold cross-validation scores
+# Calcula pontuações de validação cruzada de 6 vezes.
 cv_scores = cross_val_score(reg, X, y, cv=kf)
 
-# Print cv_scores
+# Impressão do cv_scores.
 print(cv_scores)
 
-# Print the mean
+# Imprime a médias.
 print(np.mean(cv_scores))
 
-# Print the standard deviation
+# Imprime o desvio padrão.
 print(np.std(cv_scores))

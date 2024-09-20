@@ -1,21 +1,21 @@
 import matplotlib.pyplot as plt
 from src.utils import load_sales_clean_dataset
 
-# Import Lasso
+# Importa Lasso.
 from sklearn.linear_model import Lasso
 
 sales_df = load_sales_clean_dataset()
 
-# Create X and y arrays
+# Crie matrizes X e y.
 X = sales_df.drop(["sales", "influencer"], axis=1)
 y = sales_df["sales"].values
 sales_columns = X.columns
 
-# Instantiate a lasso regression model
+# Instanciar um modelo de regressão Lasso.
 lasso = Lasso(alpha=1.0)
 lasso.fit(X, y)
 
-# Compute and print the coefficients
+# Calcule e imprima os coeficientes.
 lasso_coef = lasso.coef_
 print(lasso_coef)
 plt.bar(sales_columns, lasso_coef)

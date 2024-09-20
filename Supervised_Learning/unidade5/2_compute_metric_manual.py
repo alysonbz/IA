@@ -72,6 +72,7 @@ mt = Metrics(y_pred, y_test)
 mt.set_param_classe1()
 mt.set_param_classe2()
 
+#Mostra os resultados.
 print("Acurácia geral:", mt.compute_accuracy())
 print("Recall classe 0:", mt.compute_recall_c0())
 print("Recall classe 1:", mt.compute_recall_c1())

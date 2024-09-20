@@ -1,16 +1,15 @@
-import numpy as np
 from src.utils import load_sales_clean_dataset
 
 sales_df = load_sales_clean_dataset()
 
-# Create X from the radio column's values
+# Crie X a partir dos valores da coluna de rádio.
 X = sales_df['radio'].values
 
-# Create y from the sales column's values
+# Crie y a partir dos valores da coluna de vendas.
 y = sales_df['sales'].values
 
-# Reshape X
+# Remodelar.
 X = X.reshape(-1, 1)
 
-# Check the shape of the features and targets
+# Verifique o formato dos recursos e alvos.
 print(X.shape, y.shape)

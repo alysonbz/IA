@@ -1,16 +1,15 @@
 from src.utils import processing_sales_clean
-# Import matplotlib.pyplot
 import matplotlib.pyplot as plt
 
 X, y, predictions = processing_sales_clean()
 
-# Create scatter plot
+# Criar gráfico de dispersão.
 plt.scatter(X, y, color="blue")
 
-# Create line plot
+# Criar gráfico de linha.
 plt.plot(X, predictions, color="red")
 plt.xlabel("Radio Expenditure ($)")
 plt.ylabel("Sales ($)")
 
-# Display the plot
+# Exibir o gráfico.
 plt.show()

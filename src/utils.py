@@ -10,6 +10,9 @@ def load_new_heart_dataset():
 def load_heart_dataset():
     return pd.read_csv('../AV1/dataset/heart.csv')
 
+def load_ferrari_dataset():
+    return pd.read_csv('../AV2/dataset/Ferrari.csv')
+
 def load_volunteer_dataset():
     return pd.read_csv('../dataset/opportunities.csv')
 
