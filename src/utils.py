@@ -4,6 +4,13 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.linear_model import LinearRegression , LogisticRegression
 from sklearn.model_selection import train_test_split
 
+#PROVA AV2
+def load_laptopPrice_dataset_cleaned():
+    return pd.read_csv('../AV2/dataset/Laptop_Data_Cleaned.csv')
+
+def load_laptopPrice_dataset():
+    return pd.read_csv('../AV2/dataset/laptopPrice.csv')
+
 #PROVA AV1
 def load_cancer_dataset_cleaned():
     return pd.read_csv('../AV1/dataset/Cancer_Data_Cleaned.csv')
